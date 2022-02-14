@@ -1,0 +1,76 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Liste des vols
+{% endblock %}
+{% block body %}
+
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('addVol') }}">Ajouter</a></li>
+    </ul>
+    <a href="listVol">
+        <h1 align="center">Liste des Vols</h1>
+    </a>
+
+    {{ form(formVol) }}
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd">Numero du Vol</td>
+            <td style="color: #3ea9dd">Date départ</td>
+            <td style="color: #3ea9dd">Heure départ</td>
+            <td style="color: #3ea9dd">Date arrivé</td>
+            <td style="color: #3ea9dd">Heure arrivé</td>
+            <td style="color: #3ea9dd">Ville départ</td>
+            <td style="color: #3ea9dd">Ville arrivé</td>
+            <td style="color: #3ea9dd">Modifier</td>
+            <td style="color: #3ea9dd">Supprimer</td>
+
+        </tr>
+        {% for i in listVols %}
+            <tr>
+                <td>{{ i.NumVol}}</td>
+                <td>{{ i.DateDepart|date("m/d/Y") }}</td>
+                <td>{{ i.DateDepart|date('H:i') }}</td>
+                <td>{{ i.DateArrive|date("m/d/Y") }}</td>
+                <td>{{ i.DateArrive|date('H:i') }}</td>
+                <td>{{ i.VilleDepart}}</td>
+                <td>{{ i.VilleArrive}}</td>
+                <td> <a href="{{ path('updateVol',{'id':i.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteVol',{'id':i.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <a class="btn btn-theme mt" href="{{ path('triVolNum') }}" >Trier par numéro du vol </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <a class="btn btn-theme mt" href="{{ path('triVolDatedep') }}" >Trier par date de depart</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <a class="btn btn-theme mt" href="{{ path('imprimVol') }}" >Générer un fichier pdf</a>
+        </div>
+    </div>
+
+{% endblock %}

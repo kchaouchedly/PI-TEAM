@@ -1,0 +1,26 @@
+<h1 align="center">Liste des Vols</h1><hr>
+<table border="10" class="display table table-bordered" id="hidden-table-info">
+
+    <tr>
+        <td style="color:red"> Numero du Vol </td>
+        <td style="color:red"> Date départ </td>
+        <td style="color:red"> Heure départ </td>
+        <td style="color:red"> Date arrivé </td>
+        <td style="color:red"> Heure arrivé </td>
+        <td style="color:red"> Ville départ </td>
+        <td style="color:red"> Ville arrivé </td>
+
+        {% for i in listVols %}
+    <tr>
+        <td>{{ i.NumVol}}</td>
+        <td>{{ i.DateDepart|date("m/d/Y") }}</td>
+        <td>{{ i.DateDepart|date('H:i') }}</td>
+        <td>{{ i.DateArrive|date("m/d/Y") }}</td>
+        <td>{{ i.DateArrive|date('H:i') }}</td>
+        <td>{{ i.VilleDepart}}</td>
+        <td>{{ i.VilleArrive}}</td>
+
+    </tr>
+
+    {% endfor %}
+</table>

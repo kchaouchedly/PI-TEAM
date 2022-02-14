@@ -1,0 +1,36 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des vols
+{% endblock %}
+{% block body %}
+    <h1 style="color:#3ea9dd ">Liste des Vols</h1>
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd">Numero du Vol</td>
+            <td style="color: #3ea9dd">Date départ</td>
+            <td style="color: #3ea9dd">Heure départ</td>
+            <td style="color: #3ea9dd">Date arrivé</td>
+            <td style="color: #3ea9dd">Heure arrivé</td>
+            <td style="color: #3ea9dd">Ville départ</td>
+            <td style="color: #3ea9dd">Ville arrivé</td>
+
+
+
+        </tr>
+        {% for i in showVols %}
+            <tr>
+                <td>{{ i.NumVol}}</td>
+                <td>{{ i.DateDepart|date("m/d/Y") }}</td>
+                <td>{{ i.DateDepart|date('H:i') }}</td>
+                <td>{{ i.DateArrive|date("m/d/Y") }}</td>
+                <td>{{ i.DateArrive|date('H:i') }}</td>
+                <td>{{ i.VilleDepart}}</td>
+                <td>{{ i.VilleArrive}}</td>
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

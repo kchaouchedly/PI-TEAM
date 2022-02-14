@@ -1,0 +1,77 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Liste des hotels
+{% endblock %}
+{% block body %}
+
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('addHotel') }}">Ajouter</a></li>
+    </ul>
+
+    <a href="showHotel">
+        <h1 align="center">Liste des Hotels</h1>
+    </a>
+    {{ form(formHotel) }}
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+
+        <tr>
+            <td style="color: #3ea9dd"> Code Hotel </td>
+            <td style="color: #3ea9dd"> Nom Hotel </td>
+            <td style="color: #3ea9dd"> Email </td>
+            <td style="color: #3ea9dd"> Adresse </td>
+            <td style="color: #3ea9dd"> Numéro Téléphone </td>
+            <td style="color: #3ea9dd"> Nombre Etoiles </td>
+            <td style="color: #3ea9dd"> Nombre Chambres </td>
+            <td style="color: #3ea9dd"> Modifier</td>
+            <td style="color: #3ea9dd"> Supprimer</td>
+
+        </tr>
+        {% for i in showHotels %}
+            <tr>
+                <td>{{ i.CodeH }}</td>
+                <td>{{ i.NomHotel }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.Adresse }}</td>
+                <td>{{ i.NumTel }}</td>
+                <td>{{ i.NbrEtoiles }}</td>
+                <td>{{ i.NbrChambre }}</td>
+
+                <td> <a href="{{ path('updateHotel',{'id':i.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteHotel',{'id':i.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <a class="btn btn-theme mt" href="{{ path('triHotelCode') }}" >Trier par code </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <a class="btn btn-theme mt" href="{{ path('triHotelEtoiles') }}" >Trier par nombre des étoiles</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <a class="btn btn-theme mt" href="{{ path('imprimHotel') }}" >Générer un fichier pdf </a>
+        </div>
+    </div>
+
+{% endblock %}

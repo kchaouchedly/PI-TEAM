@@ -1,0 +1,46 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Ajouter un vol
+{% endblock %}
+
+{% block body %}
+
+    <h1>Ajouter Vol</h1>
+    {{ form_start(formVol,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(formVol.NumVol,"Numéro du vol") }}</td>
+
+            <td>{{ form_widget(formVol.NumVol) }}</td>
+            <td>{{ form_errors(formVol.NumVol) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formVol.DateDepart," Date et Heure départ Vol ") }}</td>
+
+            <td>{{ form_widget(formVol.DateDepart) }}</td>
+            <td>{{ form_errors(formVol.DateDepart) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formVol.DateArrive," Date et Heure arrivé Vol ") }}</td>
+
+            <td>{{ form_widget(formVol.DateArrive) }}</td>
+            <td>{{ form_errors(formVol.DateArrive) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formVol.VilleDepart," La Ville de départ ") }}</td>
+
+            <td>{{ form_widget(formVol.VilleDepart) }}</td>
+            <td>{{ form_errors(formVol.VilleDepart) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formVol.VilleArrive," La ville d'arrivé ") }}</td>
+
+            <td>{{ form_widget(formVol.VilleArrive) }}</td>
+            <td>{{ form_errors(formVol.VilleArrive) }}</td>
+        </tr>
+
+
+    </table>
+    {{ form_end(formVol) }}
+
+{% endblock %}

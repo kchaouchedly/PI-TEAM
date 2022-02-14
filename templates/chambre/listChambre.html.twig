@@ -1,0 +1,67 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Liste des chambres
+{% endblock %}
+{% block body %}
+
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('addChambre') }}">Ajouter</a></li>
+    </ul>
+    <a href="listChambre">
+        <h1 align="center">Liste des Chambres</h1>
+    </a>
+
+    {{ form(formChambre) }}
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+
+        <tr>
+            <td style="color: #3ea9dd"> Numéro de la Chambre </td>
+            <td style="color: #3ea9dd"> Nombre de lits </td>
+            <td style="color: #3ea9dd"> Vue </td>
+            <td style="color: #3ea9dd"> Etage </td>
+            <td style="color: #3ea9dd"> Prix </td>
+            <td style="color: #3ea9dd"> Bloc </td>
+            <td style="color: #3ea9dd">Modifier</td>
+            <td style="color: #3ea9dd">Supprimer</td>
+
+        </tr>
+        {% for i in listChambres %}
+            <tr>
+                <td>{{ i.NumCh }}</td>
+                <td>{{ i.NbrLits }}</td>
+                <td>{{ i.vue }}</td>
+                <td>{{ i.Etage }}</td>
+                <td>{{ i.Prix }}</td>
+                <td>{{ i.Bloc }}</td>
+                <td> <a href="{{ path('updateChambre',{'id':i.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteChambre',{'id':i.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <a class="btn btn-theme mt" href="{{ path('triChambreBloc') }}" >Trier par bloc </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <a class="btn btn-theme mt" href="{{ path('triChambrePrix') }}" >Trier par prix</a>
+        </div>
+    </div>
+
+{% endblock %}

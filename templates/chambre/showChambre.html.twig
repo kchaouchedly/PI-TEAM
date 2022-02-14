@@ -1,0 +1,34 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des chambres
+{% endblock %}
+{% block body %}
+    <h1 style="color:#3ea9dd "> Liste des Chambres </h1>
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+
+        <tr>
+            <td style="color: #3ea9dd"> Numéro de la Chambre </td>
+            <td style="color: #3ea9dd"> Nombre de lits </td>
+            <td style="color: #3ea9dd"> Vue </td>
+            <td style="color: #3ea9dd"> Etage </td>
+            <td style="color: #3ea9dd"> Prix </td>
+            <td style="color: #3ea9dd"> Bloc </td>
+
+
+        </tr>
+        {% for i in showChambres %}
+            <tr>
+                <td>{{ i.NumCh }}</td>
+                <td>{{ i.NbrLits }}</td>
+                <td>{{ i.vue }}</td>
+                <td>{{ i.Etage }}</td>
+                <td>{{ i.Prix }}</td>
+                <td>{{ i.Bloc }}</td>
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

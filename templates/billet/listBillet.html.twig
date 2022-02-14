@@ -1,0 +1,29 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des billets
+{% endblock %}
+{% block body %}
+    <h1 style="color:#3ea9dd ">Liste des Billets</h1>
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd">Numero du Billet</td>
+            <td style="color: #3ea9dd">Nom de la compagnie</td>
+            <td style="color: #3ea9dd">Prix du Billet</td>
+            <td style="color: #3ea9dd">Date du Vol</td>
+            <td style="color: #3ea9dd">Heure du vol</td>
+
+        </tr>
+        {% for i in listBillets %}
+            <tr>
+                <td>{{ i.numB}}</td>
+                <td>{{ i.nomCom}}</td>
+                <td>{{ i.Prix}}</td>
+                <td>{{ i.dateV|date("m/d/Y") }}</td>
+                <td>{{ i.dateV|date('H:i') }}</td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des hotels
+{% endblock %}
+{% block body %}
+    <h1 style="color:#3ea9dd "> Liste des Hotels </h1>
+
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+
+        <tr>
+            <td style="color: #3ea9dd"> Code Hotel </td>
+            <td style="color: #3ea9dd"> Nom Hotel </td>
+            <td style="color: #3ea9dd"> Email </td>
+            <td style="color: #3ea9dd"> Adresse </td>
+            <td style="color: #3ea9dd"> Numéro Téléphone </td>
+            <td style="color: #3ea9dd"> Nombre Etoiles </td>
+            <td style="color: #3ea9dd"> Nombre Chambres </td>
+
+        </tr>
+        {% for i in listHotels %}
+            <tr>
+                <td>{{ i.CodeH }}</td>
+                <td>{{ i.NomHotel }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.Adresse }}</td>
+                <td>{{ i.NumTel }}</td>
+                <td>{{ i.NbrEtoiles }}</td>
+                <td>{{ i.NbrChambre }}</td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

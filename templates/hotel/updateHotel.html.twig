@@ -1,0 +1,59 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Modifier Hotel
+{% endblock %}
+{% block body %}
+
+    <h1>Modifier Hotel</h1>
+    {{ form_start(formHotel,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(formHotel.CodeH,"Code hotel  ") }}</td>
+
+            <td>{{ form_widget(formHotel.CodeH) }}</td>
+            <td>{{ form_errors(formHotel.CodeH) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formHotel.NomHotel,"Nom hotel  ") }}</td>
+
+            <td>{{ form_widget(formHotel.NomHotel) }}</td>
+            <td>{{ form_errors(formHotel.NomHotel) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formHotel.email,"Email Hotel  ") }}</td>
+
+            <td>{{ form_widget(formHotel.email) }}</td>
+            <td>{{ form_errors(formHotel.email) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formHotel.Adresse,"Adresse  ") }}</td>
+
+            <td>{{ form_widget(formHotel.Adresse) }}</td>
+            <td>{{ form_errors(formHotel.Adresse) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formHotel.NumTel,"Numéro téléphone  ") }}</td>
+
+            <td>{{ form_widget(formHotel.NumTel) }}</td>
+            <td>{{ form_errors(formHotel.NumTel) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(formHotel.NbrEtoiles,"Nombres etoiles  ") }}</td>
+
+            <td>{{ form_widget(formHotel.NbrEtoiles) }}</td>
+            <td>{{ form_errors(formHotel.NbrEtoiles) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(formHotel.NbrChambre,"Nombre chambres  ") }}</td>
+
+            <td>{{ form_widget(formHotel.NbrChambre) }}</td>
+            <td>{{ form_errors(formHotel.NbrChambre) }}</td>
+        </tr>
+
+
+    </table>
+    {{ form_end(formHotel) }}
+
+{% endblock %}
