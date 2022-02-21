@@ -3,32 +3,45 @@
     Liste des chambres
 {% endblock %}
 {% block body %}
-    <h1 style="color:#3ea9dd "> Liste des Chambres </h1>
-    <table border="0" class="display table table-bordered" id="hidden-table-info">
 
-        <tr>
-            <td style="color: #3ea9dd"> Numéro de la Chambre </td>
-            <td style="color: #3ea9dd"> Nombre de lits </td>
-            <td style="color: #3ea9dd"> Vue </td>
-            <td style="color: #3ea9dd"> Etage </td>
-            <td style="color: #3ea9dd"> Prix </td>
-            <td style="color: #3ea9dd"> Bloc </td>
+    <!-- our Chambres -->
+    <div id="blog" class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Les Chambres d'Hotel</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for i in showChambres %}
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="blog-box">
+                        <figure><img src ="{{ asset('front/images/' ~ i.ImageCh )}}" alt="#" width="500" style="height:300px;"/>
+                            <span>A partir de TND {{ i.prix}} </span>
+                        </figure>
+                       {#
+                       <div class="travel">
+                            <span>{{ i.NbrLits }} lits</span>
+                        </div>
+                       #}
+
+                        <div class="travel">
+                            <span> Vue {{ i.vue }}</span>
+                        </div>
+
+                        <p></p>
+                        <div class="button_section"> <a class="main_bt" href="">Réserver</a>  </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
 
 
-        </tr>
-        {% for i in showChambres %}
-            <tr>
-                <td>{{ i.NumCh }}</td>
-                <td>{{ i.NbrLits }}</td>
-                <td>{{ i.vue }}</td>
-                <td>{{ i.Etage }}</td>
-                <td>{{ i.Prix }}</td>
-                <td>{{ i.Bloc }}</td>
-
-
-            </tr>
-
-        {% endfor %}
-    </table>
 
 {% endblock %}

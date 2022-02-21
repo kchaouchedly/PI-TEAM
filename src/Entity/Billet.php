@@ -67,6 +67,16 @@ class Billet
      */
     private $Prix;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Vol::class, inversedBy="billet")
+     */
+    private $vol;
+
+    /**
+     * @ORM\Column(type="string", length=400)
+     */
+    private $imageBillet;
+
 
     public function getId(): ?int
     {
@@ -117,6 +127,30 @@ class Billet
     public function setPrix(int $Prix): self
     {
         $this->Prix = $Prix;
+
+        return $this;
+    }
+
+    public function getVol(): ?Vol
+    {
+        return $this->vol;
+    }
+
+    public function setVol(?Vol $vol): self
+    {
+        $this->vol = $vol;
+
+        return $this;
+    }
+
+    public function getImageBillet()
+    {
+        return $this->imageBillet;
+    }
+
+    public function setImageBillet( $imageBillet)
+    {
+        $this->imageBillet = $imageBillet;
 
         return $this;
     }

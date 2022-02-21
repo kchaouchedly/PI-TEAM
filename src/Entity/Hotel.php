@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HotelRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -89,6 +91,23 @@ class Hotel
      * @Assert\Email(message = " cette adresse '{{ value }}' est invalide .")
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=350)
+     * @Assert\NotBlank
+     */
+
+    private $imageHotel;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Chambre::class, mappedBy="hotel",cascade={"remove"})
+     */
+    private $chambre;
+
+    public function __construct()
+    {
+        $this->chambre = new ArrayCollection();
+    }
     
 
     public function getId(): ?int
@@ -180,5 +199,51 @@ class Hotel
         return $this;
     }
 
+    public function getImageHotel()
+    {
+        return $this->imageHotel;
+    }
+
+    public function setImageHotel( $imageHotel)
+    {
+        $this->imageHotel = $imageHotel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Chambre[]
+     */
+    public function getChambre(): Collection
+    {
+        return $this->chambre;
+    }
+
+    public function addChambre(Chambre $chambre): self
+    {
+        if (!$this->chambre->contains($chambre)) {
+            $this->chambre[] = $chambre;
+            $chambre->setHotel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChambre(Chambre $chambre): self
+    {
+        if ($this->chambre->removeElement($chambre)) {
+            // set the owning side to null (unless already changed)
+            if ($chambre->getHotel() === $this) {
+                $chambre->setHotel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return(string)$this->getNomHotel();
+    }
 
 }

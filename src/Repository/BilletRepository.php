@@ -46,6 +46,17 @@ class BilletRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function listBilletByVol($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.vol','c')
+            ->addSelect('c')
+            ->where('c.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Billet[] Returns an array of Billet objects
     //  */

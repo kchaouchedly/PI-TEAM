@@ -64,6 +64,21 @@ class Chambre
      */
     private $Bloc;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $dispo;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ImageCh;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="chambre")
+     */
+    private $hotel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,4 +155,41 @@ class Chambre
 
         return $this;
     }
+
+    public function getDispo(): ?string
+    {
+        return $this->dispo;
+    }
+
+    public function setDispo(string $dispo): self
+    {
+        $this->dispo = $dispo;
+
+        return $this;
+    }
+
+    public function getImageCh()
+    {
+        return $this->ImageCh;
+    }
+
+    public function setImageCh( $ImageCh)
+    {
+        $this->ImageCh = $ImageCh;
+
+        return $this;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
 }

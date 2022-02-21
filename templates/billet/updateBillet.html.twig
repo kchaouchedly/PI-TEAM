@@ -32,6 +32,12 @@
             <td>{{ form_errors(formBillet.dateV) }}</td>
         </tr>
 
+        <tr>
+            <td>{{ form_label(formBillet.imageBillet," Image Compagnie ") }}</td>
+
+            <td>{{ form_widget(formBillet.imageBillet) }}</td>
+            <td>{{ form_errors(formBillet.imageBillet) }}</td>
+        </tr>
 
     </table>
     {{ form_end(formBillet) }}

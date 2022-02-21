@@ -44,6 +44,12 @@
             <td>{{ form_widget(formChambre.Bloc) }}</td>
             <td>{{ form_errors(formChambre.Bloc) }}</td>
         </tr>
+        <tr>
+            <td>{{ form_label(formChambre.dispo,"disponible") }}</td>
+
+            <td>{{ form_widget(formChambre.dispo) }}</td>
+            <td>{{ form_errors(formChambre.dispo) }}</td>
+        </tr>
 
     </table>
     {{ form_end(formChambre) }}

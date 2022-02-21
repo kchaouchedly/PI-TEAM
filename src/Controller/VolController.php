@@ -9,6 +9,8 @@ use App\Form\BilletType;
 use App\Form\SearchHType;
 use App\Form\SearchVolType;
 use App\Form\VolType;
+use App\Repository\BilletRepository;
+use App\Repository\ChambreRepository;
 use App\Repository\HotelRepository;
 use App\Repository\VolRepository;
 use Dompdf\Dompdf;
@@ -55,7 +57,6 @@ class VolController extends AbstractController
         return $this->render('vol/showVol.html.twig',array("showVols"=>$vols));
     }
 
-
     /**
      * @Route("/addVol", name="addVol")
      */
@@ -65,7 +66,13 @@ class VolController extends AbstractController
         $form=$this->createForm(VolType::class,$vol);
         $form->handleRequest($request);
         if($form->isSubmitted()&&($form->isValid())){
+            $file = $vol->getImageVol();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
+
             $em=$this->getDoctrine()->getManager();
+            $vol->setImageVol($fileName);
             $em->persist($vol);
             $em->flush();
             return $this->redirectToRoute("listVol");
@@ -96,8 +103,12 @@ class VolController extends AbstractController
         $form=$this->createForm(VolType::class,$vol);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()){
-            $em=$this->getDoctrine()->getManager();
 
+            $file = $vol->getImageVol();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+            $em=$this->getDoctrine()->getManager();
+            $vol->setImageVol($fileName);
             $em->flush();
             return $this->redirectToRoute("listVol");
         }
@@ -176,6 +187,25 @@ class VolController extends AbstractController
         ]);
 
 
+    }
+
+    /**
+     * @Route("/listBilletByVol/{id}", name="listBilletByVol")
+     */
+    public function listBilletByVol(BilletRepository $repository,$id)
+    {
+        $billets=$repository->listBilletByVol($id);
+        return $this->render("billet/listBillet.html.twig",array("listBillets"=>$billets));
+    }
+
+
+    /**
+     * @Route("/listBilletByVoll/{id}", name="listBilletByVoll")
+     */
+    public function listBilletByVoll(BilletRepository $repository,$id)
+    {
+        $billets=$repository->listBilletByVol($id);
+        return $this->render("billet/showBillet.html.twig",array("showBillets"=>$billets));
     }
 
 }

@@ -12,7 +12,7 @@ class SearchHType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('NomHotel')
+            ->add('Nom_Hotel')
             ->add('Rechercher ',SubmitType::class)
         ;
     }

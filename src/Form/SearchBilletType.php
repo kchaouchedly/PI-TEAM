@@ -12,7 +12,7 @@ class SearchBilletType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('numB')
+            ->add('Numero_Billet')
             ->add('Rechercher ',SubmitType::class)
         ;
     }

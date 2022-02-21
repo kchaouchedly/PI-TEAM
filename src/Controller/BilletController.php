@@ -51,7 +51,14 @@ class BilletController extends AbstractController
         $form=$this->createForm(BilletType::class,$billet);
         $form->handleRequest($request);
         if($form->isSubmitted()&&($form->isValid())){
+
+            $file = $billet->getImageBillet();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
             $em=$this->getDoctrine()->getManager();
+            $billet->setImageBillet($fileName);
+
             $em->persist($billet);
             $em->flush();
             return $this->redirectToRoute("showBillet");
@@ -81,7 +88,14 @@ class BilletController extends AbstractController
         $form=$this->createForm(BilletType::class,$billet);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()){
+
+            $file = $billet->getImageBillet();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
+
             $em=$this->getDoctrine()->getManager();
+            $billet->setImageBillet($fileName);
 
             $em->flush();
             return $this->redirectToRoute("showBillet");

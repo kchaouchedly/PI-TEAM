@@ -65,7 +65,13 @@ class ChambreController extends AbstractController
         $form = $this->createForm(ChambreType::class, $chambre);
         $form->handleRequest($request);
         if ($form->isSubmitted() && ($form->isValid())) {
+
+            $file = $chambre->getImageCh();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
             $em = $this->getDoctrine()->getManager();
+            $chambre->setImageCh($fileName);
             $em->persist($chambre);
             $em->flush();
             return $this->redirectToRoute("listChambre");
@@ -94,7 +100,13 @@ class ChambreController extends AbstractController
         $form=$this->createForm(ChambreType::class,$chambre);
         $form->handleRequest($request);
         if( $form->isSubmitted() && $form->isValid() ){
+
+            $file = $chambre->getImageCh();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
             $em=$this->getDoctrine()->getManager();
+            $chambre->setImageCh($fileName);
             $em->flush();
             return $this->redirectToRoute("listChambre");
         }

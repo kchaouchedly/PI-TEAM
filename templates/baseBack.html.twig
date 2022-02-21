@@ -254,18 +254,21 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="{{asset('back/profile.html') }}"><img src="{{asset('back/img/aa.jpg') }}" class="img-circle" width="80"></a></p>
                 <h5 class="centered">Let's Travel</h5>
-                <li class="mt">
-                    <a class="active" href="{{ path('showBillet') }}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Gestion des billets</span>
-                    </a>
-                </li>
+
                 <li class="mt">
                     <a class="active" href="{{ path('listVol') }}">
                         <i class="fa fa-dashboard"></i>
                         <span>Gestion des vols</span>
                     </a>
                 </li>
+
+                <li class="mt">
+                    <a class="active" href="{{ path('showBillet') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des billets</span>
+                    </a>
+                </li>
+
                 <li class="mt">
                     <a class="active" href="{{ path('showHotel') }}">
                         <i class="fa fa-dashboard"></i>

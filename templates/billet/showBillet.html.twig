@@ -12,7 +12,11 @@
             <h1 align="center">Liste des Billets</h1>
 
     </a>
-    {{ form(formBillet) }}
+
+{# {{ form(formBillet) }} #}
+
+    <p style="100px" > <input  id="myInput"  type="text" placeholder="Rechercher Billet......">
+
     <table border="0" class="display table table-bordered" id="hidden-table-info">
         <tr>
             <td style="color: #3ea9dd">Numero du Billet</td>
@@ -20,9 +24,14 @@
             <td style="color: #3ea9dd">Prix du Billet</td>
             <td style="color: #3ea9dd">Date du Vol</td>
             <td style="color: #3ea9dd">Heure du vol</td>
+            <td style="color: #3ea9dd">Compagnie</td>
+            <td style="color: #3ea9dd">VilleArrive</td>
             <td style="color: #3ea9dd">Modifier</td>
             <td style="color: #3ea9dd">Supprimer</td>
         </tr>
+
+        <tbody  id="myTable">
+
         {% for i in showBillets %}
             <tr>
                 <td>{{ i.numB}}</td>
@@ -36,6 +45,10 @@
                     {{ i.dateV|date('H:i') }}
                     </time>
                 </td>
+                <td><img src ="{{ asset('front/images/' ~ i.imageBillet )}}"
+                         alt="" height="80" width="80">
+                </td>
+                <td>{{ i.vol }}</td>
 
                 <td> <a href="{{ path('updateBillet',{'id':i.id}) }}" class="btn btn-primary btn-xs">
                         <i class="fa fa-pencil">
@@ -54,6 +67,19 @@
 
         {% endfor %}
     </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <a class="btn btn-theme mt" href="{{ path('triBilletPrix') }}" >Trier par prix </a>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VolRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -77,6 +79,34 @@ class Vol
      */
     private $VilleArrive;
 
+    /**
+     * @ORM\Column(type="string", length=350)
+     * @Assert\NotBlank
+     */
+    //@Assert\File(mimeTypes={"image/jpeg"})
+    private $imageVol;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $typeV;
+
+    /**
+     * @ORM\Column(type="integer")
+     *@Assert\NotBlank
+     */
+    private $nbrPlace;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Billet::class, mappedBy="vol",cascade={"remove"})
+     */
+    private $billet;
+
+    public function __construct()
+    {
+        $this->billet = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,5 +170,76 @@ class Vol
         $this->VilleArrive = $VilleArrive;
 
         return $this;
+    }
+
+    public function getImageVol()
+    {
+        return $this->imageVol;
+    }
+
+    public function setImageVol($imageVol)
+    {
+        $this->imageVol = $imageVol;
+
+        return $this;
+    }
+
+    public function getTypeV(): ?string
+    {
+        return $this->typeV;
+    }
+
+    public function setTypeV(string $typeV): self
+    {
+        $this->typeV = $typeV;
+
+        return $this;
+    }
+
+    public function getNbrPlace(): ?int
+    {
+        return $this->nbrPlace;
+    }
+
+    public function setNbrPlace(int $nbrPlace): self
+    {
+        $this->nbrPlace = $nbrPlace;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Billet[]
+     */
+    public function getBillet(): Collection
+    {
+        return $this->billet;
+    }
+
+    public function addBillet(Billet $billet): self
+    {
+        if (!$this->billet->contains($billet)) {
+            $this->billet[] = $billet;
+            $billet->setVol($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBillet(Billet $billet): self
+    {
+        if ($this->billet->removeElement($billet)) {
+            // set the owning side to null (unless already changed)
+            if ($billet->getVol() === $this) {
+                $billet->setVol(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return(string)$this->getVilleArrive();
     }
 }

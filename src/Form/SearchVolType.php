@@ -12,7 +12,7 @@ class SearchVolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('NumVol')
+            ->add('Numero_Vol')
             ->add('Rechercher ',SubmitType::class)
 
         ;

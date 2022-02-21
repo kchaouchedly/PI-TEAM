@@ -10,8 +10,11 @@ use App\Form\HotelType;
 use App\Form\SearcheStudentType;
 use App\Form\SearchHotelType;
 use App\Form\SearchHType;
+use App\Repository\ChambreRepository;
 use App\Repository\HotelRepository;
+use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,7 +53,12 @@ class HotelController extends AbstractController
         $form = $this->createForm(HotelType::class, $hotel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && ($form->isValid())) {
+            $file = $hotel->getImageHotel();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
             $em = $this->getDoctrine()->getManager();
+            $hotel->setImageHotel($fileName);
             $em->persist($hotel);
             $em->flush();
             return $this->redirectToRoute("showHotel");
@@ -80,6 +88,10 @@ class HotelController extends AbstractController
         $form=$this->createForm(HotelType::class,$hotel);
         $form->handleRequest($request);
         if( $form->isSubmitted() && $form->isValid() ){
+            $file = $hotel->getImageHotel();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+            $hotel->setImageHotel($fileName);
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute("showHotel");
@@ -186,6 +198,22 @@ class HotelController extends AbstractController
 
     }
 
+    /**
+     * @Route("/listChambreByHotel/{id}", name="listChambreByHotel")
+     */
+    public function listChambreByHotel(ChambreRepository  $repository,$id)
+    {
+        $chambres=$repository->listChambreByHotel($id);
+        return $this->render("chambre/listChambre.html.twig",array("listChambres"=>$chambres));
+    }
 
 
+    /**
+     * @Route("/listChambreByHotell/{id}", name="listChambreByHotell")
+     */
+    public function listChambreByHotell(ChambreRepository  $repository,$id)
+    {
+        $chambres=$repository->listChambreByHotel($id);
+        return $this->render("chambre/showChambre.html.twig",array("showChambres"=>$chambres));
+    }
 }

@@ -10,7 +10,7 @@
     <!-- site metas -->
     <title>
         {% block title %}
-            Eforlad travel
+           Lest's travel
         {% endblock %}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -53,9 +53,9 @@
                     <div class="col-md-12">
                         <div class="header_information">
                             <ul>
-                                <li><img src="{{ asset('front/images/1.png') }}" alt="#"/> 145.street road new York</li>
-                                <li><img src="{{ asset('front/images/2.png') }}" alt="#"/> +71  5678954378</li>
-                                <li><img src="{{ asset('front/images/3.png') }}" alt="#"/> Demo@hmail.com</li>
+                                <li><img src="{{ asset('front/images/1.png') }}" alt="#"/> Cité El Ghazela</li>
+                                <li><img src="{{ asset('front/images/2.png') }}" alt="#"/> +216 71 000 000</li>
+                                <li><img src="{{ asset('front/images/3.png') }}" alt="#"/> letsTravel@gmail.com</li>
                             </ul>
                         </div>
                     </div>
@@ -78,8 +78,8 @@
                                 <ul class="menu-area-main">
                                     <li class="active"> <a href="{{ asset('front/#') }}">Home</a> </li>
                                     <li> <a href="{{ asset('front/#about') }}">About</a> </li>
-                                    <li><a href="{{ asset('front/#travel') }}">Travel</a></li>
-                                    <li><a href="{{ asset('front/#blog') }}">Blog</a></li>
+                                    <li><a href="{{ path('listHotel') }}" >>Hotels</a></li>
+                                    <li><a href="{{ path('showVol') }}">>Vols</a></li>
                                     <li><a href="{{ asset('front/#contact') }}">Contact Us</a></li>
                                 </ul>
                             </nav>
