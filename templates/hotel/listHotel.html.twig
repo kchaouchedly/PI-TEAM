@@ -1,0 +1,56 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des hotels
+{% endblock %}
+{% block body %}
+    <!--hotels -->
+    <div class="Tours">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Les meilleurs hôtels</h2>
+                    </div>
+                </div>
+            </div>
+            <section id="demos">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-carousel owl-theme">
+
+                                {% for i in listHotels %}
+
+                            <div class="item">
+                                <div class="titlepage">
+                                <h1>{{ i.NomHotel }}</h1>
+
+                                <img class="img-responsive" src ="{{ asset('front/images/' ~ i.imageHotel )}}" alt="#" width="500" style="height:300px;" />
+
+                            <h3>{{ i.Adresse }}</h3>
+                                <p>+216 {{ i.NumTel }}</p>
+                                </div>
+
+                              <p>{{ i.NbrEtoiles }}<img src="{{ asset('front/images/etoile.png') }}" alt="#" style="width:20px;" style="height:20px;"/> </p>
+
+                                <div class="button_section"> <a class="main_bt" href="{{ path('listChambreByHotell',{'id':i.id}) }}">Consulter Chambre</a>  </div>
+                               {#  <ul class="nav pull-right top-menu">
+
+                                    <li><a class="logout" href="{{ path('listChambreByHotel',{'id':i.id}) }}">  </a></li>
+                                </ul>#}
+
+                            </div>
+
+
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!-- end hotels -->
+
+{% endblock %}

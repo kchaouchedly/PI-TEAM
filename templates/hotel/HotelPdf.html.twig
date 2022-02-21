@@ -1,0 +1,27 @@
+<h1 align="center">Liste des Hotels</h1><hr>
+<table border="10" class="display table table-bordered" id="hidden-table-info">
+
+    <tr>
+        <td style="color:red"> Code Hotel </td>
+        <td style="color:red"> Nom Hotel </td>
+        <td style="color:red"> Email </td>
+        <td style="color:red"> Adresse </td>
+        <td style="color:red"> Numéro Téléphone </td>
+        <td style="color:red"> Nombre Etoiles </td>
+        <td style="color:red"> Nombre Chambres </td>
+
+    </tr>
+    {% for i in showHotels %}
+        <tr>
+            <td>{{ i.CodeH }}</td>
+            <td>{{ i.NomHotel }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.Adresse }}</td>
+            <td>{{ i.NumTel }}</td>
+            <td>{{ i.NbrEtoiles }}</td>
+            <td>{{ i.NbrChambre }}</td>
+
+        </tr>
+
+    {% endfor %}
+</table>

@@ -1,0 +1,114 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Liste des vols
+{% endblock %}
+{% block body %}
+
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('addVol') }}">Ajouter</a></li>
+    </ul>
+
+
+    <a href="listVol">
+        <h1 align="center">Liste des Vols</h1>
+    </a>
+
+    <td>
+        <a href="{{ path('imprimVol') }}" class="btn-group btn-group-xs">
+            <i class="fa fa-print">
+                IMPRIMER LA LISTE DES VOLS
+            </i>
+        </a>
+    </td>
+
+{#  {{ form(formVol) }}#}
+
+    <p style="100px" > <input  id="myInput"  type="text" placeholder="Rechercher Vol......">
+
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd">Numero du Vol</td>
+            <td style="color: #3ea9dd">Date départ</td>
+            <td style="color: #3ea9dd">Heure départ</td>
+            <td style="color: #3ea9dd">Date arrivé</td>
+            <td style="color: #3ea9dd">Heure arrivé</td>
+            <td style="color: #3ea9dd">Ville départ</td>
+            <td style="color: #3ea9dd">Ville arrivé</td>
+            <td style="color: #3ea9dd">Image Vol</td>
+            <td style="color: #3ea9dd">Type Vol</td>
+            <td style="color: #3ea9dd">nombre des places</td>
+            <td style="color: #3ea9dd">Modifier</td>
+            <td style="color: #3ea9dd">Supprimer</td>
+            <td style="color: #3ea9dd">Billets</td>
+
+        </tr>
+
+        <tbody  id="myTable">
+
+        {% for i in listVols %}
+            <tr>
+                <td>{{ i.NumVol}}</td>
+                <td>{{ i.DateDepart|date("m/d/Y") }}</td>
+                <td>{{ i.DateDepart|date('H:i') }}</td>
+                <td>{{ i.DateArrive|date("m/d/Y") }}</td>
+                <td>{{ i.DateArrive|date('H:i') }}</td>
+                <td>{{ i.VilleDepart}}</td>
+                <td>{{ i.VilleArrive}}</td>
+
+                <td><img src ="{{ asset('front/images/' ~ i.imageVol )}}"
+                         alt="" height="80" width="80">
+                </td>
+                <td>{{ i.typeV}}</td>
+                <td>{{ i.nbrPlace}}</td>
+                <td> <a href="{{ path('updateVol',{'id':i.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteVol',{'id':i.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('listBilletByVoll',{'id':i.id}) }}" class="btn btn-clear-g btn-xs">
+                        <i class="fa fa-adjust"></i>
+
+
+                    </a>
+                </td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <a class="btn btn-theme mt" href="{{ path('triVolNum') }}" >Trier par numéro du vol </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <a class="btn btn-theme mt" href="{{ path('triVolDatedep') }}" >Trier par date de depart</a>
+        </div>
+    </div>
+
+{% endblock %}

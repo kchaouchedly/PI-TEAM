@@ -1,0 +1,43 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des billets
+{% endblock %}
+{% block body %}
+
+<!-- our Billets-->
+<div id="blog" class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Les Billets Du Vol</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for i in listBillets %}
+
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="blog-box">
+                        <figure><img src ="{{ asset('front/images/' ~ i.imageBillet )}}" alt="#" width="500" style="height:200px;"/>
+                            <span>{{ i.Prix }} TND </span>
+                        </figure>
+
+                        </figure>
+                        <div class="travel">
+                            <span>Date du vol : {{ i.dateV|date("m/d/Y") }}</span>
+                        </div>
+
+                        <div class="button_section"> <a class="main_bt" href="">Réserver</a>  </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- end our Billets -->
+
+    {% endblock %}

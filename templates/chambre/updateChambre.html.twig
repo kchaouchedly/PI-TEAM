@@ -1,0 +1,64 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Modifier une chambre
+{% endblock %}
+{% block body %}
+
+    <h1>Modifier une Chambre</h1>
+    {{ form_start(formChambre,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(formChambre.NumCh,"Numéro Chambre") }}</td>
+
+            <td>{{ form_widget(formChambre.NumCh) }}</td>
+            <td>{{ form_errors(formChambre.NumCh) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formChambre.NbrLits,"Nombre de lits") }}</td>
+
+            <td>{{ form_widget(formChambre.NbrLits) }}</td>
+            <td>{{ form_errors(formChambre.NbrLits) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formChambre.vue,"Vue") }}</td>
+
+            <td>{{ form_widget(formChambre.vue) }}</td>
+            <td>{{ form_errors(formChambre.vue) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formChambre.Etage,"Etage") }}</td>
+
+            <td>{{ form_widget(formChambre.Etage) }}</td>
+            <td>{{ form_errors(formChambre.Etage) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formChambre.Prix,"Prix") }}</td>
+
+            <td>{{ form_widget(formChambre.Prix) }}</td>
+            <td>{{ form_errors(formChambre.Prix) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(formChambre.Bloc,"Bloc") }}</td>
+
+            <td>{{ form_widget(formChambre.Bloc) }}</td>
+            <td>{{ form_errors(formChambre.Bloc) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formChambre.dispo,"disponibilité") }}</td>
+
+            <td>{{ form_widget(formChambre.dispo) }}</td>
+            <td>{{ form_errors(formChambre.dispo) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(formChambre.ImageCh,"Image Chambre") }}</td>
+
+            <td>{{ form_widget(formChambre.ImageCh) }}</td>
+            <td>{{ form_errors(formChambre.ImageCh) }}</td>
+        </tr>
+
+    </table>
+    {{ form_end(formChambre) }}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Liste des chambres
+{% endblock %}
+{% block body %}
+
+    <!-- our Chambres -->
+    <div id="blog" class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Les Chambres d'Hotel</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for i in showChambres %}
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="blog-box">
+                        <figure><img src ="{{ asset('front/images/' ~ i.ImageCh )}}" alt="#" width="500" style="height:300px;"/>
+                            <span>A partir de TND {{ i.prix}} </span>
+                        </figure>
+                       {#
+                       <div class="travel">
+                            <span>{{ i.NbrLits }} lits</span>
+                        </div>
+                       #}
+
+                        <div class="travel">
+                            <span> Vue {{ i.vue }}</span>
+                        </div>
+
+                        <p></p>
+                        <div class="button_section"> <a class="main_bt" href="">Réserver</a>  </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
