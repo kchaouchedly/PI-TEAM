@@ -47,4 +47,20 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function orderByType(){
+        $qb=$this->createQueryBuilder('s')
+            ->orderBy('s.Type','ASC');
+        return $qb->getQuery()->getResult();
+
+    }
+    public function searchE($Type)
+    {
+
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager
+            ->createQuery("select s FROM APP\Entity\Evenement s WHERE s.Type = :Type")
+            ->setParameter('Type',$Type)
+        ;
+        return $query->getResult();
+    }
 }

@@ -1,0 +1,96 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <h1> list offres</h1>
+
+    <td>
+        <a href="{{ path('imprimoff' )}}" class="btn-group btn-group-xs">
+            <i class="fa fa-print">
+                IMPRIMER LA LISTE
+            </i>
+        </a>
+    </td>
+
+    <td> <a href="{{ path('addoffre' )}}" class="btn btn-success btn-xs">
+            <i class="fa fa-check">
+                AJOUTER UN NOUVEAU OFFRE
+            </i>
+        </a>
+    </td>
+    <p style="100px" > <input  id="myInput"  type="text" placeholder="Rechercher sur le site… ...">
+
+    <table border="2" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd">IDENTIFIANT</td>
+            <td style="color: #3ea9dd">NOM OFFRE</td>
+            <td style="color: #3ea9dd">DATE DEBUT</td>
+            <td style="color: #3ea9dd"> DATE FIN</td>
+            <td style="color: #3ea9dd"> NOM GUIDE </td>
+            <td style="color: #3ea9dd"> PRIX </td>
+
+
+            <td style="color: #3ea9dd"> MODIFIER</td>
+            <td style="color: #3ea9dd"> SUPPRIMER</td>
+
+        </tr>
+        <tbody  id="myTable">
+        {% for s in taboffre %}
+
+            <tr>
+                <td>{{ s.Id}}</td>
+                <td>{{ s.nom }}</td>
+
+                <td>
+                    {{s.DateDebutOffres |date('d/m/Y')}}
+                </td>
+                <td>
+
+                    {{s.DateFinOffre|date('d/m/Y')}}
+
+                </td>
+                <td>{{ s.NomGuide}}</td>
+                </td>
+                <td>{{ s.Prix}}</td>
+
+
+                <td> <a href="{{ path('updateoffre',{'id':s.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteoffres',{'id':s.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    </tbody>
+
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+{% endblock %}

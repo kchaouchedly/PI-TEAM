@@ -1,0 +1,35 @@
+<h1 align="center">Liste des Evenements</h1><hr>
+
+
+    <table border="10" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd"> IDENTIFIANT </td>
+
+            <td style="color: #3ea9dd"> TYPE </td>
+            <td style="color: #3ea9dd">NOM EVENEMENT</td>
+            <td style="color: #3ea9dd">DATE DEBUT</td>
+            <td style="color: #3ea9dd"> DATE FIN</td>
+            <td style="color: #3ea9dd"> LIEUX</td>
+
+
+
+        </tr>
+        {% for e in tabevenement %}
+        <tr>
+            <td>{{ e.Id}}</td>
+            <td>{{ e.Type }}</td>
+            <td>{{e.NomEvenement }}</td>
+            <td>
+                {{e.DateDebut|date('d/m/Y')}}
+            </td>
+            <td>
+
+                {{e.DateFin|date('d/m/Y')}}
+
+            </td>
+            <td>{{ e.Lieux}}</td>
+
+        </tr>
+
+    {% endfor %}
+</table>
