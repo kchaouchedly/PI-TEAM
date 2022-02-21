@@ -1,0 +1,32 @@
+{% extends 'baseFront.html.twig' %}
+ {% block body %}
+<h1 style="color:#3ea9dd "> LISTE DES AGENCES </h1>
+<table border="0" class="display table table-bordered" id="hidden-table-info">
+    <tr>
+
+        <td style="color: #3ea9dd"> NOM AGENCE </td>
+        <td style="color: #3ea9dd">ADRESSE</td>
+        <td style="color: #3ea9dd">NUMERO DE TELEPHONE</td>
+        <td style="color: #3ea9dd"> NOMBRE VOITURE</td>
+
+    </tr>
+    {% for agence in tabagence %}
+        <tr>
+
+            <td>{{ agence.nomagence }}</td>
+            <td>{{agence.adresse }}</td>
+            <td>{{ agence.numtel }}</td>
+            <td>{{ agence.nbrvoiture }}</td>
+            <td> <a href="{{ path('listvoiturebyf',{'id':agence.id}) }}" class="btn btn-primary btn-xs" >
+                    <i class="fa fa-adjust">
+                        LIST VOITURE
+                    </i>
+
+                </a> </td>
+
+
+        </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

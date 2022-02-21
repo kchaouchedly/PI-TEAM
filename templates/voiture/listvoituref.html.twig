@@ -1,0 +1,169 @@
+{% extends 'baseFront.html.twig' %}
+ {% block body %}
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+     <h1 style="color:#3ea9dd "> LISTE DES VOITURES </h1>
+     <p style="margin-left: 950px"> <input  id="myInput"  type="text" placeholder="Search..">
+     </p>
+     <table border="0" class="display table table-bordered" id="hidden-table-info">
+         <tr>
+
+
+             <td>nbrplace</td>
+             <td>type</td>
+             <td>marque</td>
+             <td> datedebut</td>
+             <td> datefin</td>
+             <td> prix</td>
+             <td> disponibilite </td>
+             <td> image </td>
+
+         </tr>
+         <tbody  id="myTable">
+
+         {% for v in tabvoiture %}
+         <tr>
+
+             <td>{{ v.nbrplace }}</td>
+             <td>{{v.type }}</td>
+             <td>{{ v.marque }}</td>
+             <td>{{ v.datedebut|date('d/m/y') }}</td>
+             <td>{{ v.datefin|date('d/m/y') }}</td>
+             <td>{{ v.prix }}</td>
+             <td>{{ v.disponibilite }}</td>
+
+             <td><img src="../../public/uploads/images/products/{{ v.image }}" class="img-circle" width="200"></td>
+
+             <td> <a  class="btn btn-primary btn-xs">
+                     <i class="fa fa-3x">
+                       Reserver
+                     </i>
+                 </a>
+             </td>
+         </tr>
+
+         {% endfor %}
+         </tbody>
+     </table>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script>
+         $(document).ready(function(){
+             $("#myInput").on("keyup", function() {
+                 var value = $(this).val().toLowerCase();
+                 $("#myTable tr").filter(function() {
+                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                 });
+             });
+         });
+     </script>
+
+
+
+
+     <!--vols -->
+     <div class="Tours">
+         <div class="container" >
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="titlepage">
+                         <h2>LISTE DES VOITURES </h2>
+                     </div>
+                 </div>
+
+             </div>
+
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="owl-carousel owl-theme">
+
+
+                             {% for i in tabvoiture %}
+
+                                 <div class="item">
+
+                                     <h4>Voiture : {{ i.marque}} </h4>
+                                     <img  src="../../public/uploads/images/products/{{ i.image }}" style="width:300px;height:200px;">
+
+                                     <h2> TYPE VOITURE: {{ i.type}}</h2>
+                                     <h2> Date DEBUT: {{ i.datedebut|date("m/d/Y") }}</h2>
+                                     <h2> Date FIN: {{ i.datefin|date("m/d/Y") }}</h2>
+                                     <h2> DISPONIBILITE: {{ i.disponibilite }}</h2>
+                                     <h2> PRIX: {{ i.prix }} TND</h2>
+
+                                     <div>
+                                     <a  class="btn btn-primary btn-xs">
+                                         <i class="fa fa-1x">
+                                             Reserver
+                                         </i>
+                                     </a>
+                                     </div>
+                                     <div class="container">
+                                         <div class="row">
+
+                                             <form action="rating" method="">
+
+                                                 <div class="rateyo" id= "rating"
+                                                      data-rateyo-rating="4"
+                                                      data-rateyo-num-stars="5"
+                                                      data-rateyo-score="3">
+                                                 </div>
+
+                                                 <span class='result'>0</span>
+                                                 <input type="hidden" name="rating">
+
+
+                                         <div><input type="submit" name="add"> </div>
+
+                                         </form>
+                                     </div>
+                                 </div>
+                             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                             <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+                             <script>
+
+
+                                 $(function () {
+                                     $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                                         var rating = data.rating;
+                                         $(this).parent().find('.score').text('score :'+ $(this).attr('data-rateyo-score'));
+                                         $(this).parent().find('.result').text('rating :'+ rating);
+                                         $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                                     });
+                                 });
+
+                             </script>
+
+                                     <ul class="nav pull-right top-menu">
+                                     </ul>
+
+                                     <p></p>
+                                 </div>
+
+
+                             {% endfor %}
+                         </div>
+                     </div>
+                 </div>
+
+
+         </div>
+     </div>
+     <!-- end vols -->
+     <style>
+         label:hover, label:active {
+             color:yellow;
+         }
+         .drone
+         {
+             display: none;
+         }
+         input[type="radio"]:checked+label{ font-weight: bold; color:yellow;}
+
+     </style>
+
+
+
+
+
+ {% endblock %}
