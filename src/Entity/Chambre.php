@@ -50,7 +50,7 @@ class Chambre
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="le prix de la chambre est obligatoire")
      * @Assert\GreaterThanOrEqual(
-     *     value = 150,message="Le prix minimale de la chambre est  150Dt"
+     *     value = 50,message="Le prix minimale de la chambre est  150Dt"
      * )
      * @Assert\LessThanOrEqual(
      *     value = 2000,message="Le prix de la chambre ne doit pas depasser 2000Dt"
