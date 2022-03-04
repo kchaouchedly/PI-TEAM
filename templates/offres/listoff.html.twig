@@ -1,8 +1,9 @@
 {% extends 'baseFront.html.twig' %}
 {% block title %}
-    Liste des vols
+    Liste des Offres
 {% endblock %}
 {% block body %}
+
 
 
     <!--vols -->
@@ -23,6 +24,7 @@
                             {% for i in taboffre %}
 
                                 <div class="item">
+                                    <img  src="../../public/uploads/images/products/{{ i.image }}" style="width:300px;height:200px;">
                                     <h1><font color="#6495ed"> "{{ i.nom}} "</font></h1>
 
 
@@ -31,9 +33,15 @@
                                     <h2> Date DEBUT: {{ i.DateFinOffre|date("m/d/Y") }}</h2>
                                     <h2> GUIDE: {{ i.NomGuide}}</h2>
                                     <h2> PRIX: {{ i.Prix}}</h2>
+                                    <h2>PLACES DISPO :  {{ i.NbrPlaces}}</h2>
 
 
                                     <ul class="nav pull-right top-menu">
+                                        <a class="logout" href="{{ path('checkoutoffpai',{'id':i.id}) }}" class="btn btn-primary btn-xs"> Payer
+                                                <i class="fa fa-paypal">
+
+                                                </i>
+                                            </a>
                                     </ul>
 
                                     <p></p>

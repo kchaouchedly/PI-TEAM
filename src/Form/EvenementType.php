@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 
 class EvenementType extends AbstractType
 {
@@ -45,7 +46,7 @@ class EvenementType extends AbstractType
 
             ->add('Lieux')
             ->add('imageFile',VichImageType::class)
-
+            ->add('color', ColorType::class)
             ->add('Ajouter',SubmitType::class)
 
         ;

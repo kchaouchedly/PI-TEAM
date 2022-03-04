@@ -4,8 +4,9 @@
 {% endblock %}
 {% block body %}
     {{ form_start(formoffres,{'attr': {'novalidate': 'novalidate'}} ) }}
-
     <h1>Ajouter un Offre</h1>
+    {{ form_start(formoffres,{'attr': {'novalidate': 'novalidate'}} ) }}
+
     <table>
         <tr>
             <td>{{ form_label(formoffres.nom,"NOM  ") }}</td>
@@ -43,6 +44,11 @@
             <td>{{ form_errors(formoffres
                 .Prix) }}</td>
         </tr>
+        </tr>
+        <td>{{ form_label(formoffres.NbrPlaces,"NbrPlaces") }}</td>
+
+        <td>{{ form_widget(formoffres.NbrPlaces) }}</td>
+        <td>{{ form_errors(formoffres.NbrPlaces) }}</td>
         </tr>
 
         </tr>

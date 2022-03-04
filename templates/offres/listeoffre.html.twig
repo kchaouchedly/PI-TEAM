@@ -27,6 +27,10 @@
             <td style="color: #3ea9dd"> DATE FIN</td>
             <td style="color: #3ea9dd"> NOM GUIDE </td>
             <td style="color: #3ea9dd"> PRIX </td>
+            <td style="color: #3ea9dd"> Places </td>
+            <td style="color: #3ea9dd"> images</td>
+
+
 
 
             <td style="color: #3ea9dd"> MODIFIER</td>
@@ -51,6 +55,9 @@
                 <td>{{ s.NomGuide}}</td>
                 </td>
                 <td>{{ s.Prix}}</td>
+                <td>{{ s.NbrPlaces}}</td>
+                <td>   <img src="../../public/uploads/images/products/{{ s.image }}" width="100" height="100"> </td>
+
 
 
                 <td> <a href="{{ path('updateoffre',{'id':s.id}) }}" class="btn btn-primary btn-xs">

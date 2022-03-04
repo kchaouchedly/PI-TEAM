@@ -1,8 +1,10 @@
-<h1 align="center">Liste des Offres</h1><hr>
+<h1 align="center">RESERVATION</h1><hr>
+
 
 
 <table border="10" class="display table table-bordered" id="hidden-table-info">
     <tr>
+
         <td style="color: #3ea9dd"> IDENTIFIANT </td>
 
         <td style="color: #3ea9dd"> NOM OFFRES </td>
@@ -16,6 +18,7 @@
 
     </tr>
     {% for e in taboffre %}
+
         <tr>
             <td>{{ e.Id}}</td>
             <td>{{ e.nom }}</td>
@@ -31,6 +34,7 @@
             <td>{{ e.Prix}}</td>
 
         </tr>
+
 
     {% endfor %}
 </table>

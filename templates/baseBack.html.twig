@@ -20,6 +20,8 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('back/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!--external css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
     <link href="{{asset('back/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{asset('back/css/zabuto_calendar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('back/lib/gritter/css/jquery.gritter.css') }}" />
@@ -27,6 +29,7 @@
     <link href="{{asset('back/css/style.css') }}" rel="stylesheet">
     <link href="{{asset('back/css/style-responsive.css') }}" rel="stylesheet">
     <script src="{{asset('back/lib/chart-master/Chart.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
 
     <!-- =======================================================
       Template Name: Dashio
@@ -266,6 +269,21 @@
                         <span>Gestion des offres</span>
                     </a>
                 </li>
+                </li>
+                <li class="mt">
+                    <a class="active" href="{{ path('main') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Plan du travail Responsable Evenement </span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a class="active" href="{{ path('stats') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Stat </span>
+                    </a>
+                </li>
+
+
 
                 <li class="sub-menu">
                     <a href="{{asset('back/javascript:;') }}">
@@ -800,6 +818,7 @@
                     <!-- /col-lg-3 -->
                 </div>
                 <!-- /row -->
+
             {% endblock %}
         </section>
 

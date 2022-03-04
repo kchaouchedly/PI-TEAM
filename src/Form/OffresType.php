@@ -39,8 +39,8 @@ class OffresType extends AbstractType
                 'multiple'=>false
             ])
 
-
-
+            ->add('imageFile',VichImageType::class)
+            ->add('NbrPlaces')
 
             ->add('Ajouter',SubmitType::class)
         ;

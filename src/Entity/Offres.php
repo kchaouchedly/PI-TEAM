@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use App\Repository\OffresRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=OffresRepository::class)
+ * @Vich\Uploadable
  */
 class Offres
 {
@@ -21,19 +24,19 @@ class Offres
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Selectionnez le nom  ! ")
+     * @Assert\NotBlank(message="Le champ Nom Offres est vide ! ")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\GreaterThan("today", message ="La date de début ne devrait pas être inférieure à la date du jour ! ")
+     * @Assert\GreaterThan("today", message ="La dade de début ne devrait pas être inférieure à la date du jour ! ")
      */
     private $DateDebutOffres;
 
     /**
      * @ORM\Column(type="date")
-     *  @Assert\Expression(
+     * @Assert\Expression(
      *     "this.getDateDebutOffres() < this.getDateFinOffre()",
      *     message="La date fin ne doit pas  etre inférieure a la date de début "
      * )
@@ -42,13 +45,14 @@ class Offres
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Selectionnez le nom  ! ")
+     * @Assert\NotBlank(message="Le champ Nom Guide est vide ! ")
      */
     private $NomGuide;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Selectionnez le prix ! ")
+     * @Assert\NotBlank(message="Le champ Prix  est vide ! ")
+
      */
     private $Prix;
 
@@ -56,8 +60,53 @@ class Offres
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="Offres")
      */
     private $evenement;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="veuillez saisir le nombre d'étoiles")
+     */
+    private $NbrPlaces;
 
 
+
+    public function setImageFile($image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 
     public function getId(): ?int
     {
@@ -76,11 +125,11 @@ class Offres
         return $this;
     }
 
-   public function getDateDebutOffres():?\DateTimeInterface
-   {
+    public function getDateDebutOffres():?\DateTimeInterface
+    {
 
         return $this->DateDebutOffres;
-   }
+    }
 
     public function setDateDebutOffres(\DateTimeInterface $DateDebutOffres): self
     {
@@ -143,6 +192,17 @@ class Offres
     public function setEvenement (?Evenement $evenement): self
     {
         $this->evenement = $evenement;
+
+        return $this;
+    }
+    public function getNbrPlaces(): ?int
+    {
+        return $this->NbrPlaces;
+    }
+
+    public function setNbrPlaces(int $NbrPlaces): self
+    {
+        $this->NbrPlaces =$NbrPlaces;
 
         return $this;
     }

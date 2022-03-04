@@ -1,0 +1,36 @@
+{% extends 'baseFront.html.twig' %}
+    {% Block mailer %}
+
+   {{ form (contactform,{'attr':{'class':'form-panel'}}) }}
+<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+    <div class="Follow">
+        <h3>ADDITIONAL LINKS</h3>
+        <ul class="link">
+            <li> <a href="{{ asset('front/#') }}">About us</a></li>
+            <li> <a href="{{ asset('front/#') }}">Terms and conditions</a></li>
+            <li> <a href="{{ asset('front/#') }}"> Privacy policy</a></li>
+            <li> <a href="{{ asset('front/#') }}">News</a></li>
+            <li> <a href="{{ asset('front/#') }}"> Contact us</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+    <div class="Follow">
+        <h3> Contact</h3>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <input class="Newsletter" placeholder="Name" type="text">
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <input class="Newsletter" placeholder="Email" type="text">
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <textarea class="textarea" placeholder="comment" type="text">Comment</textarea>
+            </div>
+        </div>
+        <button class="Subscribe">Submit</button>
+    </div>
+</div>
+</div>
+
+{% endblock %}

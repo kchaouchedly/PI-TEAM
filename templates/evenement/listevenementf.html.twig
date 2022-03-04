@@ -20,7 +20,10 @@
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme">
 
+
+
                             {% for i in tabevenement %}
+
 
                                 <div class="item">
                                     <h4><font color="#6495ed"> EVENEMENT "{{ i.Type}} "</font></h4>
@@ -34,10 +37,23 @@
 
 
 
-                                    <ul class="nav pull-right top-menu">
-                                        <li><a class="logout" href="{{ path('listoffresbyevenementfront',{'id':i.id}) }}"> Consulter
-                                            les offres</a></li>
-                                    </ul>
+
+                                        <li ><a class="logout" href="{{ path('listoffresbyevenementfront',{'id':i.id}) }}"class="btn btn-info">
+                                              <button style="color: #6495ed">
+                                                  Offres de  {{ i.NomEvenement}} </button>
+
+
+                                            </a>
+                                        </li>
+
+
+                                    <td> <a href="{{ path('contactevenementmail',{'id':i.id} )}}" class="btn btn-light">
+                                            <i class="">
+                                            Plus d'info ?
+                                            </i>
+                                        </a>
+                                    </td>
+                                    <div class="button_section"> <a class="main_bt" href="{{ path('addreservationevenement',{'id':i.id}) }}">RESERVER</a>  </div>
 
                                     <p></p>
                                     <p></p>
@@ -53,6 +69,5 @@
         </div>
     </div>
 
-    <!-- end vols -->
 
 {% endblock %}

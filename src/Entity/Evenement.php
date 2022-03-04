@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -18,26 +19,30 @@ class Evenement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("ev")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Selectionnez le type  ! ")
+     * @Groups("ev")
      */
-    private $Type;
+    public $Type;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le champ Nom evenement est vide ! ")
+     * @Groups("ev")
      */
     private $NomEvenement;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\GreaterThan("today", message ="La dade de début ne devrait pas être inférieure à la date du jour ! ")
+     * @Groups("ev")
      */
-    private $DateDebut;
+    public $DateDebut;
 
     /**
      * @ORM\Column(type="date")
@@ -45,30 +50,49 @@ class Evenement
      *     "this.getDateDebut() < this.getDateFin()",
      *     message="La date fin ne doit pas  etre inférieure a la date de début "
      * )
+     * @Groups("ev")
      */
-    private $DateFin;
+    public $DateFin;
 
 
     /**
      * @ORM\Column(type="string", length=255)
-     * * @Assert\NotBlank(message="Le champ LIEUX est vide ! ")
+     * *@Assert\NotBlank(message="Le champ LIEUX est vide ! ")
+     * @Groups("ev")
      */
     private $Lieux;
     /**
      * @ORM\Column(type="string", length=255)
      * @var string
+     * @Groups("ev")
      */
     private $image;
 
     /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File
+     * @Groups("ev")
      */
     private $imageFile;
     /**
-     * @ORM\OneToMany(targetEntity=Offres::class, mappedBy="Evenement")
+     * @ORM\OneToMany(targetEntity=Offres::class, mappedBy="evenement",cascade={"remove"})
      */
     private $Offres;
+    /**
+     * @ORM\OneToMany(targetEntity=ReservationE::class, mappedBy="evenement")
+     */
+    private $reservationE;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $color;
+
+
+
+
+
+
 
     public function setImageFile($image = null)
     {
@@ -166,6 +190,18 @@ class Evenement
     public function __toString()
     {
         return(string)$this->getType();
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
     }
 
 

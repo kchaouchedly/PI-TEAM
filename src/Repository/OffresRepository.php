@@ -57,4 +57,11 @@ class OffresRepository extends ServiceEntityRepository
             ->getResult();
 
     }
+    public function countByDate(){
+        $query = $this->getEntityManager()->createQuery("
+            SELECT SUBSTRING(a.DateDebutOffres, 1, 10) as DateDebutOffres, COUNT(a) as count FROM App\Entity\Offres a GROUP BY DateDebutOffres
+        ");
+        return $query->getResult();
+
+    }
 }
