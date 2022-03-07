@@ -1,0 +1,168 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Liste des blogs
+{% endblock %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Item - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ asset('back/css/styles.css')}}" rel="stylesheet" />
+</head>
+<body>
+<!-- Related items section-->
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-6" >Liste des blogs </h2>
+         {% for i in blogs|slice(0,15) %}
+             {% if loop.index == 1 or loop.index == 5 or loop.index == 9  %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" <img src="{{ asset('uploads/blog/' ~ i.photo) }}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+
+                          <h5 class="fw-bolder">{{ i.titre }}</h5>
+                            <!-- Product price-->
+                            {{ i.pays }}
+                        </div>
+                    </div>
+                      <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+
+
+                            <!-- Product price-->
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                         <a class="btn btn-success btn-sm" href="{{ path('showdetailedAdmin',{'id': i.id}) }}">Afficher</a>
+                         <a class="btn btn-danger btn-sm" href="{{ path('deleteBlog',{'id': i.id}) }}">Supprimer</a>
+                         <a class="btn btn-cyan btn-sm" href="{{ path('partagerBlog',{'id': i.id}) }}">Partager</a>
+
+
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col mb-5">
+            {% elseif loop.index == 2 or loop.index == 6 or loop.index == 10  %}
+                <div class="card h-100">
+                     <img class="card-img-top" <img src="{{ asset('uploads/blog/' ~ i.photo) }}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+
+                          <h5 class="fw-bolder">{{ i.titre }}</h5>
+                            <!-- Product price-->
+                            {{ i.pays }}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                       <div class="text-center">
+                         <a class="btn btn-success btn-sm"href="{{ path('showdetailedAdmin',{'id': i.id}) }}">Afficher</a>
+                         <a class="btn btn-danger btn-sm" href="{{ path('deleteBlog',{'id': i.id}) }}">Supprimer</a>
+                       <a class="btn btn-cyan btn-sm" href="{{ path('partagerBlog',{'id': i.id}) }}">Partager</a>
+
+
+                         </div>
+
+                    </div>
+                </div>
+            </div>
+
+                        <div class="col mb-5">
+            {% elseif loop.index == 3 or loop.index == 7 or loop.index == 11 %}
+                <div class="card h-100">
+                    <!-- Sale badge-->
+
+                   <img class="card-img-top" <img src="{{ asset('uploads/blog/' ~ i.photo) }}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+
+                          <h5 class="fw-bolder">{{ i.titre }}</h5>
+                            <!-- Product price-->
+                            {{ i.pays }}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                          <div class="text-center">
+                         <a class="btn btn-success btn-sm" href="{{ path('showdetailedAdmin',{'id': i.id}) }}">Afficher</a>
+                           <a class="btn btn-danger btn-sm" href="{{ path('deleteBlog',{'id': i.id}) }}">Supprimer</a>
+                    <a class="btn btn-cyan btn-sm" href="{{ path('partagerBlog',{'id': i.id}) }}">Partager</a>
+
+
+                         </div>
+                             </div>
+                </div>
+            </div>
+
+                                    <div class="col mb-5">
+            {% elseif loop.index == 4 or loop.index == 8 or loop.index == 12 %}
+                <div class="card h-100">
+                    <!-- Sale badge-->
+
+                  <img class="card-img-top" <img src="{{ asset('uploads/blog/' ~ i.photo) }}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+
+                          <h5 class="fw-bolder">{{ i.titre }}</h5>
+                            <!-- Product price-->
+                            {{ i.pays }}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+ <div class="text-center">
+                         <a class="btn btn-success btn-sm" href="{{ path('showdetailedAdmin',{'id': i.id}) }}">Afficher</a>
+                         <a class="btn btn-danger btn-sm" href="{{ path('deleteBlog',{'id': i.id}) }}">Supprimer</a>
+                         <a class="btn btn-cyan btn-sm" href="{{ path('partagerBlog',{'id': i.id}) }}">Partager</a>
+</div>                    </div>
+                </div>
+            </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+</section>
+<!-- Footer-->
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="{{ asset('back/js/scripts.js')}}"></script>
+</body>
+</html>
+{% endblock %}
