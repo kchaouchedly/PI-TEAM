@@ -16,18 +16,12 @@
         </div>
         <div class="row">
             {% for i in showChambres %}
-            {# {% if i.dispo == "Disponible" %} #}
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="blog-box">
 
                         <figure><img src ="{{ asset('front/images/' ~ i.ImageCh )}}" alt="#" width="500" style="height:300px;"/>
                             <span>A partir de TND {{ i.prix}} </span>
                         </figure>
-                       {#
-                       <div class="travel">
-                            <span>{{ i.NbrLits }} lits</span>
-                        </div>
-                       #}
 
                         <div class="travel">
                             <span> Vue {{ i.vue }}</span>
@@ -35,21 +29,17 @@
 
                         <p></p>
                         <div class="button_section"> <a class="main_bt" href="{{ path('dispoChambre',{'id':i.id}) }}">Réserver</a>  </div>
+
                     </div>
                 </div>
-              {#{% endif %} #}
             {% endfor %}
 
         </div>
 
     </div>
 
-
-
       <div class="titlepage" ><h2>{{ knp_pagination_render (showChambres) }}</h2>
 
         </div>
-
-
 
 {% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Ajouter Blog
+{% endblock %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+<div>
+    <img src="{{ asset('front/images/ajoutBlog1.jpg') }}"  width="100%" alt="#"/>
+
+</div>
+        {{ form_start(formBlog,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <div class="titlepage">
+    <h2>Ajouter  Votre Blog</h2>
+        <div class="center-block" style="margin-left: 20%;">
+
+                <div class="row">
+                <p>    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12" style="margin-left: 17px">
+                        <td>{{ form_label(formBlog.email,"Votre Email") }}</td>
+                        <td>{{ form_widget(formBlog.email) }}</td>
+
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12" style="margin-left: 17px">
+                        <td>{{ form_label(formBlog.titre,"Titre de Blog") }}</td>
+                        <td>{{ form_widget(formBlog.titre) }}</td>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12" style="margin-left: 17px">
+                        <td>{{ form_label(formBlog.description,"Description") }}</td>
+                        <td>{{ form_widget(formBlog.description) }}</td>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12" style="margin-left: 17px" >
+                        <td>{{ form_label(formBlog.pays,"Pays") }}</td>
+                        <td>{{ form_widget(formBlog.pays) }}</td>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12" style="margin-left: 17px">
+                        <td>{{ form_label(formBlog.photo,"Image") }}</td>
+                        <td>{{ form_widget(formBlog.photo) }}</td>
+                    </div>
+            </div>
+                <div>
+                </div></div>
+        <button class="glow-on-hover" type="submit">Ajouter </button></div>
+
+    {{ form_end(formBlog) }}
+
+        </div></div>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

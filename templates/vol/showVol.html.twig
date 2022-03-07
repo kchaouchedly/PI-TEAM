@@ -4,7 +4,11 @@
 {% endblock %}
 {% block body %}
 
-
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
     <!--vols -->
     <div class="Tours">
         <div class="container">
@@ -21,7 +25,7 @@
                         <div class="owl-carousel owl-theme">
 
                             {% for i in showVols %}
-
+                                {% if i.nbrPlace != 0 %}
                                 <div class="item">
                                         <div class="titlepage">
 
@@ -39,6 +43,7 @@
                                 </div>
 
                                 </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
@@ -48,5 +53,6 @@
         </div>
     </div>
     <!-- end vols -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 
 {% endblock %}

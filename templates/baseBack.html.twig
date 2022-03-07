@@ -239,7 +239,7 @@
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="{{asset('back/login.html') }}">Logout</a></li>
+                <li><a class="logout" href="{{ path('security_login') }}">Logout</a></li>
             </ul>
         </div>
     </header>
@@ -282,108 +282,46 @@
                     </a>
                 </li>
 
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class="fa fa-desktop"></i>
-                        <span>UI Elements</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/general.html') }}">General</a></li>
-                        <li><a href="{{asset('back/buttons.html') }}">Buttons</a></li>
-                        <li><a href="{{asset('back/panels.html') }}">Panels</a></li>
-                        <li><a href="{{asset('back/font_awesome.html') }}">Font Awesome</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class="fa fa-cogs"></i>
-                        <span>Components</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/grids.html') }}">Grids</a></li>
-                        <li><a href="{{asset('back/calendar.html') }}">Calendar</a></li>
-                        <li><a href="{{asset('back/gallery.html') }}">Gallery</a></li>
-                        <li><a href="{{asset('back/todo_list.html') }}">Todo List</a></li>
-                        <li><a href="{{asset('back/dropzone.html') }}">Dropzone File Upload</a></li>
-                        <li><a href="{{asset('back/inline_editor.html') }}">Inline Editor</a></li>
-                        <li><a href="{{asset('back/file_upload.html') }}">Multiple File Upload</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class="fa fa-book"></i>
-                        <span>Extra Pages</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/blank.html') }}">Blank Page</a></li>
-                        <li><a href="{{asset('back/login.html') }}">Login</a></li>
-                        <li><a href="{{asset('back/lock_screen.html') }}">Lock Screen</a></li>
-                        <li><a href="{{asset('back/profile.html') }}">Profile</a></li>
-                        <li><a href="{{asset('back/invoice.html') }}">Invoice</a></li>
-                        <li><a href="{{asset('back/pricing_table.html') }}">Pricing Table</a></li>
-                        <li><a href="{{asset('back/faq.html') }}">FAQ</a></li>
-                        <li><a href="{{asset('back/404.html') }}">404 Error</a></li>
-                        <li><a href="{{asset('back/500.html') }}">500 Error</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class="fa fa-tasks"></i>
-                        <span>Forms</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/form_component.html') }}">Form Components</a></li>
-                        <li><a href="{{asset('back/advanced_form_components.html') }}">Advanced Components</a></li>
-                        <li><a href="{{asset('back/form_validation.html') }}">Form Validation</a></li>
-                        <li><a href="{{asset('back/contactform.html') }}">Contact Form</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class="fa fa-th"></i>
-                        <span>Data Tables</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/basic_table.html') }}">Basic Table</a></li>
-                        <li><a href="{{asset('back/responsive_table.html') }}">Responsive Table</a></li>
-                        <li><a href="{{asset('back/advanced_table.html') }}">Advanced Table</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{asset('back/inbox.html') }}">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                        <span class="label label-theme pull-right mail-info">2</span>
+                <li class="mt">
+                    <a class="active" href="{{ path('Listevenement') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des Evenements </span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/morris.html') }}">Morris</a></li>
-                        <li><a href="{{asset('back/chartjs.html') }}">Chartjs</a></li>
-                        <li><a href="{{asset('back/flot_chart.html') }}">Flot Charts</a></li>
-                        <li><a href="{{asset('back/xchart.html') }}">xChart</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="{{asset('back/javascript:;') }}">
-                        <i class="fa fa-comments-o"></i>
-                        <span>Chat Room</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{asset('back/lobby.html') }}">Lobby</a></li>
-                        <li><a href="{{asset('back/chat_room.html') }}"> Chat Room</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{asset('back/google_maps.html') }}">
-                        <i class="fa fa-map-marker"></i>
-                        <span>Google Maps </span>
+                <li class="mt">
+                    <a class="active" href="{{ path('Listoffre') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des offres</span>
                     </a>
                 </li>
+                </li>
+
+                <li class="mt">
+                    <a class="active" href="{{ path('addBlogFront') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des Blogs </span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a class="active" href="{{ path('Listvoiture') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des Voitures </span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a class="active" href="{{ path('Listagence') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des agences de voitures</span>
+                    </a>
+                </li>
+
+
+
+
+
+
+
+
             </ul>
             <!-- sidebar menu end-->
         </div>

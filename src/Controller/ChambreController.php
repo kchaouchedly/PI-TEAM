@@ -171,39 +171,61 @@ class ChambreController extends AbstractController
     /**
      * @Route("/dispoChambre/{id}", name="dispoChambre")
      */
-    public function dispoChambre(ChambreRepository $chambreRepository ,$id,FlashyNotifier $flashyNotifier,Request $request)
+    public function dispoChambre(ChambreRepository $chambreRepository ,$id,FlashyNotifier $flashyNotifier,Request $request,\Swift_Mailer $mailer )
     {
         $reservation = new ResChambre();
         $id=$request->get("id");
+
         $ch=$chambreRepository->find($id);
+        $chH=$chambreRepository->find($id);
 
         $form = $this->createForm (ResChambreType::class, $reservation);
         $form -> handleRequest($request);
-
+        $contact=$form->getData();
         $reservation->setTarif(   ($reservation->getNbrJ())* ($ch->getPrix()));
         if ($form->isSubmitted() && $form->isValid()){
 
 
+            foreach ($chH->getResChambre() as $chH){
+                if ($chH->getDateRes() ==$reservation->getDateRes() ):
+                    $flashyNotifier->primaryDark('Chambre Deja reservé','#');
+                    return $this->redirectToRoute('listHotel');
+                endif;
+            }
 
             $ch->setDispo("Non Disponible");
             $reservation->setChambre($ch);
             $em= $this->getDoctrine()->getManager();
-
-
             $em->persist ($reservation);
             $em->flush();
-            $flashyNotifier->primaryDark('Chambre reservé','#');
+
+            $message = (new \Swift_Message('New'))
+
+                ->setFrom('bechir.pastore@gmail.com')
+
+                ->setTo('ferjanihejer53@gmail.com')
+
+                ->setSubject('Réservation chambre ajouté !')
+
+
+                ->setBody(
+ $this->renderView('emails/reservationchambre.html.twig', compact('contact')),
+              'text/html'
+              );
+
+            $mailer->send($message);
+
+
+            $flashyNotifier->primaryDark('Chambre Reservée','#');
             return $this->redirectToRoute('listHotel');
 
-
-
         }
-
-
 
         return $this->render('reservation_chambre/AjoutResChambres.html.twig',array("formResChambre"=>$form->createView()));
 
     }
+
+
 
 
 

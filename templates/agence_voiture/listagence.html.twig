@@ -1,0 +1,94 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <h1> list agence </h1>
+    <a href="{{ path('addagence') }}" class="btn btn-primary btn-xs">
+        <i class="fa fa-2x">
+            Ajouter
+        </i>
+    </a>
+
+    <a href="{{ path('statsAgence') }}" class="btn btn-primary btn-xs">
+        <i class="fa fa-2x">
+            Statistique
+        </i>
+    </a>
+
+
+    <p style="margin-left: 950px"> <input  id="myInput"  type="text" placeholder="Search..">
+    </p>
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td>id</td>
+            <td>nom_agence</td>
+            <td>adresse</td>
+            <td>num_tel</td>
+            <td> Nbr_voiture</td>
+            <td>image</td>
+        </tr>
+        <tbody  id="myTable">
+
+        {% for agence in tabagence %}
+            <tr>
+                <td>{{ agence.id }}</td>
+
+                <td>  {{ agence.nomagence }} </td>
+                <td>{{agence.adresse }}</td>
+                <td>{{ agence.numtel }}</td>
+                <td>{{ agence.nbrvoiture }}</td>
+                <td><img src="../../public/uploads/images/products/{{ agence.image }}"  width="150"></td>
+                <td> <a href="{{ path('listvoitureby',{'id':agence.id}) }}" class="btn btn-primary btn-xs" >
+                        <i class="fa fa-adjust">
+                            list voiture
+                        </i>
+
+                    </a> </td>
+
+                <td> <a href="{{ path('updateagence',{'id':agence.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteagence',{'id':agence.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

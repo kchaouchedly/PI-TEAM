@@ -1,0 +1,73 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Blogs
+{% endblock %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Item - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link  <link href="{{ asset('back/css/styles.css')}}" rel="stylesheet" />
+    </head>
+    <body>
+
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ asset('uploads/blog/' ~ photo) }}" alt="..." /></div>
+                    <div class="col-md-6">
+                        <div class="small mb-2">Id :{{ id }}</div>
+
+
+                        <h1 class="display-6 fw-bolder" style="color: #38b2c9">Description  </h1>
+                        <h1 class="display-12 ">{{ description}}</h1>
+
+
+<div class="row d-flex justify-content-center mt-100 mb-100">
+        <div class="card">
+            <div class="card-body text-center">
+                <h4 class="card-title">Les Commentaires</h4>
+            </div>
+            <div class="comment-widgets">
+                <!-- Comment Row -->
+{% for comment in posts.commentaires %}
+                <div class="d-flex flex-row comment-row m-t-0">
+                    <div class="p-2"><img src="https://i.imgur.com/zQZSWrt.jpg"  alt="user" width="50" class="rounded-circle"></div>
+                    <div class="comment-text w-100">
+                        <h5 class="font-medium">Houda Koubaa</h5> <span class="font-medium">{{ comment.getContent() }} </span>
+                        <div class="comment-footer"> <span class="text-muted float-right">Mars 8, 2022</span>
+                                         <a class="btn btn-danger btn-sm" href="{{ path('deleteCommentaire',{'id': comment.id}) }}">Supprimer</a> </div>
+
+
+                </div> <!-- Comment Row -->
+            </div> <!-- Card -->
+
+        </div>  {% endfor %}
+    </div>
+</div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
+
+{% endblock %}

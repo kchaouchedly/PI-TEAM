@@ -1,0 +1,64 @@
+{% extends 'baseFront.html.twig' %}
+
+
+{% block body %}
+<style type="text/css" media="all">
+  .form_table { direction: rtl; }
+  .full_width .segment_header { text-align: right !important; }
+  .q { float:right;display: inline-block; }
+  .q .multiple_choice { margin-left: 5px; margin-right: 0; }
+  b.icon_required { margin-right: 5px; }
+  .q .choices input[type="checkbox"] + label::before,
+  .q .choices input[type="radio"] + label::before,
+  .q .matrix_stars .star::before,
+  .q .icon_add::before,
+  .q .icon_calendar::before,
+  .q .icon_del::before {left:auto;right:0;}
+  .q .choices label{padding-right: calc(1.1em + 5px);}
+</style>
+<div class="card top-buffer" style="max-width:500px;margin:auto;">
+  <h1 class="card-header"> Inscription sur le site </h1>
+  <div class="card-body align-items-center d-flex justify-content-center">
+  <div class="container align-items-center">
+
+  {{form_start(form)}}
+  
+<div class="form-group">
+<label class="form-label" for="exampleInputname">Username</label>
+  {{form_widget(form.username, {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'username'}})}}
+  {{ form_errors(form.username) }}
+</div>
+<div class="form-group">
+<label class="form-label" for="exampleInputname">Adresse email</label>
+  {{form_widget(form.email,{'label':'Adresse email','attr': {'class': 'form-control form-control-user' ,'placeholder': 'Adresse email ...'}})}}
+  {{ form_errors(form.email) }}
+  </div>
+  <div class="form-group">
+  <label class="form-label" for="exampleInputname">Nom</label>
+  {{form_widget(form.nom,{'label':'Nom','attr': {'class': 'form-control form-control-user' ,'placeholder': 'Votre Nom ...'}})}}
+  {{ form_errors(form.nom) }}
+</div>
+<div class="form-group">
+<label class="form-label" for="exampleInputname">Prenom</label>
+  {{form_widget(form.prenom,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'Votre prenom'}})}}
+  {{ form_errors(form.prenom) }}
+</div>
+<div class="form-group">
+<label class="form-label" for="exampleInputname">Password</label>
+  {{form_widget(form.password,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'password'}} )}}
+  {{ form_errors(form.password) }}
+  </div>
+  <div class="form-group">
+
+<label class="form-label" for="exampleInputname">Confirmer Password</label>
+  {{form_widget(form.confirm_password,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'confirmer password'}})}}
+  {{ form_errors(form.confirm_password) }}
+  </div>
+<div class="form-group">
+  <button type="submit" class="btn btn-success">Inscription !</button>
+  </div> 
+  {{form_end(form)}}
+  </div>
+  </div>
+  </div>
+{% endblock %}

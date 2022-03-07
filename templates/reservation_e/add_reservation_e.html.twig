@@ -1,0 +1,66 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Ajouter une réservation
+{% endblock %}
+
+{% block body %}
+
+    {% form_theme formreservation_e 'bootstrap_4_layout.html.twig' %}
+
+    <section >
+        <div class="banner-main">
+            <img src="{{ asset('front/images/banner.jpg') }}" alt="#"/>
+            <div class="container">
+                <div class="text-bg">
+                    <h1>Let's Travel<br><strong class="white">Réserver votre événement</strong></h1>
+                    <div class="container">
+
+
+                        {{ form_start(formreservation_e,{'attr': {'novalidate': 'novalidate','class':'main-form'}} ) }}
+
+                        <h3>Votre Réservation</h3>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <label >{{ form_label(formreservation_e.datedebut,"Date Début  ") }}</label>
+                                        {{ form_widget(formreservation_e.datedebut,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <label >{{ form_label(formreservation_e.datefin,"Date Fin  ") }}</label>
+                                        {{ form_widget(formreservation_e.datefin,{'attr':{'class':'form-control'}}) }}
+
+
+                                        <br><br>
+                                        {{ form_widget(formreservation_e.submit,{'attr':{'class':'main_bt'}}) }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="button_section">
+
+                        </div>
+
+                        {{ form_end(formreservation_e) }}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

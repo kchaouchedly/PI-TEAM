@@ -7,9 +7,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -148,6 +156,14 @@
       <path value="$PROJECT_DIR$/vendor/captcha-com/symfony-captcha-bundle" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfonycasts/reset-password-bundle" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
     </include_path>
   </component>
   <component name="ProjectId" id="25vU4uN7JHzvLWlU33K8kHfFXMY" />
@@ -161,6 +177,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -178,6 +195,16 @@
       <option name="presentableId" value="Default" />
       <updated>1646406865595</updated>
       <workItem from="1646406866780" duration="2898000" />
+      <workItem from="1646485075768" duration="1325000" />
+      <workItem from="1646496466249" duration="782000" />
+      <workItem from="1646587717184" duration="1742000" />
+      <workItem from="1646590782114" duration="5580000" />
+      <workItem from="1646597581384" duration="7928000" />
+      <workItem from="1646643898331" duration="123000" />
+      <workItem from="1646657075625" duration="14373000" />
+      <workItem from="1646673252174" duration="2608000" />
+      <workItem from="1646678306669" duration="721000" />
+      <workItem from="1646682888366" duration="7722000" />
     </task>
     <servers />
   </component>

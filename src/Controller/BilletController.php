@@ -170,7 +170,7 @@ class BilletController extends AbstractController
     /**
      * @Route("/volDispo/{id}", name="volDispo")
      */
-    public function volDispo(BilletRepository $billetRepository,$id,FlashyNotifier $flashyNotifier,Request $request)
+    public function volDispo(BilletRepository $billetRepository,$id,FlashyNotifier $flashyNotifier,Request $request,\Swift_Mailer $mailer)
     {
 
         $reservation = new ResBillet();
@@ -179,6 +179,7 @@ class BilletController extends AbstractController
 
         $form = $this->createForm(ResBilletType::class, $reservation);
         $form->handleRequest($request);
+        $contact=$form->getData();
         $pourcent=$vol->getPrix() * 0.2;
         $pourcent1=$vol->getPrix() * 0.3;
 
@@ -196,14 +197,36 @@ class BilletController extends AbstractController
         endif;
 
 
-
         if ($form->isSubmitted() && $form->isValid()){
             $vol->getVol()->setNbrPlace(($vol->getVol()->getNbrPlace()) - 1);
             $reservation->setBillet($vol);
             $em= $this->getDoctrine()->getManager();
             $em->persist ($reservation);
             $em->flush();
-            $flashyNotifier->primaryDark('billet reservé','#');
+
+
+
+
+            $message = (new \Swift_Message('New'))
+
+                ->setFrom('bechir.pastore@gmail.com')
+
+                ->setTo('ferjanihejer53@gmail.com')
+
+                ->setSubject('Réservation billet ajouté !')
+
+
+                ->setBody(
+                    $this->renderView('emails/reservationbillet.html.twig', compact('contact')),
+                    'text/html'
+                );
+
+
+            $mailer->send($message);
+
+
+
+            $flashyNotifier->primaryDark('Billet Reservé','#');
             return $this->redirectToRoute('showVol');
 
         }

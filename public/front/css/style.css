@@ -2272,3 +2272,172 @@ ul.location_icon span {
 }
 
 /** slider arrow **/
+/** Ajouté par houda  **/
+.glow-on-hover {
+     width: 220px;
+     height: 50px;
+     border: none;
+     outline: none;
+     color: #fff;
+     background: #111;
+     cursor: pointer;
+     position: relative;
+     z-index: 0;
+     border-radius: 10px;
+     margin-left: 80%; !important;
+     margin-top: 5%; !important;
+}
+
+.glow-on-hover:before {
+     content: '';
+     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+     position: absolute;
+     top: -2px;
+     left:-2px;
+     background-size: 400%;
+     z-index: -1;
+     filter: blur(5px);
+     width: calc(100% + 4px);
+     height: calc(100% + 4px);
+     animation: glowing 20s linear infinite;
+     opacity: 0;
+     transition: opacity .3s ease-in-out;
+     border-radius: 10px;
+}
+
+.glow-on-hover:active {
+     color: #000
+}
+
+.glow-on-hover:active:after {
+     background: transparent;
+}
+
+.glow-on-hover:hover:before {
+     opacity: 1;
+}
+
+.glow-on-hover:after {
+     z-index: -1;
+     content: '';
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background: #111;
+     left: 0;
+     top: 0;
+     border-radius: 10px;
+}
+
+@keyframes glowing {
+     0% { background-position: 0 0; }
+     50% { background-position: 400% 0; }
+     100% { background-position: 0 0; }
+}
+
+
+*********************com***********************************
+
+
+.card {
+     background-color: #fff;
+     border: none
+}
+
+.form-color {
+     background-color: #fafafa
+}
+
+.form-control {
+     height: 48px;
+     border-radius: 25px
+}
+
+.form-control:focus {
+     color: #495057;
+     background-color: #fff;
+     border-color: #35b69f;
+     outline: 0;
+     box-shadow: none;
+     text-indent: 10px
+}
+
+.c-badge {
+     background-color: #35b69f;
+     color: white;
+     height: 20px;
+     font-size: 11px;
+     width: 92px;
+     border-radius: 5px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-top: 2px
+}
+
+.comment-text {
+     font-size: 13px
+}
+
+.wish {
+     color: #35b69f
+}
+
+.user-feed {
+     font-size: 14px;
+     margin-top: 12px
+}
+******************************FormulaireAddBlog***************
+body {
+     background-color: #000
+}
+
+.padding {
+     padding: 5rem !important
+}
+
+.signup-form {
+     background-color: #fff;
+     padding: 45px;
+     border-radius: 1px
+}
+
+h2 {
+     font-size: 36px;
+     letter-spacing: 0.08em
+}
+
+.signup-form .form-control {
+     font-size: 16px;
+     padding: 10px 15px;
+     color: #555;
+     background-color: #fff;
+     border-radius: 3px
+}
+
+.signup-form input {
+     border: 1px solid #eee;
+     height: 38px;
+     box-shadow: none !important
+}
+
+.btn-blue {
+     background: #44c5ee;
+     padding: 10px 28px;
+     border: 2px solid #44c5ee;
+     color: #fff;
+     border-radius: 50px;
+     font-weight: 700;
+     letter-spacing: 0.08em;
+     -webkit-transition: 0.5s all;
+     transition: 0.5s all;
+     box-shadow: 0px 0px 60px 0px rgba(68, 197, 238, 0.6);
+     outline: none !important
+}
+
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active {
+     background: #fff;
+     color: #496174
+}

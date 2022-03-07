@@ -1,6 +1,7 @@
 {% extends 'baseFront.html.twig' %}
 {% block title %}
     Liste des hotels
+
 {% endblock %}
 {% block body %}
 
@@ -12,10 +13,13 @@
 
     <!--hotels -->
     <div class="Tours">
+
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
+
                         <h2>Les meilleurs hôtels</h2>
                     </div>
                 </div>
@@ -24,7 +28,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme">
-
                                 {% for i in listHotels %}
 
                             <div class="item">
@@ -40,6 +43,7 @@
                               <p>{{ i.NbrEtoiles }}<img src="{{ asset('front/images/etoile.png') }}" alt="#" style="width:20px;" style="height:20px;"/> </p>
 
                                 <div class="button_section"> <a class="main_bt" href="{{ path('listChambreByHotell',{'id':i.id}) }}">Consulter Chambre</a>  </div>
+
                                {#  <ul class="nav pull-right top-menu">
 
                                     <li><a class="logout" href="{{ path('listChambreByHotel',{'id':i.id}) }}">  </a></li>
@@ -61,6 +65,10 @@
         </div>
     </div>
     <!-- end hotels -->
+    <div class="logo">  <button> <a href="{{ asset('weather.php') }}">Weather</a></button> </div>
 
     {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+
+
 {% endblock %}

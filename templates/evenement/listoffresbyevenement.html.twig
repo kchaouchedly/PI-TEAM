@@ -1,0 +1,70 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <h1> list offres d'un Evenement</h1>
+
+
+
+
+
+    <table border="2" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd">IDENTIFIANT</td>
+            <td style="color: #3ea9dd">NOM OFFRE</td>
+            <td style="color: #3ea9dd">DATE DEBUT</td>
+            <td style="color: #3ea9dd"> DATE FIN</td>
+            <td style="color: #3ea9dd"> NOM GUIDE </td>
+            <td style="color: #3ea9dd"> PRIX </td>
+
+
+            <td style="color: #3ea9dd"> MODIFIER</td>
+            <td style="color: #3ea9dd"> SUPPRIMER</td>
+
+        </tr>
+        {% for s in taboffre %}
+
+            <tr>
+                <td>{{ s.Id}}</td>
+                <td>{{ s.nom }}</td>
+
+                <td>
+                    {{s.DateDebutOffres |date('d/m/Y')}}
+                </td>
+                <td>
+
+                    {{s.DateFinOffre|date('d/m/Y')}}
+
+                </td>
+                <td>{{ s.NomGuide}}</td>
+                </td>
+                <td>{{ s.Prix}}</td>
+
+
+
+                <td> <a href="{{ path('updateoffre',{'id':s.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteoffres',{'id':s.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+
+
+
+
+
+
+
+{% endblock %}

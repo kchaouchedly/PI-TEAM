@@ -1,0 +1,11 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+  <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+  {{ form_start(formagence,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+{{ form(formagence) }}
+  {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

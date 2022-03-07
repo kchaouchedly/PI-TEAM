@@ -1,0 +1,36 @@
+
+<img  align="left" src="C:\xampp\htdocs\ProjetPiDev8\public\front\images\let.png" style="width: 200px" >
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RESERVATION VOITURE</title>
+</head>
+<body>
+
+<article class="card fl-left">
+    <section class="date">
+        <time datetime="23th feb">
+
+        </time>
+    </section>
+    <section class="card-cont">
+        <small></small>
+        <h3>RESERVATION VOITURE</h3>
+        <div class="even-date">
+            <i class="fa fa-calendar"></i>
+            <time>
+
+                <span>{{ voiture.datedebut|date('d/m/y') }} to {{ voiture.datefin|date('d/m/y') }}</span>
+            </time>
+        </div>
+        <div class="even-info">
+            <i class="fa fa-map-marker"></i>
+
+
+        </div>
+        <a href="#">tickets</a>
+    </section>
+</article>
+</body>
+</html>

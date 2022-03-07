@@ -1,15 +1,18 @@
 {% block body %}
-    <img class="img-circle" src="{{asset('back/img/11.png') }}" width="35px" height="35px" align="">
+    <img  align="left" src="C:\xampp\htdocs\ProjetPiDev8\public\front\images\let.png" style="width: 200px" >
+    <br><br>
     <form>
+        <br><br>
+        <h1 align="center" style="color: #ff762e" >Let's Travel</h1>
 
 
-    <h1 align="center" style="color: #B0413E">Hôtel {{afficheResChambre.chambre.hotel.NomHotel}} </h1><hr>
+
+
+
     <fieldset data-resize="20">
     <legend>Fiche de réservation  </legend>
 
-        <h3 style="color: #022739">Nom du Client   : </h3>
-        <p style="color: #0b2e13"> </p>
-        <h3 style="color: #022739">Numéro de téléphone  : </h3>
+        <h1 align="center" style="color: #022739">Hôtel {{afficheResChambre.chambre.hotel.NomHotel}} </h1><hr>
         <h3 style="color: #022739">Date de la réservation :   <p style="color: #114c7d">{{afficheResChambre.dateRes|date('d-m-Y')}}</p></h3>
         <h3 style="color: #022739">Informations de la chambre : </h3>
         <p style="color: #114c7d">{{ afficheResChambre.chambre.vue }} situé dans l 'étage {{ afficheResChambre.chambre.Etage }} dans le bloc {{ afficheResChambre.chambre.Bloc }} </p>
@@ -26,5 +29,6 @@
         <p>Agence lest's Travel,Routre 870,Cité El Ghazela , Hôtel {{afficheResChambre.chambre.hotel.NomHotel}}, @{{afficheResChambre.chambre.hotel.Adresse}} , 74400,   TunisieTel: +216 {{afficheResChambre.chambre.hotel.NumTel}}   -Email: {{afficheResChambre.chambre.hotel.Email}}</p>
 
     </fieldset>
+        <img align ="right" src="C:\xampp\htdocs\ProjetPiDev8\public\front\images\logo.png" style="width: 150px" w height="100px" >
     </form>
 {% endblock %}

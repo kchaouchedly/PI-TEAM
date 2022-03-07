@@ -1,0 +1,38 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Modifier  Blog
+{% endblock %}
+{% block body %}
+
+    <h1>Modifier le Blog</h1>
+    {{ form_start(formBlog,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(formBlog.email,"Votre Email") }}</td>
+
+            <td>{{ form_widget(formBlog.email) }}</td>
+            <td>{{ form_errors(formBlog.email) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formBlog.titre,"Titre de Blog") }}</td>
+
+            <td>{{ form_widget(formBlog.titre) }}</td>
+            <td>{{ form_errors(formBlog.titre) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formBlog.description,"Description") }}</td>
+
+            <td>{{ form_widget(formBlog.description) }}</td>
+            <td>{{ form_errors(formBlog.description) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formBlog.pays,"pays") }}</td>
+
+            <td>{{ form_widget(formBlog.pays) }}</td>
+            <td>{{ form_errors(formBlog.pays) }}</td>
+        </tr>
+
+    </table>
+    {{ form_end(formBlog) }}
+
+{% endblock %}

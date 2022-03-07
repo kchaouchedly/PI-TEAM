@@ -40,6 +40,17 @@ class HotelController extends AbstractController
     }
 
 
+
+    /**
+     * @Route("/weather", name="weather")
+     */
+    public function weather(): Response
+    {
+        return $this->render('hotel/weather.html.twig', [
+            'controller_name' => 'HotelController',
+        ]);
+    }
+
     /**
      * @Route("/listHotel", name="listHotel")
      */

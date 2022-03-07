@@ -1,0 +1,79 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+
+    <h1> list voiture </h1>
+    <a href="{{ path('addvoiture') }}" class="btn btn-primary btn-xs">
+        <i class="fa fa-2x">
+            Ajouter
+        </i>
+    </a>
+    <p style="margin-left: 950px"> <input  id="myInput"  type="text" placeholder="Search..">
+    </p>
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td>id</td>
+            <td>nbrplace</td>
+            <td>type</td>
+            <td>marque</td>
+            <td> datedebut</td>
+            <td> datefin</td>
+            <td> prix</td>
+            <td> disponibilite </td>
+            <td> rate </td>
+            <td> Image </td>
+        </tr>
+        <tbody  id="myTable">
+
+        {% for v in tabvoiture %}
+            <tr>
+                <td>{{ v.id }}</td>
+                <td>{{ v.nbrplace }}</td>
+                <td>{{v.type }}</td>
+                <td>{{ v.marque }}</td>
+                <td>{{ v.datedebut|date('d/m/y') }}</td>
+                <td>{{ v.datefin|date('d/m/y') }}</td>
+                <td>{{ v.prix }}</td>
+                <td>{{ v.disponibilite }}</td>
+                <td>{{ v.rate }}</td>
+                <td><img src="../../public/uploads/images/products/{{ v.image }}"  width="150"></td>
+
+                <td> <a href="{{ path('updatevoiture',{'id':v.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deletevoiture',{'id':v.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+{% endblock %}

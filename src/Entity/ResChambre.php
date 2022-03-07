@@ -35,6 +35,7 @@ class ResChambre
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank (message="la date  de la réservation est obligatoire")
+     * @Assert\GreaterThan("Today",message="Saisir une date à partir de la date d'aujourd'hui")
      */
     private $dateRes;
 
@@ -49,6 +50,11 @@ class ResChambre
      * )
      */
     protected $captchaCode;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reschambre")
+     */
+    private $user;
 
     public function getCaptchaCode()
     {
@@ -110,6 +116,18 @@ class ResChambre
     public function setChambre(?Chambre $chambre): self
     {
         $this->chambre = $chambre;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

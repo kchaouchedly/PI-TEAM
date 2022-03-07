@@ -1,0 +1,68 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Ajouter une réservation
+{% endblock %}
+
+{% block body %}
+
+    {% form_theme formreservation 'bootstrap_4_layout.html.twig' %}
+
+    <section >
+        <div class="banner-main">
+            <img src="{{ asset('front/images/banner.jpg') }}" alt="#"/>
+            <div class="container">
+                <div class="text-bg">
+                    <h1>Let's Travel<br><strong class="white">Réserver votre Voiture</strong></h1>
+                    <div class="container">
+
+
+                        {{ form_start(formreservation,{'attr': {'novalidate': 'novalidate','class':'main-form'}} ) }}
+
+                        <h3>Votre Réservation</h3>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <label >{{ form_label(formreservation.datedebut,"Date Début  ") }}</label>
+                                        {{ form_widget(formreservation.datedebut,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <label >{{ form_label(formreservation.datefin,"Date Fin  ") }}</label>
+                                        {{ form_widget(formreservation.datefin,{'attr':{'class':'form-control'}}) }}
+
+
+                                        <br><br>
+                                        {{ form_widget(formreservation.submit,{'attr':{'class':'main_bt'}}) }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="button_section">
+
+                        </div>
+
+                        {{ form_end(formreservation) }}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="button_section"> <a class="main_bt" href="{{ path('pdfreservation',{'id':1}) }}">Telecharger</a>  </div>
+
+{% endblock %}

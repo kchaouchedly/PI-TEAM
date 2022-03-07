@@ -1,0 +1,63 @@
+
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Ajouter un Evenement
+{% endblock %}
+
+{% block body %}
+
+
+    {{ form_start(formevenement,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <h1>Ajouter un  Evenement</h1>
+    {{ form_start(formevenement,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(formevenement.Type,"Type  ") }}</td>
+
+            <td>{{ form_widget(formevenement.Type) }}</td>
+            <td>{{ form_errors(formevenement.Type) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formevenement
+                .NomEvenement,"NomEvenement ") }}</td>
+
+            <td>{{ form_widget(formevenement
+                .NomEvenement) }}</td>
+            <td>{{ form_errors(formevenement
+                .NomEvenement) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(formevenement.DateDebut,"DATE DEBUT   ") }}</td>
+
+            <td>{{ form_widget(formevenement.DateDebut) }}</td>
+            <td>{{ form_errors(formevenement.DateDebut) }}</td>
+        </tr>
+        <td>{{ form_label(formevenement.DateFin,"DATE FIN") }}</td>
+
+        <td>{{ form_widget(formevenement.DateFin) }}</td>
+        <td>{{ form_errors(formevenement.DateFin) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formevenement
+                .Lieux,"Lieux") }}</td>
+
+            <td>{{ form_widget(formevenement
+                .Lieux) }}</td>
+            <td>{{ form_errors(formevenement
+                .Lieux) }}</td>
+        </tr>
+
+
+        </tr>
+
+        </tr>
+        <tr>
+
+
+
+    </table>
+    {{ form_end(formevenement) }}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}
