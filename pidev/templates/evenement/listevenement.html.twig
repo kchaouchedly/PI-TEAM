@@ -1,0 +1,53 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <h1> list evenement </h1>
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+        <tr>
+            <td style="color: #3ea9dd"> TYPE </td>
+            <td style="color: #3ea9dd">NOM EVENEMENT</td>
+            <td style="color: #3ea9dd">DATE DEBUT</td>
+            <td style="color: #3ea9dd"> DATE FIN</td>
+            <td style="color: #3ea9dd"> LIEUX</td>
+        </tr>
+        {% for e in tabevenement %}
+            <tr>
+
+                <td>{{ e.Type }}</td>
+                <td>{{e.NomEvenement }}</td>
+                <td> <time>
+                        {{e.DateDebut|date('d/m/Y')}}
+                    </time> </td>
+                <td>
+                    <time>
+                        {{e.DateFin|date('d/m/Y')}}
+                    </time>
+                </td>
+                <td>{{ e.Lieux}}</td>
+
+                <td> <a href="{{ path('updateevenement',{'id':e.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+                <td> <a href="{{ path('deleteevenement',{'id':e.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+
+
+
+
+
+
+
+{% endblock %}

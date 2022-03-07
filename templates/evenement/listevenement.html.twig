@@ -1,0 +1,112 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <h1> list evenement </h1>
+
+
+
+
+    <td> <a href="{{ path('addevenement' )}}" class="btn btn-success btn-xs">
+            <i class="fa fa-check">
+                AJOUTER UN NOUVEAU EVENEMENT
+            </i>
+        </a>
+    </td>
+
+
+    <td>
+     <a href="{{ path('imprimevent' )}}" class="btn-group btn-group-xs">
+            <i class="fa fa-print">
+                IMPRIMER LA LISTE
+            </i>
+        </a>
+    </td>
+
+
+    <p style="100px" > <input  id="myInput"  type="text" placeholder="Rechercher sur le site… ...">
+    <table border="2" class="display table table-bordered" id="hidden-table-info">
+
+
+        <tr>
+            <td style="color: #3ea9dd"> IDENTIFIANT </td>
+
+            <td style="color: #3ea9dd"> TYPE </td>
+            <td style="color: #3ea9dd">NOM EVENEMENT</td>
+            <td style="color: #3ea9dd">DATE DEBUT</td>
+            <td style="color: #3ea9dd"> DATE FIN</td>
+            <td style="color: #3ea9dd"> LIEUX</td>
+            <td style="color: #3ea9dd"> images</td>
+
+            <td style="color: #3ea9dd"> MODIFIER</td>
+            <td style="color: #3ea9dd"> SUPPRIMER</td>
+            <td style="color: #3ea9dd"> voir les offres de cet evenement</td>
+        </tr>
+    <tbody  id="myTable">
+    {% for e in tabevenement %}
+
+            <tr>
+                <td>{{ e.Id}}</td>
+                <td>{{ e.Type }}</td>
+                <td>{{e.NomEvenement }}</td>
+                <td>
+                        {{e.DateDebut|date('d/m/Y')}}
+                     </td>
+                <td>
+
+                        {{e.DateFin|date('d/m/Y')}}
+
+                </td>
+                <td>{{ e.Lieux}}</td>
+                <td>   <img src="../../public/uploads/images/products/{{ e.image }}" width="100" height="100"> </td>
+
+
+                <td> <a href="{{ path('updateevenement',{'id':e.id}) }}" class="btn btn-primary btn-xs">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                </td>
+
+              <td> <a href="{{ path('deleteevenement',{'id':e.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+                </td>
+
+            <td> <a href="{{ path('listoffresbyevenement',{'id':e.id}) }}" class="btn btn-clear-g btn-xs">
+                    <i class="fa fa-adjust"></i>
+
+
+                </a>
+            </td>
+
+            </tr>
+
+        {% endfor %}
+    </tbody>
+
+    </table>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+{% endblock %}
