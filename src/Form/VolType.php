@@ -4,6 +4,11 @@ namespace App\Form;
 
 use App\Entity\Vol;
 use Symfony\Component\Form\AbstractType;
+<<<<<<< Updated upstream
+=======
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+>>>>>>> Stashed changes
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,8 +23,32 @@ class VolType extends AbstractType
             ->add('DateDepart')
             ->add('DateArrive')
             ->add('VilleDepart')
+<<<<<<< Updated upstream
             ->add('VilleArrive')
 
+=======
+            ->add('VilleArrive',ChoiceType::class,[
+                'choices'=> array(
+                    'Paris'=>'Paris',
+                    'Dubai'=>'Dubai',
+                    'Espagne'=>'Espagne',
+                    'Turquie'=>'Turquie',
+                     'Italie'=>'Italie',
+                    'Allemagne'=>'Allemagne',
+                    'Chine'=>'Chine',
+                    'Egypte'=>'Egypte'
+                )
+            ])
+            ->add('imageVol',FileType::class,['label' => 'charger une image ','required' => false,
+                'data_class' => null])
+            ->add('typeV',ChoiceType::class,[
+                'choices'=> array(
+                    'Aller/Retour'=>'Aller/Retour',
+                    'Aller'=>'Aller'
+                )
+            ])
+            ->add('nbrPlace',NumberType::class)
+>>>>>>> Stashed changes
             ->add('Submit',SubmitType::class)
         ;
     }

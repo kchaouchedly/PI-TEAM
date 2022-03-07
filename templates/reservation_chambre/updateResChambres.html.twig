@@ -1,0 +1,28 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Ajouter une réservation
+{% endblock %}
+{% block body %}
+
+    <h1>Modifier une réservation</h1>
+    {{ form_start(formResChambre,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(formResChambre.nbrJ,"nombre du jour  ") }}</td>
+
+            <td>{{ form_widget(formResChambre.nbrJ) }}</td>
+            <td>{{ form_errors(formResChambre.nbrJ) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formResChambre.dateRes,"date reservation  ") }}</td>
+
+            <td>{{ form_widget(formResChambre.dateRes) }}</td>
+            <td>{{ form_errors(formResChambre.dateRes) }}</td>
+        </tr>
+
+
+
+    </table>
+    {{ form_end(formResChambre) }}
+
+{% endblock %}

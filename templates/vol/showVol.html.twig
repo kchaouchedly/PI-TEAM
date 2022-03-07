@@ -3,6 +3,7 @@
     Liste des vols
 {% endblock %}
 {% block body %}
+<<<<<<< Updated upstream
     <h1 style="color:#3ea9dd ">Liste des Vols</h1>
     <table border="0" class="display table table-bordered" id="hidden-table-info">
         <tr>
@@ -32,5 +33,52 @@
 
         {% endfor %}
     </table>
+=======
+
+
+    <!--vols -->
+    <div class="Tours">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Vol Par Cher Tunisie</h2>
+                    </div>
+                </div>
+            </div>
+            <section id="demos">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-carousel owl-theme">
+
+                            {% for i in showVols %}
+
+                                <div class="item">
+                                        <div class="titlepage">
+
+                                    <h1>Vol {{ i.VilleArrive}}</h1>
+                                    <img class="img-responsive" src ="{{ asset('front/images/' ~ i.imageVol ) }}" alt="#" width="500" style="height:300px;" />
+
+
+                                    <p>Date départ : {{ i.DateDepart|date("m/d/Y") }}</p>
+                                   <p> A {{ i.DateArrive|date('H:i') }}H</p>
+
+                                    <div class="button_section"> <a class="main_bt" href="{{ path('listBilletByVol',{'id':i.id}) }}">Consulter Billet</a>  </div>
+
+
+                                    <p></p>
+                                </div>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!-- end vols -->
+>>>>>>> Stashed changes
 
 {% endblock %}

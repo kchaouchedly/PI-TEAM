@@ -239,7 +239,11 @@
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
+<<<<<<< Updated upstream
                 <li><a class="logout" href="{{asset('back/login.html') }}">Logout</a></li>
+=======
+                <li><a class="logout" href="{{ path('security_login') }}">Logout</a></li>
+>>>>>>> Stashed changes
             </ul>
         </div>
     </header>
@@ -254,6 +258,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="{{asset('back/profile.html') }}"><img src="{{asset('back/img/aa.jpg') }}" class="img-circle" width="80"></a></p>
                 <h5 class="centered">Let's Travel</h5>
+<<<<<<< Updated upstream
                 <li class="mt">
                     <a class="active" href="{{ path('showBillet') }}">
                         <i class="fa fa-dashboard"></i>
@@ -266,6 +271,23 @@
                         <span>Gestion des vols</span>
                     </a>
                 </li>
+=======
+
+                <li class="mt">
+                    <a class="active" href="{{ path('listVol') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des vols</span>
+                    </a>
+                </li>
+
+                <li class="mt">
+                    <a class="active" href="{{ path('showBillet') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Gestion des billets</span>
+                    </a>
+                </li>
+
+>>>>>>> Stashed changes
                 <li class="mt">
                     <a class="active" href="{{ path('showHotel') }}">
                         <i class="fa fa-dashboard"></i>
@@ -278,6 +300,10 @@
                         <span>Gestion des chambres</span>
                     </a>
                 </li>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 <li class="sub-menu">
                     <a href="{{asset('back/javascript:;') }}">
                         <i class="fa fa-desktop"></i>

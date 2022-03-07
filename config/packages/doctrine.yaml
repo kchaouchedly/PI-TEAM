@@ -12,7 +12,14 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
+<<<<<<< Updated upstream
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
 
+=======
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
+>>>>>>> Stashed changes

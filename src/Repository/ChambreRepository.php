@@ -45,6 +45,7 @@ class ChambreRepository extends ServiceEntityRepository
         ;
         return $query->getResult();
     }
+<<<<<<< Updated upstream
     // /**
     //  * @return Chambre[] Returns an array of Chambre objects
     //  */
@@ -73,4 +74,18 @@ class ChambreRepository extends ServiceEntityRepository
         ;
     }
     */
+=======
+
+    public function listChambreByHotel($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.hotel','c')
+            ->addSelect('c')
+            ->where('c.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
+
+>>>>>>> Stashed changes
 }

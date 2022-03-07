@@ -5,4 +5,8 @@
 #        deprecation:
 #            type: stream
 #            channels: [deprecation]
+<<<<<<< Updated upstream
 #            path: php://stderr
+=======
+#            path: "%kernel.logs_dir%/%kernel.environment%.deprecations.log"
+>>>>>>> Stashed changes

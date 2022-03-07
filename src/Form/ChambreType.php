@@ -5,6 +5,10 @@ namespace App\Form;
 use App\Entity\Chambre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+<<<<<<< Updated upstream
+=======
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+>>>>>>> Stashed changes
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +19,11 @@ class ChambreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+<<<<<<< Updated upstream
             ->add('NumCh',NumberType::class)
+=======
+            ->add('NumCh')
+>>>>>>> Stashed changes
             ->add('NbrLits',ChoiceType::class,[
                 'choices'=> array(
                     '1'=>'1',
@@ -54,6 +62,20 @@ class ChambreType extends AbstractType
                     'E'=>'E',
                 ),
             ])
+<<<<<<< Updated upstream
+=======
+            ->add('dispo',ChoiceType::class,[
+                'choices'=> array(
+                    'Disponible'=>'Disponible',
+                    'Non Disponible'=>'Non Disponible'
+                )
+            ])
+
+            ->add('ImageCh',FileType::class,['label' => 'charger une image ','required' => false,
+                'data_class' => null])
+
+            ->add('hotel')
+>>>>>>> Stashed changes
             ->add('Submit',SubmitType::class)
         ;
     }

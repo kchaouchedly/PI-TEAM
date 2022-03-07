@@ -3,9 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\HotelRepository;
+<<<<<<< Updated upstream
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+=======
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+>>>>>>> Stashed changes
 /**
  * @ORM\Entity(repositoryClass=HotelRepository::class)
  */
@@ -15,6 +24,10 @@ class Hotel
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+<<<<<<< Updated upstream
+=======
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $id;
 
@@ -31,6 +44,11 @@ class Hotel
      * @Assert\Type(
      * type={"alpha"},
      * message="Nom Hotel  {{ value }} doit contenir seulement des lettres alphabétiques")
+<<<<<<< Updated upstream
+=======
+     * @Groups ("post:read")
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $NomHotel;
 
@@ -44,6 +62,10 @@ class Hotel
      *     maxMessage  ="l' Adresse de l'hotel ne doit pas depasser 30 caracteres",
      *     allowEmptyString = false
      *     )
+<<<<<<< Updated upstream
+=======
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $Adresse;
 
@@ -56,17 +78,26 @@ class Hotel
      *      minMessage = "Le numéro de téléphone doit etre composé de 8 chiffres",
      *      maxMessage  ="Le numéro de téléphone doit etre composé de 8 chiffres",
      * )
+<<<<<<< Updated upstream
+=======
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $NumTel;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="veuillez saisir le nombre d'étoiles")
+<<<<<<< Updated upstream
+=======
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $NbrEtoiles;
 
     /**
      * @ORM\Column(type="integer")
+<<<<<<< Updated upstream
      * @Assert\NotBlank(message="veuillez saisir le nombre des chambres")
      * @Assert\GreaterThanOrEqual(
      *     value = 50,message="Le nombre minimale de chambres est = 50"
@@ -74,12 +105,20 @@ class Hotel
      * @Assert\LessThanOrEqual(
      *     value = 1000,message="Le nombre de chambres ne doit pas depasser 1000"
      * )
+=======
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $NbrChambre;
 
     /**
      * @ORM\Column(type="integer")
+<<<<<<< Updated upstream
      * @Assert\NotBlank(message="veuillez saisir le code hotel")
+=======
+     * @Groups ("post:read")
+     * @Groups ("post:read")
+>>>>>>> Stashed changes
      */
     private $CodeH;
 
@@ -87,8 +126,32 @@ class Hotel
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="ce champs est obligatoire")
      * @Assert\Email(message = " cette adresse '{{ value }}' est invalide .")
+<<<<<<< Updated upstream
      */
     private $email;
+=======
+     * @Groups ("post:read")
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=350)
+     * @Assert\NotBlank(message="ajouter une image")
+     * @Groups ("post:read")
+     */
+
+    private $imageHotel;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Chambre::class, mappedBy="hotel",cascade={"remove"})
+     */
+    private $chambre;
+
+    public function __construct()
+    {
+        $this->chambre = new ArrayCollection();
+    }
+>>>>>>> Stashed changes
     
 
     public function getId(): ?int
@@ -180,5 +243,54 @@ class Hotel
         return $this;
     }
 
+<<<<<<< Updated upstream
+=======
+    public function getImageHotel()
+    {
+        return $this->imageHotel;
+    }
+
+    public function setImageHotel( $imageHotel)
+    {
+        $this->imageHotel = $imageHotel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Chambre[]
+     */
+    public function getChambre(): Collection
+    {
+        return $this->chambre;
+    }
+
+    public function addChambre(Chambre $chambre): self
+    {
+        if (!$this->chambre->contains($chambre)) {
+            $this->chambre[] = $chambre;
+            $chambre->setHotel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChambre(Chambre $chambre): self
+    {
+        if ($this->chambre->removeElement($chambre)) {
+            // set the owning side to null (unless already changed)
+            if ($chambre->getHotel() === $this) {
+                $chambre->setHotel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return(string)$this->getNomHotel();
+    }
+>>>>>>> Stashed changes
 
 }

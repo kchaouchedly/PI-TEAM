@@ -12,7 +12,11 @@ class SearchChambreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+<<<<<<< Updated upstream
             ->add('NumCh')
+=======
+            ->add('Numero_Chambre')
+>>>>>>> Stashed changes
             ->add('Rechercher ',SubmitType::class)
         ;
     }

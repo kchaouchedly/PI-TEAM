@@ -10,7 +10,11 @@
     <!-- site metas -->
     <title>
         {% block title %}
+<<<<<<< Updated upstream
             Eforlad travel
+=======
+           Lest's travel
+>>>>>>> Stashed changes
         {% endblock %}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -53,9 +57,15 @@
                     <div class="col-md-12">
                         <div class="header_information">
                             <ul>
+<<<<<<< Updated upstream
                                 <li><img src="{{ asset('front/images/1.png') }}" alt="#"/> 145.street road new York</li>
                                 <li><img src="{{ asset('front/images/2.png') }}" alt="#"/> +71  5678954378</li>
                                 <li><img src="{{ asset('front/images/3.png') }}" alt="#"/> Demo@hmail.com</li>
+=======
+                                <li><img src="{{ asset('front/images/1.png') }}" alt="#"/> Cité El Ghazela</li>
+                                <li><img src="{{ asset('front/images/2.png') }}" alt="#"/> +216 71 000 000</li>
+                                <li><img src="{{ asset('front/images/3.png') }}" alt="#"/> letsTravel@gmail.com</li>
+>>>>>>> Stashed changes
                             </ul>
                         </div>
                     </div>
@@ -78,9 +88,24 @@
                                 <ul class="menu-area-main">
                                     <li class="active"> <a href="{{ asset('front/#') }}">Home</a> </li>
                                     <li> <a href="{{ asset('front/#about') }}">About</a> </li>
+<<<<<<< Updated upstream
                                     <li><a href="{{ asset('front/#travel') }}">Travel</a></li>
                                     <li><a href="{{ asset('front/#blog') }}">Blog</a></li>
                                     <li><a href="{{ asset('front/#contact') }}">Contact Us</a></li>
+=======
+
+                                    <li><a href="{{ asset('front/#blog') }}">Blog</a></li>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li><a href="{{ path('userlist') }}">Gérer les utilisateurs</a></li>
+                                    {% endif %}
+                                    {% if not app.user %}
+                                        <li><a href="{{ path('security_login') }}">Connexion</a></li>
+                                        <li><a href="{{ path('security_registration') }}">Inscription</a></li>
+                                    {% else %}
+
+                                        <li><a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a></li>
+                                    {% endif %}
+>>>>>>> Stashed changes
                                 </ul>
                             </nav>
                         </div>

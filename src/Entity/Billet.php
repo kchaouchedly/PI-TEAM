@@ -4,8 +4,16 @@ namespace App\Entity;
 
 
 use App\Repository\BilletRepository;
+<<<<<<< Updated upstream
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+=======
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
+>>>>>>> Stashed changes
 
 /**
  * @ORM\Entity(repositoryClass=BilletRepository::class)
@@ -67,6 +75,31 @@ class Billet
      */
     private $Prix;
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * @ORM\ManyToOne(targetEntity=Vol::class, inversedBy="billet")
+     */
+    private $vol;
+
+    /**
+     * @ORM\Column(type="string", length=400)
+     */
+    private $imageBillet;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ResBillet::class, mappedBy="billet",cascade={"remove"})
+     */
+    private $resbillet;
+
+
+
+    public function __construct()
+    {
+        $this->resbillet = new ArrayCollection();
+    }
+
+>>>>>>> Stashed changes
 
     public function getId(): ?int
     {
@@ -121,6 +154,68 @@ class Billet
         return $this;
     }
 
+<<<<<<< Updated upstream
+=======
+    public function getVol(): ?Vol
+    {
+        return $this->vol;
+    }
+
+    public function setVol(?Vol $vol): self
+    {
+        $this->vol = $vol;
+
+        return $this;
+    }
+
+    public function getImageBillet()
+    {
+        return $this->imageBillet;
+    }
+
+    public function setImageBillet( $imageBillet)
+    {
+        $this->imageBillet = $imageBillet;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ResBillet>
+     */
+    public function getResbillet(): Collection
+    {
+        return $this->resbillet;
+    }
+
+    public function addResbillet(ResBillet $resbillet): self
+    {
+        if (!$this->resbillet->contains($resbillet)) {
+            $this->resbillet[] = $resbillet;
+            $resbillet->setBillet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResbillet(ResBillet $resbillet): self
+    {
+        if ($this->resbillet->removeElement($resbillet)) {
+            // set the owning side to null (unless already changed)
+            if ($resbillet->getBillet() === $this) {
+                $resbillet->setBillet(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __toString()
+    {
+        return(string)$this->getNumB();
+    }
+>>>>>>> Stashed changes
 
 
 

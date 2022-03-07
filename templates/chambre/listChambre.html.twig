@@ -7,11 +7,24 @@
     <ul class="nav pull-right top-menu">
         <li><a class="logout" href="{{ path('addChambre') }}">Ajouter</a></li>
     </ul>
+<<<<<<< Updated upstream
+=======
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('afficheResChambre') }}">Gestion des réservations</a></li>
+    </ul>
+>>>>>>> Stashed changes
     <a href="listChambre">
         <h1 align="center">Liste des Chambres</h1>
     </a>
 
+<<<<<<< Updated upstream
     {{ form(formChambre) }}
+=======
+    {#  {{ form(formChambre) }}#}
+
+    <p style="100px" > <input  id="myInput"  type="text" placeholder="Rechercher Chambre......">
+
+>>>>>>> Stashed changes
     <table border="0" class="display table table-bordered" id="hidden-table-info">
 
         <tr>
@@ -21,18 +34,43 @@
             <td style="color: #3ea9dd"> Etage </td>
             <td style="color: #3ea9dd"> Prix </td>
             <td style="color: #3ea9dd"> Bloc </td>
+<<<<<<< Updated upstream
+=======
+            <td style="color: #3ea9dd"> Disponibilité </td>
+            <td style="color: #3ea9dd"> Image Chambre</td>
+            <td style="color: #3ea9dd"> Nom hotel</td>
+>>>>>>> Stashed changes
             <td style="color: #3ea9dd">Modifier</td>
             <td style="color: #3ea9dd">Supprimer</td>
 
         </tr>
+<<<<<<< Updated upstream
         {% for i in listChambres %}
             <tr>
+=======
+        <tbody  id="myTable">
+        {% for i in listChambres %}
+            <tr>
+
+>>>>>>> Stashed changes
                 <td>{{ i.NumCh }}</td>
                 <td>{{ i.NbrLits }}</td>
                 <td>{{ i.vue }}</td>
                 <td>{{ i.Etage }}</td>
+<<<<<<< Updated upstream
                 <td>{{ i.Prix }}</td>
                 <td>{{ i.Bloc }}</td>
+=======
+                <td>{{ i.Prix }} DT</td>
+                <td>{{ i.Bloc }}</td>
+                <td>{{ i.dispo }}</td>
+
+                <td><img src ="{{ asset('front/images/' ~ i.ImageCh )}}"
+                         alt="" height="80" width="80">
+                </td>
+                <td>{{ i.hotel }}</td>
+
+>>>>>>> Stashed changes
                 <td> <a href="{{ path('updateChambre',{'id':i.id}) }}" class="btn btn-primary btn-xs">
                         <i class="fa fa-pencil">
 
@@ -51,6 +89,22 @@
 
         {% endfor %}
     </table>
+<<<<<<< Updated upstream
+=======
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+>>>>>>> Stashed changes
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <a class="btn btn-theme mt" href="{{ path('triChambreBloc') }}" >Trier par bloc </a>

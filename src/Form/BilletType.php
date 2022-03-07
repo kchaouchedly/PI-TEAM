@@ -4,10 +4,18 @@ namespace App\Form;
 
 use App\Entity\Billet;
 use Symfony\Component\Form\AbstractType;
+<<<<<<< Updated upstream
+=======
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+>>>>>>> Stashed changes
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+<<<<<<< Updated upstream
+=======
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+>>>>>>> Stashed changes
 
 class BilletType extends AbstractType
 {
@@ -18,6 +26,14 @@ class BilletType extends AbstractType
             ->add('Prix',NumberType::class)
             ->add('nomCom')
             ->add('dateV')
+<<<<<<< Updated upstream
+=======
+            ->add('imageBillet',FileType::class,['label' => 'charger une image ','required' => false,
+                'data_class' => null])
+
+            ->add('vol')
+
+>>>>>>> Stashed changes
 
             ->add('Submit',SubmitType::class)
         ;

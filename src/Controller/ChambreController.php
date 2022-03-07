@@ -2,19 +2,42 @@
 
 namespace App\Controller;
 
+<<<<<<< Updated upstream
 use App\Entity\Billet;
 use App\Entity\Chambre;
 use App\Entity\Hotel;
 use App\Form\ChambreType;
 use App\Form\HotelType;
+=======
+use App\Entity\Activites;
+use App\Entity\Billet;
+use App\Entity\Chambre;
+use App\Entity\Hotel;
+use App\Entity\ResChambre;
+use App\Form\ChambreType;
+use App\Form\HotelType;
+use App\Form\ResChambreType;
+>>>>>>> Stashed changes
 use App\Form\SearchBilletType;
 use App\Form\SearchChambreType;
 use App\Repository\BilletRepository;
 use App\Repository\ChambreRepository;
+<<<<<<< Updated upstream
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+=======
+use App\Repository\ResChambreRepository;
+use Knp\Component\Pager\Pagination\SlidingPagination;
+use MercurySeries\FlashyBundle\FlashyNotifier;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+>>>>>>> Stashed changes
 
 class ChambreController extends AbstractController
 {
@@ -38,6 +61,10 @@ class ChambreController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             $NumCh=$form['NumCh']->getData();
             $result=$this->getDoctrine()->getRepository(Chambre::class)->searchChambre($NumCh);
             return $this->render('chambre/listChambre.html.twig',array("listChambres"=>$result,"formChambre"=>$form->createView()));
@@ -50,9 +77,20 @@ class ChambreController extends AbstractController
     /**
      * @Route("/showChambre", name="showChambre")
      */
+<<<<<<< Updated upstream
     public function showChambre()
     {
         $chambres = $this->getDoctrine()->getRepository(Chambre::class)->findAll();
+=======
+    public function showChambre(PaginatorInterface $paginator,Request $request):Response
+    {
+        $chambres = $this->getDoctrine()->getRepository(Chambre::class)->findAll();
+        $chambres = $paginator->paginate(
+            $chambres,
+            $request->query->getInt('page',1),
+            4
+        );
+>>>>>>> Stashed changes
         return $this->render('chambre/showChambre.html.twig', array("showChambres" => $chambres));
     }
 
@@ -65,7 +103,17 @@ class ChambreController extends AbstractController
         $form = $this->createForm(ChambreType::class, $chambre);
         $form->handleRequest($request);
         if ($form->isSubmitted() && ($form->isValid())) {
+<<<<<<< Updated upstream
             $em = $this->getDoctrine()->getManager();
+=======
+            $chambre->getHotel()->setNbrChambre(($chambre->getHotel()->getNbrChambre()) + 1 );
+            $file = $chambre->getImageCh();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
+            $em = $this->getDoctrine()->getManager();
+            $chambre->setImageCh($fileName);
+>>>>>>> Stashed changes
             $em->persist($chambre);
             $em->flush();
             return $this->redirectToRoute("listChambre");
@@ -79,6 +127,11 @@ class ChambreController extends AbstractController
      */
     public function deleteChambre($id){
         $chambre=$this->getDoctrine()->getRepository(Chambre::class)->find($id);
+<<<<<<< Updated upstream
+=======
+
+        $chambre->getHotel()->setNbrChambre(($chambre->getHotel()->getNbrChambre()) - 1 );
+>>>>>>> Stashed changes
         $em=$this->getDoctrine()->getManager();
         $em->remove($chambre);
         $em->flush();
@@ -94,7 +147,17 @@ class ChambreController extends AbstractController
         $form=$this->createForm(ChambreType::class,$chambre);
         $form->handleRequest($request);
         if( $form->isSubmitted() && $form->isValid() ){
+<<<<<<< Updated upstream
             $em=$this->getDoctrine()->getManager();
+=======
+            $chambre->getHotel()->setNbrChambre(($chambre->getHotel()->getNbrChambre()) + 1 );
+            $file = $chambre->getImageCh();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('images_directory'),$fileName);
+
+            $em=$this->getDoctrine()->getManager();
+            $chambre->setImageCh($fileName);
+>>>>>>> Stashed changes
             $em->flush();
             return $this->redirectToRoute("listChambre");
         }
@@ -140,6 +203,40 @@ class ChambreController extends AbstractController
 
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * @Route("/dispoChambre/{id}", name="dispoChambre")
+     */
+    public function dispoChambre(ChambreRepository $chambreRepository ,$id,FlashyNotifier $flashyNotifier,Request $request)
+    {
+        $reservation = new ResChambre();
+        $id=$request->get("id");
+        $ch=$chambreRepository->find($id);
+
+        $form = $this->createForm (ResChambreType::class, $reservation);
+        $form -> handleRequest($request);
+
+        $reservation->setTarif(   ($reservation->getNbrJ())* ($ch->getPrix()));
+        if ($form->isSubmitted() && $form->isValid()){
+            $ch->setDispo("Non Disponible");
+            $reservation->setChambre($ch);
+            $em= $this->getDoctrine()->getManager();
+            $em->persist ($reservation);
+            $em->flush();
+            $flashyNotifier->primaryDark('Chambre reservé','#');
+            return $this->redirectToRoute('listHotel');
+
+        }
+
+        return $this->render('reservation_chambre/AjoutResChambres.html.twig',array("formResChambre"=>$form->createView()));
+
+    }
+
+
+
+
+>>>>>>> Stashed changes
 
 
 }
