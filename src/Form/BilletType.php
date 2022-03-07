@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 class BilletType extends AbstractType
 {
@@ -23,6 +24,7 @@ class BilletType extends AbstractType
                 'data_class' => null])
 
             ->add('vol')
+
 
             ->add('Submit',SubmitType::class)
         ;

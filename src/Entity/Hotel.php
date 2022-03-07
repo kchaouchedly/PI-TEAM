@@ -7,7 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=HotelRepository::class)
  */
@@ -17,6 +18,7 @@ class Hotel
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
@@ -33,6 +35,8 @@ class Hotel
      * @Assert\Type(
      * type={"alpha"},
      * message="Nom Hotel  {{ value }} doit contenir seulement des lettres alphabétiques")
+     * @Groups ("post:read")
+     * @Groups ("post:read")
      */
     private $NomHotel;
 
@@ -46,6 +50,7 @@ class Hotel
      *     maxMessage  ="l' Adresse de l'hotel ne doit pas depasser 30 caracteres",
      *     allowEmptyString = false
      *     )
+     * @Groups ("post:read")
      */
     private $Adresse;
 
@@ -58,30 +63,27 @@ class Hotel
      *      minMessage = "Le numéro de téléphone doit etre composé de 8 chiffres",
      *      maxMessage  ="Le numéro de téléphone doit etre composé de 8 chiffres",
      * )
+     * @Groups ("post:read")
      */
     private $NumTel;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="veuillez saisir le nombre d'étoiles")
+     * @Groups ("post:read")
      */
     private $NbrEtoiles;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="veuillez saisir le nombre des chambres")
-     * @Assert\GreaterThanOrEqual(
-     *     value = 50,message="Le nombre minimale de chambres est = 50"
-     * )
-     * @Assert\LessThanOrEqual(
-     *     value = 1000,message="Le nombre de chambres ne doit pas depasser 1000"
-     * )
+     * @Groups ("post:read")
      */
     private $NbrChambre;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="veuillez saisir le code hotel")
+     * @Groups ("post:read")
+     * @Groups ("post:read")
      */
     private $CodeH;
 
@@ -89,12 +91,14 @@ class Hotel
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="ce champs est obligatoire")
      * @Assert\Email(message = " cette adresse '{{ value }}' est invalide .")
+     * @Groups ("post:read")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=350)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="ajouter une image")
+     * @Groups ("post:read")
      */
 
     private $imageHotel;

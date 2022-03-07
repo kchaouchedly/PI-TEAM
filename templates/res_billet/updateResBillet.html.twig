@@ -1,0 +1,29 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Ajouter une réservation
+{% endblock %}
+{% block body %}
+
+    <h1>Modifier une réservation</h1>
+    {{ form_start(formResBillet,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+
+        <tr>
+            <td>{{ form_label(formResBillet.nbrPas,"nombre des passagers  ") }}</td>
+
+            <td>{{ form_widget(formResBillet.nbrPas) }}</td>
+            <td>{{ form_errors(formResBillet.nbrPas) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(formResBillet.classe,"classe de la place  ") }}</td>
+
+            <td>{{ form_widget(formResBillet.classe) }}</td>
+            <td>{{ form_errors(formResBillet.classe) }}</td>
+        </tr>
+
+
+
+    </table>
+    {{ form_end(formResBillet) }}
+
+{% endblock %}

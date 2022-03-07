@@ -29,7 +29,7 @@
                             <span>Date du vol : {{ i.dateV|date("m/d/Y") }}</span>
                         </div>
 
-                        <div class="button_section"> <a class="main_bt" href="">Réserver</a>  </div>
+                        <div class="button_section"> <a class="main_bt" href="{{ path('volDispo',{'id':i.id}) }}">Réserver</a>  </div>
                     </div>
                 </div>
             {% endfor %}
@@ -38,6 +38,9 @@
 
     </div>
 
-    <!-- end our Billets -->
+    <div class="titlepage" ><h2>{{ knp_pagination_render (listBillets) }}</h2>
 
-    {% endblock %}
+    </div>
+
+
+{% endblock %}

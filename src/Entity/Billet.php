@@ -4,8 +4,11 @@ namespace App\Entity;
 
 
 use App\Repository\BilletRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * @ORM\Entity(repositoryClass=BilletRepository::class)
@@ -76,6 +79,18 @@ class Billet
      * @ORM\Column(type="string", length=400)
      */
     private $imageBillet;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ResBillet::class, mappedBy="billet",cascade={"remove"})
+     */
+    private $resbillet;
+
+
+
+    public function __construct()
+    {
+        $this->resbillet = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -155,6 +170,41 @@ class Billet
         return $this;
     }
 
+    /**
+     * @return Collection<int, ResBillet>
+     */
+    public function getResbillet(): Collection
+    {
+        return $this->resbillet;
+    }
+
+    public function addResbillet(ResBillet $resbillet): self
+    {
+        if (!$this->resbillet->contains($resbillet)) {
+            $this->resbillet[] = $resbillet;
+            $resbillet->setBillet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResbillet(ResBillet $resbillet): self
+    {
+        if ($this->resbillet->removeElement($resbillet)) {
+            // set the owning side to null (unless already changed)
+            if ($resbillet->getBillet() === $this) {
+                $resbillet->setBillet(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __toString()
+    {
+        return(string)$this->getNumB();
+    }
 
 
 

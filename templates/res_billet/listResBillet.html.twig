@@ -1,0 +1,63 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Reservation
+{% endblock %}
+{% block body %}
+
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('addResBillet') }}">Ajouter</a></li>
+    </ul>
+    <a href="afficheResBillet">
+        <h1 align="center">Reservation Billet</h1>
+    </a>
+
+
+    <table border="0" class="display table table-bordered" id="hidden-table-info">
+
+        <tr>
+
+            <td style="color: #3ea9dd"> Classe </td>
+            <td style="color: #3ea9dd"> Nombres des passager </td>
+            <td style="color: #3ea9dd"> Tarif </td>
+            <td style="color: #3ea9dd"> Code billet </td>
+            <td style="color: #3ea9dd"> Supprimer </td>
+            <td style="color: #3ea9dd"> Imprimer </td>
+
+        </tr>
+
+        {% for i in resBillet %}
+            <tr>
+
+                <td>{{ i.classe }} </td>
+                <td>{{ i.nbrPas}}</td>
+                <td>{{ i.tarif }}</td>
+                <td>{{ i.billet }}</td>
+
+
+                <td> <a href="{{ path('deleteResBillet',{'id':i.id}) }}" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash">
+
+                        </i>
+                    </a>
+
+                </td>
+                <td>
+
+
+                   <a href="{{ path('imprimResBillet',{'id':i.id}) }}" class="btn-group btn-group-xs">
+                        <i class="fa fa-print">
+                            IMPRIMER LA RESERVATION
+                        </i>
+                    </a>
+
+
+                </td>
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

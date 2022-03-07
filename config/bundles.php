@@ -12,5 +12,8 @@ return [
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
-    EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
+    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+    CMEN\GoogleChartsBundle\CMENGoogleChartsBundle::class => ['all' => true],
+    MercurySeries\FlashyBundle\MercurySeriesFlashyBundle::class => ['all' => true],
+    Captcha\Bundle\CaptchaBundle\CaptchaBundle::class => ['all' => true],
 ];

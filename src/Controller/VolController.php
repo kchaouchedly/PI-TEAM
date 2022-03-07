@@ -13,12 +13,16 @@ use App\Repository\BilletRepository;
 use App\Repository\ChambreRepository;
 use App\Repository\HotelRepository;
 use App\Repository\VolRepository;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+use CMEN\GoogleChartsBundle\GoogleCharts\Options\TreeMapChart\TreeMapChartOptions;
+
 
 class VolController extends AbstractController
 {
@@ -192,9 +196,14 @@ class VolController extends AbstractController
     /**
      * @Route("/listBilletByVol/{id}", name="listBilletByVol")
      */
-    public function listBilletByVol(BilletRepository $repository,$id)
+    public function listBilletByVol(BilletRepository $repository,$id,PaginatorInterface $paginator,Request $request)
     {
         $billets=$repository->listBilletByVol($id);
+        $billets = $paginator->paginate(
+            $billets,
+            $request->query->getInt('page',1),
+            2
+        );
         return $this->render("billet/listBillet.html.twig",array("listBillets"=>$billets));
     }
 
@@ -207,5 +216,87 @@ class VolController extends AbstractController
         $billets=$repository->listBilletByVol($id);
         return $this->render("billet/showBillet.html.twig",array("showBillets"=>$billets));
     }
+
+
+    /**
+     * @Route("/volStat", name="volStat")
+     */
+    public function indexAction()
+    {
+        $repository = $this->getDoctrine()->getRepository(Vol::class);
+        $vol = $repository->findAll();
+        $em = $this->getDoctrine()->getManager();
+
+        $nbP = 0;
+        $nbD= 0;
+        $nbT = 0;
+        $nbC=0;
+        $nbA=0;
+        $nbEs=0;
+        $nbEg=0;
+        $nbIt=0;
+
+        foreach ($vol as $vol) {
+
+            if ($vol->getVilleArrive() == "Paris")  :
+                $nbP += 1;
+
+
+            elseif ($vol->getVilleArrive() == "Dubai")  :
+
+                $nbD += 1;
+            elseif ($vol->getVilleArrive() == "Turquie"):
+
+                $nbT += 1;
+            elseif ($vol->getVilleArrive() == "Chine"):
+
+                $nbC += 1;
+            elseif ($vol->getVilleArrive() == "Allemagne"):
+
+                $nbA += 1;
+            elseif ($vol->getVilleArrive() == "Espagne"):
+
+                $nbEs += 1;
+
+            elseif ($vol->getVilleArrive() == "Egypte"):
+
+                $nbEg += 1;
+
+            else :
+                $nbIt += 1;
+
+            endif;
+
+        }
+
+
+        $pieChart = new PieChart();
+        $pieChart->getData()->setArrayToDataTable(
+            [['Villes visités', 'STATISTIQUES'],
+                ['Paris', $nbP],
+                ['Dubai', $nbD],
+                ['Egypte', $nbEg],
+                ['Chine', $nbC],
+                ['Italie', $nbIt],
+                ['Espagne', $nbEs],
+                ['Allemagne', $nbA],
+                ['Turquie', $nbT]
+
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Top Pays visités');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(1250);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(50);
+
+        return $this->render('vol/stat.html.twig', array('piechart' => $pieChart));
+    }
+
+
+
 
 }

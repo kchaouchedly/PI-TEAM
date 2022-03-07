@@ -5,16 +5,22 @@ namespace App\Controller;
 use App\Entity\Billet;
 use App\Entity\Classroom;
 use App\Entity\Hotel;
+use App\Entity\ResBillet;
+use App\Entity\ResChambre;
 use App\Entity\Student;
 use App\Form\BilletType;
+use App\Form\ResBilletType;
+use App\Form\ResChambreType;
 use App\Form\SearchBilletType;
 use App\Form\SearcheStudentType;
 use App\Form\SearchHType;
 use App\Form\StudentType;
 use App\Repository\BilletRepository;
 use App\Repository\HotelRepository;
+use App\Repository\VolRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -159,6 +165,49 @@ class BilletController extends AbstractController
         return $this->render("billet/showBillet.html.twig",
             array("showBillets"=>$billetByDate,"formBillet"=>$form->createView()));
 
+    }
+
+    /**
+     * @Route("/volDispo/{id}", name="volDispo")
+     */
+    public function volDispo(BilletRepository $billetRepository,$id,FlashyNotifier $flashyNotifier,Request $request)
+    {
+
+        $reservation = new ResBillet();
+        $id = $request->get("id");
+        $vol = $billetRepository->find($id);
+
+        $form = $this->createForm(ResBilletType::class, $reservation);
+        $form->handleRequest($request);
+        $pourcent=$vol->getPrix() * 0.2;
+        $pourcent1=$vol->getPrix() * 0.3;
+
+
+
+        if ($reservation->getClasse() == "First Class")  :
+            $reservation->setTarif(($reservation->getNbrPas()) * ( $pourcent +$vol->getPrix() ) );
+
+
+        elseif ($reservation->getClasse() == "Business Class")  :
+            $reservation->setTarif(($reservation->getNbrPas()) * ( $pourcent1 + $vol->getPrix() ) );
+        else :
+            $reservation->setTarif(($reservation->getNbrPas()) * $vol->getPrix()  );
+
+        endif;
+
+
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $vol->getVol()->setNbrPlace(($vol->getVol()->getNbrPlace()) - 1);
+            $reservation->setBillet($vol);
+            $em= $this->getDoctrine()->getManager();
+            $em->persist ($reservation);
+            $em->flush();
+            $flashyNotifier->primaryDark('billet reservé','#');
+            return $this->redirectToRoute('showVol');
+
+        }
+        return $this->render('res_billet/AjoutResbillet.html.twig',array("formResBillet"=>$form->createView()));
     }
 
 

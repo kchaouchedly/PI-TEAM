@@ -57,18 +57,4 @@ class ChambreRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function ChambreDispo($NumCh)
-    {
-
-        $entityManager=$this->getEntityManager();
-        $query=$entityManager
-            ->createQuery("select s FROM APP\Entity\Chambre s WHERE s.NumCh = :NumCh")
-            ->setParameter('NumCh',$NumCh)
-            ->setParameter('dispo', "NonDisponible")
-        ;
-        return $query->getResult();
-
-    }
-    
-
 }

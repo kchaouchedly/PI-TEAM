@@ -1,0 +1,35 @@
+
+{% block body %}
+    <img src="{{asset('front/images/11.png') }}" alt="image" style="height: 70px; width: 50px">
+    <form>
+        <h1 align="center" style="color: #B0413E">Vol {{ afficheResBillet.billet.vol.VilleArrive }}</h1><hr>
+        <fieldset data-resize="20">
+            <legend>Fiche de réservation  </legend>
+
+            <h3 style="color: #022739">Nom du Client   : </h3>
+            <p style="color: #0b2e13"> </p>
+            <h3 style="color: #022739">Numéro de téléphone  : </h3>
+            <h3 style="color: #022739">Date et heure  du vol </h3>
+            <p style="color: #114c7d">{{afficheResBillet.billet.dateV|date('d-m-Y')}} , {{ afficheResBillet.billet.vol.DateDepart|date('H:i') }}   </p>
+            <h3 style="color: #022739"> Ville départ : </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.billet.vol.VilleDepart}}</p>
+            <h3 style="color: #022739">Ville d'arrivé: </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.billet.vol.VilleArrive }}</p>
+            <h3 style="color: #022739">Nombre des passagers: </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.nbrPas }}</p>
+            <h3 style="color: #022739">Type de vol: </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.billet.vol.typeV }}</p>
+            <h3 style="color: #022739">Nom de la compagnie: </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.billet.nomCom }}</p>
+            <h3 style="color: #022739">Code Billet: </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.billet.numB }}</p>
+            <h3 style="color: #022739">Classe vol : </h3>
+            <p style="color: #114c7d">{{ afficheResBillet.classe }}</p>
+            <h3 style="color: #022739">Tarif de la réservation : </h3>
+            <p style="color: #114c7d">{{afficheResBillet.tarif}} DT</p>
+            <p>Agence lest's Travel,Routre 870,Cité El Ghazela , Vol de  {{ afficheResBillet.billet.vol.VilleDepart}} à {{ afficheResBillet.billet.vol.VilleArrive }} ,74400,   TunisieTel: +216 72 000 000</p>
+
+        </fieldset>
+    </form>
+
+{% endblock %}

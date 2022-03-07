@@ -3,6 +3,13 @@
     Liste des hotels
 {% endblock %}
 {% block body %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+
     <!--hotels -->
     <div class="Tours">
         <div class="container">
@@ -48,9 +55,12 @@
                     </div>
                 </div>
 
+
             </section>
+
         </div>
     </div>
     <!-- end hotels -->
 
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 {% endblock %}

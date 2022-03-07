@@ -20,7 +20,18 @@ class VolType extends AbstractType
             ->add('DateDepart')
             ->add('DateArrive')
             ->add('VilleDepart')
-            ->add('VilleArrive')
+            ->add('VilleArrive',ChoiceType::class,[
+                'choices'=> array(
+                    'Paris'=>'Paris',
+                    'Dubai'=>'Dubai',
+                    'Espagne'=>'Espagne',
+                    'Turquie'=>'Turquie',
+                     'Italie'=>'Italie',
+                    'Allemagne'=>'Allemagne',
+                    'Chine'=>'Chine',
+                    'Egypte'=>'Egypte'
+                )
+            ])
             ->add('imageVol',FileType::class,['label' => 'charger une image ','required' => false,
                 'data_class' => null])
             ->add('typeV',ChoiceType::class,[

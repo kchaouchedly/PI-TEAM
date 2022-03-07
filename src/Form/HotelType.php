@@ -17,7 +17,18 @@ class HotelType extends AbstractType
     {
         $builder
             ->add('CodeH',NumberType::class)
-            ->add('NomHotel')
+            ->add('NomHotel',ChoiceType::class,[
+                'choices'=> array(
+                    'iberostar'=>'iberostar',
+                    'Goldanyasmin'=>'Goldanyasmin',
+                    'TabarcaThalasou'=>'TabarcaThalasou	',
+                    'BravoDjerba'=>'BravoDjerba',
+                    'LaBadira'=>'LaBadira',
+                    'RamadaPlaza'=>'RamadaPlaza',
+                    'RoyalThalassa'=>'RoyalThalassa',
+                    'forSeasonTes'=>'forSeasonTes',
+                ),
+            ])
             ->add('email')
             ->add('Adresse')
             ->add('NumTel',NumberType::class)
@@ -29,7 +40,7 @@ class HotelType extends AbstractType
                     '5'=>'5',
                 ),
             ])
-            ->add('NbrChambre',NumberType::class)
+
             ->add('imageHotel',FileType::class,['label' => 'charger une image ','required' => false,
                 'data_class' => null])
             ->add('Submit',SubmitType::class)
@@ -42,4 +53,6 @@ class HotelType extends AbstractType
             'data_class' => Hotel::class,
         ]);
     }
+
+
 }

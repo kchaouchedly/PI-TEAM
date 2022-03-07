@@ -7,6 +7,9 @@
     <ul class="nav pull-right top-menu">
         <li><a class="logout" href="{{ path('addChambre') }}">Ajouter</a></li>
     </ul>
+    <ul class="nav pull-right top-menu">
+        <li><a class="logout" href="{{ path('afficheResChambre') }}">Gestion des réservations</a></li>
+    </ul>
     <a href="listChambre">
         <h1 align="center">Liste des Chambres</h1>
     </a>
@@ -39,7 +42,7 @@
                 <td>{{ i.NbrLits }}</td>
                 <td>{{ i.vue }}</td>
                 <td>{{ i.Etage }}</td>
-                <td>{{ i.Prix }}</td>
+                <td>{{ i.Prix }} DT</td>
                 <td>{{ i.Bloc }}</td>
                 <td>{{ i.dispo }}</td>
 
