@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReclamationBlogController">
+   <children>
+      <AnchorPane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="613.0" style="-fx-background-color: #2c344b;">
+         <children>
+            <Button layoutX="139.0" layoutY="397.0" mnemonicParsing="false" onAction="#envoyer_reclamation" prefHeight="48.0" prefWidth="325.0" style="-fx-background-color: #4482EF;" />
+            <Label layoutX="256.0" layoutY="406.0" prefHeight="26.0" prefWidth="88.0" text="Envoyer" textFill="#fefefe">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="353.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/style/send.png" />
+               </image>
+            </ImageView>
+            <AnchorPane prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #2e354f;">
+               <children>
+                  <Label layoutX="240.0" layoutY="14.0" prefHeight="20.0" prefWidth="161.0" text="Envoyer Reclamation" textFill="#8c90b3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="#fa4771" layoutX="16.0" layoutY="24.0" radius="5.0" stroke="#fa4771" strokeType="INSIDE" />
+                  <Circle fill="#ffc965" layoutX="30.0" layoutY="24.0" radius="5.0" stroke="#ffc965" strokeType="INSIDE" />
+                  <Circle fill="#42cf9b" layoutX="45.0" layoutY="24.0" radius="5.0" stroke="#42cf9b" strokeType="INSIDE" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="email" layoutX="167.0" layoutY="222.0" prefHeight="50.0" prefWidth="272.0" style="-fx-border-color: #8c90b3; -fx-border-radius: 2;">
+               <children>
+                  <TextField fx:id="emailFrom" layoutX="42.0" layoutY="4.0" prefHeight="39.0" prefWidth="228.0" promptText="Votre Email" style="-fx-background-color: #2c344b; -fx-font-size: 17px; -fx-font-style: bold;">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font></TextField>
+                  <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/style/email.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="168.0" layoutY="298.0" prefHeight="50.0" prefWidth="270.0" style="-fx-border-color: #8c90b3; -fx-border-radius: 2;">
+               <children>
+                  <TextField fx:id="reclamation" layoutX="45.0" layoutY="1.0" prefHeight="48.0" prefWidth="228.0" promptText="Tappez Votre reclamation" style="-fx-font-style: #8c90b3; -fx-background-color: #2c344b;">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></TextField>
+                  <Label layoutX="255.0" layoutY="15.0" text="?" textFill="#8c90b3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="7.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/style/chat.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="ic" fitHeight="94.0" fitWidth="107.0" layoutX="244.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/style/email%20(1).png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="695.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="gui.UpdateBlogFXMLController">
+   <children>
+      <TextField fx:id="TNomService" layoutX="118.0" layoutY="39.0" prefHeight="35.0" prefWidth="229.0" promptText="Titre Du Blog" style="-fx-background-radius: 20; -fx-border-radius: 20;" />
+      <Button fx:id="btn_charger_info" layoutX="400.0" layoutY="39.0" mnemonicParsing="false" onAction="#LoadData" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="btn-success" text="Charger les infos" />
+      <GridPane layoutX="300.0" layoutY="132.0" prefHeight="339.0" prefWidth="522.0">
+         <children>
+            <Label text="Email" />
+            <Label contentDisplay="TOP" text="Description du Blog" textAlignment="CENTER" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="80.0" text="Pays" GridPane.rowIndex="2" />
+            <Label text="Titre:" GridPane.rowIndex="3" />
+            <TextField fx:id="temail" promptText="Tapez votre Email" style="-fx-background-radius: 20;" stylesheets="@../ressources/style/style.css" GridPane.columnIndex="1" />
+            <TextField fx:id="ttitre" promptText="Tapez Titre" style="-fx-background-radius: 20;" stylesheets="@../ressources/style/style.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Photo :" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="tpays" promptText="Tapez pays du blog" style="-fx-background-radius: 20;" stylesheets="@../ressources/style/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tdescription" promptText="Tappez Votre Description" style="-fx-background-radius: 20;" stylesheets="@../ressources/style/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tphoto" prefHeight="25.0" prefWidth="122.0" promptText="Text " style="-fx-background-radius: 20;" stylesheets="@../ressources/style/style.css" GridPane.columnIndex="3" />
+            <Button fx:id="btn_Modifier" mnemonicParsing="false" onAction="#updateBlog" prefHeight="25.0" prefWidth="143.0" style="-fx-background-radius: 40; -fx-border-color: white;" styleClass="btn-success" stylesheets="@../ressources/style/style.css" text="Modifier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="btn_Annuler" cancelButton="true" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" style="-fx-background-radius: 40; -fx-border-color: white;" styleClass="btn-warning" stylesheets="@../ressources/style/style.css" text="Annuler" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="69.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="184.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="61.0" minHeight="1.0" prefHeight="61.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <Pane layoutX="35.0" layoutY="135.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="211.0" styleClass="nav_pane">
+         <children>
+            <Button fx:id="btnMenu_AddService" disable="true" layoutX="13.0" layoutY="33.0" mnemonicParsing="false" onAction="#goAddService" prefHeight="23.0" prefWidth="181.0" styleClass="btn-success" text="Ajouter un Blog" />
+            <Button fx:id="btnMenu_UpdateService" layoutX="13.0" layoutY="73.0" mnemonicParsing="false" onAction="#goUpdateService" prefHeight="23.0" prefWidth="181.0" styleClass="btn-blue" text="Modifier un Blog" />
+            <Button fx:id="btnMenu_DeleteService" layoutX="15.0" layoutY="117.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="181.0" styleClass="btn-danger" text="Supprimer un Blog" />
+            <Button fx:id="btnMenu_DisplayServicesFirst" layoutX="14.0" layoutY="167.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="181.0" styleClass="btn-primary" text="Consulter les Blogs" />
+            <Button fx:id="btnMenu_SearchService" layoutX="15.0" layoutY="206.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="181.0" styleClass="btn-gray" text="Chercher un Blog" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
