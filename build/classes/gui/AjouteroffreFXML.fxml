@@ -4,6 +4,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.AjouteroffreFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="835.0" prefWidth="1290.0" style="-fx-background-color: #02030A;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouteroffreFXMLController">
     <stylesheets>
         <URL value="@ajouteroffrefxml.css" />
     </stylesheets>
@@ -26,206 +27,37 @@
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0">
          <children>
             <BorderPane layoutX="6.0" prefHeight="810.0" prefWidth="1315.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <left>
-                  <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css" BorderPane.alignment="CENTER">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
-                           <children>
-                              <Label prefHeight="49.0" prefWidth="147.0" text="Gestion" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Offre" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria" size="40.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css" VBox.vgrow="NEVER">
-                           <VBox.margin>
-                              <Insets left="30.0" right="30.0" />
-                           </VBox.margin>
-                           <children>
-                              <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css" text="Search" textFill="WHITE" />
-                           </children>
-                           <styleClass>
-                              <String fx:value="search-box" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </HBox>
-                        <Pane prefHeight="9.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="698.0" prefWidth="335.0" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
-                           <VBox.margin>
-                              <Insets left="50.0" right="50.0" />
-                           </VBox.margin>
-                           <children>
-                              <Label fx:id="fruitNameLable" prefHeight="48.0" prefWidth="285.0" text="Ajouter un offre" textFill="WHITE">
-                                 <font>
-                                    <Font name="Cambria" size="34.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="50.0" right="50.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <ImageView fx:id="fruitImg" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../Desktop/back-logo1.png" />
-                                 </image>
-                              </ImageView>
-                              <TextField fx:id="nomoffreajout" prefHeight="31.0" prefWidth="286.0" promptText="Nom de l'offre" />
-                              <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" top="20.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <HBox prefHeight="60.0" prefWidth="335.0">
-                                       <children>
-                                          <DatePicker fx:id="datedebutoff" promptText="Date Debut" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </HBox>
-                              <DatePicker fx:id="datefinoff" promptText="Date Fin" />
-                              <TextField fx:id="nomguideoff" prefHeight="31.0" prefWidth="294.0" promptText="Nom Guide" />
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                                 <children>
-                                    <TextField fx:id="prixoff" promptText="Prix" />
-                                 </children>
-                              </HBox>
-                              <TextField fx:id="nbrplacesoff" promptText="Nombre de places" />
-                              <Label fx:id="mylabel" prefHeight="21.0" prefWidth="253.0" text="Label" />
-                              <Button fx:id="btnimageoff" mnemonicParsing="false" onAction="#imageoffre" text="image" />
-                              <ImageView fx:id="imageoffre" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button fx:id="btnaddoff" mnemonicParsing="false" onAction="#ajouteroffre" text="Ajouter" />
-                           </children>
-                           <styleClass>
-                              <String fx:value="chosen-fruit-card" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </VBox>
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-               </left>
                <center>
-                  <VBox prefHeight="775.0" prefWidth="853.0" BorderPane.alignment="CENTER">
+                  <VBox prefHeight="820.0" prefWidth="1321.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" BorderPane.alignment="CENTER">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="119.0" prefWidth="1275.0">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" />
                            </VBox.margin>
-                           <children>
-                              <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Button fx:id="btnsupprimeroffre" layoutX="113.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnsupprimeroffre" text="Supprimer" />
-                                    <Button fx:id="modifieroffrebtn" layoutX="230.0" layoutY="20.0" mnemonicParsing="false" onAction="#modifieroffrebtn" text="Modifier" />
-                                 </children>
-                              </Pane>
-                              <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/img/ic_cart.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Pane prefHeight="84.0" prefWidth="96.0" />
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
+                              <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                    <Pane layoutX="416.0" layoutY="18.0" prefHeight="65.0" prefWidth="540.0">
                                        <children>
-                                          <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                          <Label fx:id="dateevent" layoutX="42.0" layoutY="4.0" prefHeight="21.0" prefWidth="340.0" />
+                                          <TextField fx:id="filtrer" layoutX="227.0" layoutY="26.0" onAction="#filtrer" prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
                                              <font>
-                                                <Font name="Cambria Bold" size="18.0" />
+                                                <Font name="Cambria" size="18.0" />
                                              </font>
-                                          </Label>
-                                          <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
-                                             <font>
-                                                <Font name="Cambria" size="15.0" />
-                                             </font>
-                                          </Label>
+                                          </TextField>
+                                          <TextField fx:id="rehcerche" layoutX="86.0" layoutY="-12.0" prefHeight="33.0" prefWidth="235.0" promptText="search" styleClass="search-button" stylesheets="@style.css" />
+                                          <Button fx:id="payerbtn" layoutX="362.0" layoutY="-11.0" mnemonicParsing="false" onMouseClicked="#payerbtn" styleClass="search-button" stylesheets="@style.css" text="Tester paiement" />
                                        </children>
-                                    </VBox>
-                                    <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/img/ic_delivery.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </HBox>
-                              <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
-                                 <children>
-                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
-                                       <children>
-                                          <Label prefHeight="29.0" prefWidth="190.0" text="Shopping online" textFill="#878787">
-                                             <font>
-                                                <Font name="Cambria Bold" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day" textFill="#878787">
-                                             <font>
-                                                <Font name="Cambria" size="15.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                    <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/img/ic_stopwatch.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </HBox>
-                              <Pane prefHeight="84.0" prefWidth="96.0" />
+                                    </Pane>
+                                    <Button fx:id="reserver" layoutX="1008.0" layoutY="-6.0" mnemonicParsing="false" onMouseClicked="#reserver" styleClass="search-button" stylesheets="@style.css" text="Reserver" />
+                                 </children></Pane>
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" onMouseClicked="#selectOFFRE" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <TableView fx:id="OFFREAFFICHER" onMouseClicked="#selectOFFRE" prefHeight="635.0" prefWidth="820.0">
-                                <columns>
-                                  <TableColumn fx:id="idaffoffre" prefWidth="92.0" text="ID" />
-                                  <TableColumn fx:id="idnbrplaceoff" prefWidth="166.0" text="Nombre de places" />
-                                    <TableColumn fx:id="nomoff" minWidth="0.0" prefWidth="54.0" text="Nom" />
-                                    <TableColumn fx:id="nomguide" prefWidth="77.0" text="Guide" />
-                                    <TableColumn fx:id="prixoffre" prefWidth="46.0" text="Prix" />
-                                    <TableColumn fx:id="datedebutoffre" prefWidth="115.0" text="Date Debut" />
-                                    <TableColumn fx:id="datefinnoff" prefWidth="129.0" text="Date Fin" />
-                                </columns>
-                              </TableView>
-                           </children>
                         </HBox>
                      </children>
                   </VBox>
@@ -233,5 +65,142 @@
             </BorderPane>
          </children>
       </AnchorPane>
+      <TableView fx:id="OFFREAFFICHER" layoutX="618.0" layoutY="179.0" onMouseClicked="#selectOFFRE" prefHeight="623.0" prefWidth="660.0" style="-fx-background-color: #02030A;">
+         <columns>
+            <TableColumn fx:id="affichageid" prefWidth="92.0" text="ID" />
+            <TableColumn fx:id="idnbrplaceoff" prefWidth="166.0" text="Nombre de places" />
+            <TableColumn fx:id="nomoff" minWidth="0.0" prefWidth="54.0" text="Nom" />
+            <TableColumn fx:id="nomguide" prefWidth="77.0" text="Guide" />
+            <TableColumn fx:id="prixoffre" prefWidth="46.0" text="Prix" />
+            <TableColumn fx:id="datedebutoffre" prefWidth="115.0" text="Date Debut" />
+            <TableColumn fx:id="datefinnoff" prefWidth="129.0" text="Date Fin" />
+         </columns>
+      </TableView>
+      <VBox fx:id="chosenFruitCard" alignment="CENTER" layoutX="292.0" layoutY="5.0" prefHeight="820.0" prefWidth="317.0" style="-fx-background-color: C2BCBB;" stylesheets="@../../../../../Downloads/RestaurantMgtSampleUI-master/RestaurantMgtSampleUI-master/src/home/style.css">
+         <children>
+            <Label fx:id="fruitNameLable" prefHeight="38.0" prefWidth="286.0" text="         Offre" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="34.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+            </Label>
+            <ImageView fx:id="fruitImg" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/ok.jfif" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+               <children>
+                  <HBox prefHeight="60.0" prefWidth="335.0" />
+               </children>
+            </HBox>
+            <TextField fx:id="nomoffreajout" prefHeight="31.0" prefWidth="286.0" promptText="Nom de l'offre" styleClass="search-button" />
+            <ComboBox fx:id="join" prefWidth="150.0" promptText="Nom event" styleClass="search-button" />
+            <DatePicker fx:id="datedebutoff" promptText="Date Debut" styleClass="search-button" />
+            <DatePicker fx:id="datefinoff" promptText="Date Fin" />
+            <TextField fx:id="nomguideoff" prefHeight="31.0" prefWidth="294.0" promptText="Nom Guide" styleClass="search-button" />
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+               <children>
+                  <TextField fx:id="prixoff" prefHeight="31.0" prefWidth="330.0" promptText="Prix" styleClass="search-button" />
+               </children>
+            </HBox>
+            <TextField fx:id="nbrplacesoff" promptText="Nombre de places" styleClass="search-button" />
+            <Label fx:id="mylabel" prefHeight="21.0" prefWidth="253.0" />
+            <Button fx:id="btnimageoff" mnemonicParsing="false" onAction="#imageoffre" styleClass="search-button" stylesheets="@style.css" text="Inserer une image" />
+            <ImageView fx:id="imageoffre" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnaddoff" mnemonicParsing="false" onAction="#ajouteroffre" prefHeight="31.0" prefWidth="269.0" styleClass="search-button" stylesheets="@style.css" text="Ajouter" />
+         </children>
+         <styleClass>
+            <String fx:value="chosen-fruit-card" />
+            <String fx:value="shadow" />
+         </styleClass>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="820.0" prefWidth="266.0" style="-fx-background-color: #05071F;">
+         <children>
+            <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/279719984_804704253824922_3925822326672705883_n.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="50.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Let's travel" textFill="#e7e5e5">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnevent" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#eventbtn" onMouseClicked="#btnevent" prefHeight="42.0" prefWidth="299.0" stylesheets="@style.css" text="Gestion des evenenmets" textFill="#e7e5e5">
+               <graphic>
+                  <AnchorPane>
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/tomorrowland-2022-lineup.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="offrebtn" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#btnoffre" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Gestion des offres">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/ok.jfif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Offre Réservé">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/reser.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="971.0" layoutY="59.0" prefHeight="65.0" prefWidth="281.0" styleClass="shopping-online-card" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
+               <children>
+                  <Button fx:id="btnsupprimeroffre" mnemonicParsing="false" onAction="#btnsupprimeroffre" prefHeight="31.0" prefWidth="159.0" styleClass="search-button" stylesheets="@style.css" text="Supprimer" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="203.0" />
+      <HBox alignment="CENTER" layoutX="651.0" layoutY="59.0" prefHeight="65.0" prefWidth="297.0" styleClass="free-delivery-card" stylesheets="@../../../../../Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket/src/values/style.css">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+               <children>
+                  <Button fx:id="modifieroffrebtn" mnemonicParsing="false" onAction="#modifieroffrebtn" prefHeight="31.0" prefWidth="176.0" styleClass="search-button" stylesheets="@style.css" text="Modifier" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

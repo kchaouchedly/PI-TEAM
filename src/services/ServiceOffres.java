@@ -31,12 +31,14 @@ public class ServiceOffres implements Ioffres<Offre>{
 
     @Override
     public void ajouteroffre(Offre p) throws SQLException {
-                   String req = "INSERT INTO `offres`(`nom`, `date_debut_offres`, `date_fin_offre`, `nom_guide`, `prix`, `image`, `nbr_places`)  VALUES ( '"
-                + p.getNom()+ "', '" + p.getDateDebutOff()+  "', '" +p.getDateFinOff()+ "', '" +p.getNomGuide()+ "', '" +p.getPrix()+ "', '" +
+                   String req = "INSERT INTO `offres`(`evenement_id`,`nom`, `date_debut_offres`, `date_fin_offre`, `nom_guide`, `prix`, `image`, `nbr_places`)  VALUES ( '"
+               + p.getNom_event()+  "' , '"  + p.getNom()+ "', '" + p.getDateDebutOff()+  "', '" +p.getDateFinOff()+ "', '" +p.getNomGuide()+ "', '" +p.getPrix()+ "', '" +
                    p.getImage()+ "', '" +p.getNbr_places()
                    + "') ";
         stm = connexion.createStatement();
-        stm.executeUpdate(req);
+       try{ stm.executeUpdate(req);}
+       catch(SQLException ex)
+           {System.out.println(ex.getMessage());}
         
     }
 
@@ -49,14 +51,18 @@ public class ServiceOffres implements Ioffres<Offre>{
         ResultSet rst = stm.executeQuery(req);
 
         while (rst.next()) {
-           Offre p = new Offre(rst.getInt("id"),//or rst.getInt(1)
+           Offre p = new Offre(
+                   
+                     rst.getInt("id"),//or rst.getInt(1)
+                  
                     rst.getInt("nbr_places"),
                     rst.getString("nom"), 
                     rst.getString("nom_guide"),
                    rst.getString("image"),
                    rst.getFloat("prix"),
                     rst.getDate("date_debut_offres"),
-                    rst.getDate("date_fin_offre"));
+                    rst.getDate("date_fin_offre"),
+            rst.getInt("evenement_id"));
                
                    
                     
@@ -117,15 +123,18 @@ String req = "UPDATE `offres` SET `nom` = '"+k.getNom()+"' , `date_debut_offres`
             rst = st.executeQuery(req);
            Offre testajout;
             while (rst.next()) {
-           Offre p = new Offre(rst.getInt("id"),//or rst.getInt(1)
+           Offre p = new Offre(
+                    rst.getInt("id"),//or rst.getInt(1)
+                  
                     rst.getInt("nbr_places"),
                     rst.getString("nom"), 
                     rst.getString("nom_guide"),
                    rst.getString("image"),
                    rst.getFloat("prix"),
                     rst.getDate("date_debut_offres"),
-                    rst.getDate("date_fin_offre"));
-               
+                    rst.getDate("date_fin_offre"),
+            rst.getInt("evenement_id"));
+           
                    
             liste.add(p);
         }

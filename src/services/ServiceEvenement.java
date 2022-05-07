@@ -5,13 +5,22 @@
  */
 package services;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import entities.Evenement;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.MyDB;
@@ -164,25 +173,72 @@ String req = "UPDATE `evenement` SET `type` = '"+ev.getType()+"' , `nom_evenemen
         return liste;
         
 }
+    public String QR (String A){
+        
+       
+              
+             try {
+            String qrCodeData = "VOITURE "+A+"";
+            String filePath = "C:\\Users\\HP\\Documents\\NetBeansProjects\\Pidev\\src\\Image\\"+A+".png";
+            
+            String charset = "UTF-8"; // or "ISO-8859-1"
+            Map < EncodeHintType, ErrorCorrectionLevel > hintMap = new HashMap < EncodeHintType, ErrorCorrectionLevel > ();
+            
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                new String(qrCodeData.getBytes(charset), charset),
+                BarcodeFormat.QR_CODE, 200, 200, hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
+                .lastIndexOf('.') + 1), new File(filePath));
+            System.out.println("QR Code image created successfully!");
+            return filePath;
+        } catch (Exception e) {
+            System.err.println(e);
+           return "";
+        }
+               
+       }
+    public List<String> Eventnom() throws SQLException {
+        List<String> agences = new ArrayList<>();
+        String req = "select * from evenement";
+        stm = connexion.createStatement();
+
+        try {
+
+            ResultSet rst = stm.executeQuery(req);
+
+            while (rst.next()) {
+
+                agences.add(rst.getString(3));
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return agences;
+
     }
     
- 
-
-
-      // String req = "DELETE FROM `evenement` WHERE `evenement`.`id`="+id+"" ; 
-        
-
-   /* @Override
-    public void  deleteEvent(int id ) throws SQLException {
-        
-        String req = "DELETE FROM `evenement` WHERE `evenement`.`id`="+id+"" ; 
+    
+      public int getidevent(String nom) throws SQLException
+    {
+      String req = "SELECT * FROM evenement WHERE nom_evenement='"+nom+"'";
         stm = connexion.createStatement();
+        int id = 0 ;
+        try {
         ResultSet rst = stm.executeQuery(req);
+        if(rst.next()){
+   id = rst.getInt(1);
+}
         
-        
-    }*/
-
-    
-//String req = "UPDATE `evenement` SET `type` = '"+ev.getType()+"' , `nom_evenement` = '"+ev.getNomEvenement()+"',`date_debut`='"+ev.getDateDebut()+"' ,`date_fin`='"+ev.getDateFin()+"',`lieux`='"+ev.getLieux()+"' ,`image`= '"+ev.getImage()+"',`color`='"+ev.getColor()+"'  WHERE id = "+id;
-    
+        }
+        catch(SQLException ex)
+        {System.out.println(ex.getMessage());
+        }
+       
+    return id; 
+}
+}
+ 
 

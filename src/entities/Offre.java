@@ -16,13 +16,16 @@ public class Offre {
             String nom ,NomGuide , image  ; 
             float prix ; 
             Date  DateDebutOff , DateFinOff ; 
+            int nom_event; 
    public static String pathfile; 
             public static String filename="";
             
     public Offre() {
+        
     }
 
-    public Offre(int id, int nbr_places, String nom, String NomGuide, String image, float prix, Date DateDebutOff, Date DateFinOff) {
+    public Offre(int id, int nbr_places, String nom, String NomGuide, String image, float prix, Date DateDebutOff, Date DateFinOff ,int nom_event) {
+        this.nom_event=nom_event ; 
         this.id = id;
         this.nbr_places = nbr_places;
         this.nom = nom;
@@ -31,9 +34,11 @@ public class Offre {
         this.prix = prix;
         this.DateDebutOff = DateDebutOff;
         this.DateFinOff = DateFinOff;
+       
     }
 
-    public Offre(int nbr_places, String nom, String NomGuide, String image, float prix, Date DateDebutOff, Date DateFinOff) {
+    public Offre(int nom_event,int nbr_places, String nom, String NomGuide, String image, float prix, Date DateDebutOff, Date DateFinOff) {
+        this.nom_event=nom_event ; 
         this.nbr_places = nbr_places;
         this.nom = nom;
         this.NomGuide = NomGuide;
@@ -41,6 +46,7 @@ public class Offre {
         this.prix = prix;
         this.DateDebutOff = DateDebutOff;
         this.DateFinOff = DateFinOff;
+         
     }
 
     public int getId() {
@@ -106,6 +112,16 @@ public class Offre {
     public void setDateFinOff(Date DateFinOff) {
         this.DateFinOff = DateFinOff;
     }
+
+    public int getNom_event() {
+        return nom_event;
+    }
+
+    public void setNom_event(int nom_event) {
+        this.nom_event = nom_event;
+    }
+
+    
 
     public static String getPathfile() {
         return pathfile;

@@ -12,9 +12,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 
 /**
  *
@@ -28,8 +30,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
        this.stage = primaryStage;
         try {
-            //parent = FXMLLoader.load(getClass().getResource("/gui/ajoutereventFXML.fxml"));
-            parent = FXMLLoader.load(getClass().getResource("/gui/AjouteroffreFXML.fxml"));
+            //paiement.PaiementController.showAlert(Alert.AlertType.NONE, STYLESHEET_MODENA, STYLESHEET_MODENA, STYLESHEET_MODENA);
+     //parent = FXMLLoader.load(getClass().getResource("/gui/ajoutereventFXML.fxml"));
+     //  parent = FXMLLoader.load(getClass().getResource("/gui/Paiement.fxml"));
+      parent = FXMLLoader.load(getClass().getResource("/gui/AjouteroffreFXML.fxml"));
+     
+      // parent = FXMLLoader.load(getClass().getResource("/gui/listeoffreReservé.fxml"));
+          // parent = FXMLLoader.load(getClass().getResource("/gui/statevenement.fxml"));
+          // parent = FXMLLoader.load(getClass().getResource("/gui/envoyermail.fxml"));
             Scene scene = new Scene(parent);
             stage.setTitle("Acceuil");
             stage.setScene(scene);
