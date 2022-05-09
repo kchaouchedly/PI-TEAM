@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author 123
  */
-public class Hotel {
+public class Hotel implements Comparable<Hotel> {
 
     private int id, NumTel, NbrEtoiles, NbrChambre, CodeH;
     private String NomHotel, Adresse, email, imageHotel;
@@ -32,7 +32,7 @@ public class Hotel {
 
     public Hotel(int id, int NumTel, int NbrEtoiles, int NbrChambre, int CodeH, String NomHotel, String Adresse, String email, String imageHotel) {
 
-        this.id=id;
+        this.id = id;
         this.NumTel = NumTel;
         this.NbrEtoiles = NbrEtoiles;
         this.NbrChambre = NbrChambre;
@@ -165,6 +165,34 @@ public class Hotel {
         return true;
     }
 
-    
+    @Override
+    public int compareTo(Hotel o) {
+
+        if ((this.CodeH - o.CodeH) != 0) {
+            return this.CodeH - o.CodeH;
+        } 
+        else if (this.NomHotel.compareTo(o.NomHotel)!=0)
+        {
+            return this.NomHotel.compareTo(o.NomHotel);
+        }
+        else if (this.Adresse.compareTo(o.Adresse)!=0)
+        {
+            return this.Adresse.compareTo(o.Adresse);
+        }
+        else if ((this.NbrEtoiles - o.NbrEtoiles) != 0)
+        {
+            return this.NbrEtoiles - o.NbrEtoiles;
+        }
+        else if ((this.NbrChambre - o.NbrChambre) != 0)
+        {
+            return this.NbrChambre - o.NbrChambre;
+        }
+        else if ((this.NumTel - o.NumTel) != 0)
+        {
+            return this.NumTel - o.NumTel;
+        }
+        else 
+           return this.id - o.id;
+    }
 
 }

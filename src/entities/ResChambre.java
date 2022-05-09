@@ -6,32 +6,24 @@
 package entities;
 
 import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
  * @author 123
  */
 public class ResChambre {
-    private int id,tarif,nbr_j;
+    private int id,tarif,nbr_j,chambre_id;
     private Date date_res;
-    private int chambre_id;
+
+  
+
 
     public ResChambre() {
     }
 
-    public ResChambre(int id, int tarif, int nbr_j, Date date_res) {
-        this.id = id;
-        this.tarif = tarif;
-        this.nbr_j = nbr_j;
-        this.date_res = date_res;
-    }
-
-    public ResChambre(int tarif, int nbr_j, Date date_res) {
-        this.tarif = tarif;
-        this.nbr_j = nbr_j;
-        this.date_res = date_res;
-    }
-
+ 
+   
     public ResChambre(int id, int tarif, int nbr_j, Date date_res, int chambre_id) {
         this.id = id;
         this.tarif = tarif;
@@ -82,8 +74,50 @@ public class ResChambre {
 
     @Override
     public String toString() {
-        return "\n Reservation Chambre{" + "id=" + id + ", tarif=" + tarif + ", nbr_j=" + nbr_j + ", date_res=" + date_res + '}';
+        return "ResChambre{" + "id=" + id + ", tarif=" + tarif + ", nbr_j=" + nbr_j + ", date_res=" + date_res + ", chambre_id=" + chambre_id + '}';
     }
+
+    public ResChambre(int tarif, int nbr_j, Date date_res, int chambre_id) {
+        this.tarif = tarif;
+        this.nbr_j = nbr_j;
+        this.date_res = date_res;
+        this.chambre_id = chambre_id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ResChambre other = (ResChambre) obj;
+        if (this.tarif != other.tarif) {
+            return false;
+        }
+        if (this.nbr_j != other.nbr_j) {
+            return false;
+        }
+        if (this.chambre_id != other.chambre_id) {
+            return false;
+        }
+        if (!Objects.equals(this.date_res, other.date_res)) {
+            return false;
+        }
+        return true;
+    }
+
+ 
     
     
 }

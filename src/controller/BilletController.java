@@ -8,6 +8,7 @@ package controller;
 import entities.Billet;
 import entities.Chambre;
 import entities.Vol;
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -26,17 +27,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import services.BilletService;
 import services.ChambreService;
@@ -114,16 +121,40 @@ public class BilletController implements Initializable {
     private VolService vs = new VolService();
     @FXML
     private Text alertDate;
+    private FileChooser filechooser;
+    private javafx.scene.image.Image image;
+    private File file;
 
     /**
      * Initializes the controller class.
      */
     @FXML
     private TextField filterFieldB;
- 
+    @FXML
+    private Button insererImgBillet;
+    @FXML
+    private RadioButton toutes;
+    @FXML
+    private RadioButton Qatar;
+    @FXML
+    private RadioButton emirates;
+    @FXML
+    private RadioButton turkish;
+    @FXML
+    private RadioButton british;
+    @FXML
+    private RadioButton france;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+        toutes.setSelected(true);
+        emirates.setSelected(false);
+        france.setSelected(false);
+        british.setSelected(false);
+        Qatar.setSelected(false);
+        turkish.setSelected(false);
 
         ObservableList<String> nomCom = FXCollections.observableArrayList("Qatar Airways", "Emirates", "Turkish ", "British ", "Air France");
         this.nomCom.setItems(nomCom);
@@ -137,6 +168,12 @@ public class BilletController implements Initializable {
         }
 
         tableBillets.setOnMouseClicked(e -> {
+            alertIdVols.setText("");
+            alertDate.setText("");
+            alertNomC.setText("");
+            alertNumBillet.setText("");
+            alertiMAGEbILET.setText("");
+            alertPrix.setText("");
             try {
                 String query = "select * from billet where id = ?";
                 TablePosition tablePosition = (TablePosition) tableBillets.getSelectionModel().getSelectedCells().get(0);
@@ -158,6 +195,10 @@ public class BilletController implements Initializable {
                     idVols.setValue(rs.getInt("vol_id"));
                     idSuppression.setText(String.valueOf(rs.getInt("id")));
 
+                    File filImg = new File(rs.getString("image_billet"));
+                    Image img = new javafx.scene.image.Image(filImg.toURI().toString(), 179, 143, true, true);
+                    fruitImg.setImage(img);
+
                 }
                 pst.close();
                 rs.close();
@@ -171,7 +212,7 @@ public class BilletController implements Initializable {
         RechercheBillet();
     }
 
-        private void RechercheBillet() {
+    private void RechercheBillet() {
         // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Billet> filteredData = new FilteredList<>(listB, b -> true);
 
@@ -209,7 +250,7 @@ public class BilletController implements Initializable {
         sortedData.comparatorProperty().bind(tableBillets.comparatorProperty());
         tableBillets.setItems(sortedData);
     }
-        
+
     public void afficherListeBillet() {
 
         BilletService bs = new BilletService();
@@ -427,6 +468,144 @@ public class BilletController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         }
+    }
+
+    @FXML
+    private void insererImgBillet(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        primaryStage.onShowingProperty();
+        primaryStage.setTitle("Séléctionner une image !!!");
+        filechooser = new FileChooser();
+        filechooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files ", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+        insererImgBillet.setOnAction(e -> {
+            file = filechooser.showOpenDialog(primaryStage);
+            System.out.println(file);
+            if (file != null) {
+                String s = file.getAbsolutePath();
+                String F = file.toURI().toString();
+                imageB.setText(file.toString());
+                image = new javafx.scene.image.Image(file.toURI().toString(), 179, 143, true, true);
+                fruitImg.setImage(image);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Impossible d'ajouter image");
+            }
+        });
+    }
+
+    @FXML
+    private void ToutesCompagnies(MouseEvent event) throws SQLException {
+        toutes.setSelected(true);
+        emirates.setSelected(false);
+        france.setSelected(false);
+        british.setSelected(false);
+        Qatar.setSelected(false);
+        turkish.setSelected(false);
+
+        BilletService bs = new BilletService();
+        ObservableList<Billet> items = FXCollections.observableArrayList();
+        List<Billet> listBillet = bs.afficherBillet();
+        for (Billet b : listBillet) {
+            items.add(b);
+        }
+
+        tableBillets.setItems(items);
+    }
+
+    @FXML
+    private void QatarCompagnies(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        emirates.setSelected(false);
+        france.setSelected(false);
+        british.setSelected(false);
+        Qatar.setSelected(true);
+        turkish.setSelected(false);
+
+        BilletService bs = new BilletService();
+        ObservableList<Billet> items = FXCollections.observableArrayList();
+        List<Billet> listBillet = bs.afficherCompagnieQatar();
+        for (Billet b : listBillet) {
+            items.add(b);
+        }
+
+        tableBillets.setItems(items);
+    }
+
+    @FXML
+    private void emiratesCompagnies(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        emirates.setSelected(true);
+        france.setSelected(false);
+        british.setSelected(false);
+        Qatar.setSelected(false);
+        turkish.setSelected(false);
+
+        BilletService bs = new BilletService();
+        ObservableList<Billet> items = FXCollections.observableArrayList();
+        List<Billet> listBillet = bs.afficherCompagnieEmirates();
+        for (Billet b : listBillet) {
+            items.add(b);
+        }
+
+        tableBillets.setItems(items);
+    }
+
+    @FXML
+    private void turkishCompagnies(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        emirates.setSelected(false);
+        france.setSelected(false);
+        british.setSelected(false);
+        Qatar.setSelected(false);
+        turkish.setSelected(true);
+
+        BilletService bs = new BilletService();
+        ObservableList<Billet> items = FXCollections.observableArrayList();
+        List<Billet> listBillet = bs.afficherCompagnieTurkish();
+        for (Billet b : listBillet) {
+            items.add(b);
+        }
+
+        tableBillets.setItems(items);
+    }
+
+    @FXML
+    private void britishCompagnies(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        emirates.setSelected(false);
+        france.setSelected(false);
+        british.setSelected(true);
+        Qatar.setSelected(false);
+        turkish.setSelected(false);
+
+        BilletService bs = new BilletService();
+        ObservableList<Billet> items = FXCollections.observableArrayList();
+        List<Billet> listBillet = bs.afficherCompagnieBritish();
+        for (Billet b : listBillet) {
+            items.add(b);
+        }
+
+        tableBillets.setItems(items);
+    }
+
+    @FXML
+    private void FranceCompagnies(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        emirates.setSelected(false);
+        france.setSelected(true);
+        british.setSelected(false);
+        Qatar.setSelected(false);
+        turkish.setSelected(false);
+
+        BilletService bs = new BilletService();
+        ObservableList<Billet> items = FXCollections.observableArrayList();
+        List<Billet> listBillet = bs.afficherCompagnieFrance();
+        for (Billet b : listBillet) {
+            items.add(b);
+        }
+
+        tableBillets.setItems(items);
     }
 
 }

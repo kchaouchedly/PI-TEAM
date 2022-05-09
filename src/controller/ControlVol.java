@@ -7,13 +7,16 @@ package controller;
 
 import entities.Hotel;
 import entities.Vol;
+import java.sql.SQLException;
+import services.VolService;
 
 /**
  *
  * @author msi
  */
 public class ControlVol {
-   public static boolean ControleVille(String st) {
+
+    public static boolean ControleVille(String st) {
         String str = st.toLowerCase();
 
         char[] charArray = str.toCharArray();
@@ -33,4 +36,5 @@ public class ControlVol {
         }
         return false;
     }
+
 }

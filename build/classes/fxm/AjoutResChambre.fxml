@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="980.0" prefWidth="1618.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxm.AjoutResChambreController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="20.0" layoutY="20.0" prefHeight="960.0" prefWidth="1601.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="-1.0" prefHeight="961.0" prefWidth="1591.0">
+               <children>
+                  <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="950.0" prefWidth="1580.0">
+                     <children>
+                        <AnchorPane layoutX="-2.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="919.0" prefWidth="1580.0">
+                           <children>
+                              <BorderPane layoutX="-10.0" layoutY="-10.0" prefHeight="929.0" prefWidth="1337.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+                                 <left>
+                                    <VBox prefHeight="929.0" prefWidth="1592.0" styleClass="right-bar" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                                             <children>
+                                                <Label prefHeight="75.0" prefWidth="145.0" text="Let's" textFill="#878787">
+                                                   <font>
+                                                      <Font name="Cambria Bold" size="61.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Travel" textFill="#878787">
+                                                   <font>
+                                                      <Font name="Cambria" size="60.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                                          <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="833.0" prefWidth="325.0" stylesheets="@PiDevJava_Crud_V4.5/src/values/style.css">
+                                             <VBox.margin>
+                                                <Insets left="50.0" right="50.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <HBox prefHeight="0.0" prefWidth="315.0">
+                                                   <children>
+                                                      <Label fx:id="fruitNameLable" prefHeight="44.0" prefWidth="1032.0" text="                                                                                          Réservation chambre" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="25.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="fruitPriceLabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Cambria" size="36.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" top="30.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <ImageView fx:id="fruitImg" fitHeight="143.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../img/zz.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                                <Text fx:id="alertTarif" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                                                <HBox alignment="CENTER" layoutX="10.0" layoutY="267.0" prefHeight="53.0" prefWidth="335.0">
+                                                   <children>
+                                                      <Label fx:id="Prix" prefHeight="31.0" prefWidth="249.0" text="Nombre de jours" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Cambria" size="19.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="nbtJ" prefHeight="31.0" prefWidth="266.0" promptText="nombre de jours" />
+                                                   </children>
+                                                </HBox>
+                                                <Text fx:id="alertNbrJours" fill="#f10a0a" layoutX="57.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                                                <HBox alignment="CENTER" layoutX="10.0" layoutY="290.0" prefHeight="53.0" prefWidth="335.0">
+                                                   <children>
+                                                      <Label prefHeight="31.0" prefWidth="253.0" text="Id chambre" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Cambria" size="19.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ComboBox fx:id="idCh" prefHeight="31.0" prefWidth="272.0" promptText="id chambre" />
+                                                   </children>
+                                                </HBox>
+                                                <Text fx:id="alertIdchambre" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                                                <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                                                   <children>
+                                                      <Label prefHeight="31.0" prefWidth="253.0" text="Date Réservation" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Cambria" size="19.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <DatePicker fx:id="dateRes" prefHeight="31.0" prefWidth="273.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Text fx:id="alertDate" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                                                <Button fx:id="res" mnemonicParsing="false" onAction="#ajouterResChambre" prefHeight="52.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@PiDevJava_Crud_V4.5/src/values/style.css" text="Réserver" textFill="#828282">
+                                                   <VBox.margin>
+                                                      <Insets bottom="20.0" top="30.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                </Button>
+                                                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="20.0" top="20.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <Separator prefHeight="0.0" prefWidth="118.0" />
+                                                      <Separator prefHeight="0.0" prefWidth="118.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="335.0" />
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="chosen-fruit-cardresChambre" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </VBox>
+                                          <Pane prefHeight="16.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                       <stylesheets>
+                                          <URL value="@PiDevJava_Crud_V4.5/src/values/style.css" />
+                                          <URL value="@../values/style.css" />
+                                       </stylesheets>
+                                    </VBox>
+                                 </left>
+                                 <center>
+                                    <VBox prefHeight="947.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Pane prefHeight="84.0" prefWidth="96.0" />
+                                                <Pane prefHeight="84.0" prefWidth="96.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                        <Text fx:id="alertNbrChambres1" fill="#f10a0a" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Button fx:id="re" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="118.0" text="Retour" />
+   </children>
+</AnchorPane>

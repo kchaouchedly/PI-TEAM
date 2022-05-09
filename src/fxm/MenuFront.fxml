@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="996.0" prefWidth="1709.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuFrontController">
+   <children>
+      <AnchorPane fx:id="mainPane" layoutX="-23.0" layoutY="-25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1021.0" prefWidth="1732.0" styleClass="backcolor" stylesheets="@../values/style.css">
+         <children>
+            <Pane layoutX="413.0" layoutY="172.0" prefHeight="621.0" prefWidth="1059.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="413.0" AnchorPane.rightAnchor="-256.0" AnchorPane.topAnchor="172.0">
+               <children>
+                  <Pane layoutX="-25.0" layoutY="-178.0" prefHeight="190.0" prefWidth="319.0" rotate="41.6" styleClass="transparent" stylesheets="@../values/style.css" />
+                  <Pane layoutX="76.0" layoutY="106.0">
+                     <children>
+                        <Button mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="218.0" styleClass="button2" stylesheets="@../../../javafx-sample-dashboard/src/css/fullpackstyling.css" />
+                        <Circle layoutX="107.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                                 <stops>
+                                    <Stop color="#03b5fc" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="68.0" fitWidth="62.0" layoutX="76.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/hotelIcon.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="hotels" layoutX="52.0" layoutY="145.0" mnemonicParsing="false" onAction="#hotelButton" prefHeight="31.0" prefWidth="129.0" styleClass="comboBox" stylesheets="@../values/style.css" text="Hotels" textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
+                     <children>
+                        <Button mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="218.0" styleClass="button2" stylesheets="@../../../javafx-sample-dashboard/src/css/fullpackstyling.css" />
+                        <Circle layoutX="108.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                                 <stops>
+                                    <Stop color="#68479f" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="53.0" fitWidth="77.0" layoutX="74.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/Screenshot_29.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="vols" layoutX="57.0" layoutY="150.0" mnemonicParsing="false" onAction="#listVols" prefHeight="31.0" prefWidth="129.0" styleClass="comboBox" stylesheets="@../values/style.css" text="vols" textFill="#f8f7f7" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="71.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                     <children>
+                        <Button layoutY="-12.0" mnemonicParsing="false" opacity="0.7" prefHeight="202.0" prefWidth="218.0" styleClass="button2" stylesheets="@../../../javafx-sample-dashboard/src/css/fullpackstyling.css" />
+                        <Circle layoutX="111.0" layoutY="88.0" radius="50.0" strokeType="INSIDE">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                                 <stops>
+                                    <Stop color="#ff52e2" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="92.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8_Shopping_Cart_50px_2.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Shopping" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="316.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                     <children>
+                        <Button layoutY="-12.0" mnemonicParsing="false" opacity="0.7" prefHeight="202.0" prefWidth="218.0" styleClass="button2" stylesheets="@../../../javafx-sample-dashboard/src/css/fullpackstyling.css" />
+                        <Circle layoutX="110.0" layoutY="87.0" radius="50.0" stroke="#ff924f" strokeType="INSIDE">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                                 <stops>
+                                    <Stop color="#ff934f" />
+                                    <Stop color="WHITE" offset="0.9961685823754789" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="92.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8_Bill_50px_2.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Bill" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="559.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                     <children>
+                        <Button layoutY="-12.0" mnemonicParsing="false" opacity="0.7" prefHeight="202.0" prefWidth="218.0" styleClass="button2" stylesheets="@../../../javafx-sample-dashboard/src/css/fullpackstyling.css" />
+                        <Circle layoutX="108.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                                 <stops>
+                                    <Stop color="#34e063" />
+                                    <Stop color="WHITE" offset="0.9961685823754789" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="85.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8_Broccoli_64px_2.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Grocery" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="559.0" layoutY="106.0" prefHeight="190.0" prefWidth="174.0">
+                     <children>
+                        <Button mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="218.0" styleClass="button2" stylesheets="@../../../javafx-sample-dashboard/src/css/fullpackstyling.css" />
+                        <Circle layoutX="107.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                                 <stops>
+                                    <Stop color="#4f79ff" />
+                                    <Stop color="WHITE" offset="0.9961685823754789" />
+                                    <Stop color="#4f79ff" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="85.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8_Play_Button_50px.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Blogs" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="348.0" text="Let's Travel" textFill="#090f83" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="506.0" layoutY="104.0" text="Bienvenue dans notre application" textAlignment="CENTER" textFill="#f8f8f8" textOverrun="CENTER_WORD_ELLIPSIS">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="114.0" fitWidth="120.0" layoutX="213.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

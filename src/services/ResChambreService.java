@@ -31,23 +31,25 @@ public class ResChambreService implements IResChambre<ResChambre> {
 
     @Override
     public void ajouterResChambre(ResChambre ch) throws SQLException {
-        String req = "INSERT INTO `res_chambre`(`tarif`, `nbr_j`, `date_res`)"
-                + "VALUES (?,?,?) ";
+        String req = "INSERT INTO `res_chambre`(`tarif`, `nbr_j`, `date_res`, `chambre_id`)"
+                + "VALUES (?,?,?,?) ";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, ch.getTarif());
         ps.setInt(2, ch.getNbr_j());
         ps.setDate(3, ch.getDate_res());
+        ps.setInt(4, ch.getChambre_id());
         ps.executeUpdate();
     }
 
     @Override
     public void modifierResChambre(ResChambre ch) throws SQLException {
-        String req = "UPDATE `res_chambre` SET `tarif`=" + "?" + ",`nbr_j`=" + "?" + ",`date_res`=" + "?" + "where id =" + "?";
+        String req = "UPDATE `res_chambre` SET `tarif`=" + "?" + ",`nbr_j`=" + "?" +",`chambre_id`=" + "?"+ ",`date_res`=" + "?" + "where id =" + "?";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, ch.getTarif());
         ps.setInt(2, ch.getNbr_j());
-        ps.setDate(3, ch.getDate_res());
-        ps.setInt(4, ch.getId());
+        ps.setInt(3, ch.getChambre_id());
+        ps.setDate(4, ch.getDate_res());
+        ps.setInt(5, ch.getId());
         ps.executeUpdate();
     }
 
@@ -74,7 +76,8 @@ public class ResChambreService implements IResChambre<ResChambre> {
             ResChambre ch = new ResChambre(rst.getInt("id"),
                     rst.getInt("tarif"),
                     rst.getInt("nbr_j"),
-                    rst.getDate("date_res"));
+                    rst.getDate("date_res"),
+                    rst.getInt("chambre_id"));
 
             reschambres.add(ch);
         }

@@ -4,7 +4,13 @@
 }
 
 .transparent{
-    -fx-background-color: rgba(0,0,0,0);
+    -fx-background-color:#00cccc;
+}
+.red{
+    -fx-background-color:#ff9999;
+}
+.backcolor{
+    -fx-background-color:#009999;
 }
 
 .search-button{
@@ -34,6 +40,15 @@
 }
 .chosen-fruit-cardchambre{
     -fx-background-color: #00cccc;
+    -fx-background-radius: 30;
+}
+
+.chosen-fruit-cardresBillet{
+    -fx-background-color: #009999;
+    -fx-background-radius: 30;
+}
+.chosen-fruit-cardresChambre{
+    -fx-background-color: #ffcc00;
     -fx-background-radius: 30;
 }
 

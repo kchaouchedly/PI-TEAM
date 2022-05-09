@@ -3,7 +3,9 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -18,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="932.0" prefWidth="1336.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HotelController">
+<AnchorPane id="AnchorPane" prefHeight="963.0" prefWidth="1336.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HotelController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0">
          <children>
@@ -82,7 +84,7 @@
                                     <Insets left="20.0" top="30.0" />
                                  </VBox.margin>
                               </HBox>
-                              <ImageView fx:id="fruitImg" fitHeight="143.0" fitWidth="179.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="fruitImg" fitHeight="143.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/hotel.png" />
                                  </image>
@@ -97,7 +99,7 @@
                                           <Font name="Cambria" size="19.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="nomh" prefHeight="31.0" prefWidth="128.0" promptText="Nom Hotel" stylesheets="@../values/style.css" />
+                                    <ComboBox fx:id="nomh" prefWidth="150.0" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="20.0" />
@@ -167,7 +169,7 @@
                                           <Font name="Cambria" size="19.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="email" prefHeight="31.0" prefWidth="128.0" promptText="nom@gmail.com" />
+                                    <TextField fx:id="email" prefHeight="31.0" prefWidth="128.0" promptText="Email" />
                                  </children>
                               </HBox>
                               <Text fx:id="alertEmail" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
@@ -181,6 +183,7 @@
                                     <TextField fx:id="imageH" prefHeight="31.0" prefWidth="132.0" promptText="Image Hotel" />
                                  </children>
                               </HBox>
+                              <Button fx:id="insérer" mnemonicParsing="false" onAction="#insérerImg" prefHeight="31.0" prefWidth="96.0" text="Insérer" />
                               <Text fx:id="alerteImageHotel" fill="#f10a0a" layoutX="57.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
                               <Button mnemonicParsing="false" onAction="#ajouterHotel" prefHeight="52.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Ajouter " textFill="#828282">
                                  <VBox.margin>
@@ -233,7 +236,12 @@
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="statistiques" mnemonicParsing="false" onAction="#Stat" prefHeight="31.0" prefWidth="144.0" styleClass="search-button" stylesheets="@../values/style.css" text="Statistiques" />
+                              <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button layoutY="17.0" mnemonicParsing="false" onAction="#favoris" prefHeight="31.0" prefWidth="215.0" styleClass="search-button" stylesheets="@../values/style.css" text="Favoris" />
+                                    <Button fx:id="affichFav" layoutX="215.0" layoutY="17.0" mnemonicParsing="false" onAction="#affichFav" prefHeight="31.0" prefWidth="158.0" styleClass="search-button" stylesheets="@../values/style.css" text="Afficher Favoris" />
+                                 </children></Pane>
                               <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
                                  <font>
                                     <Font name="Cambria" size="18.0" />
@@ -249,27 +257,31 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Pane prefHeight="84.0" prefWidth="96.0" />
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../values/style.css">
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="428.0" styleClass="free-delivery-card" stylesheets="@../values/style.css">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="360.0">
                                        <children>
-                                          <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                          <Label prefHeight="0.0" prefWidth="249.0" text="       Trier" textFill="#878787">
                                              <font>
-                                                <Font name="Cambria Bold" size="18.0" />
+                                                <Font name="Cambria Bold" size="40.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
-                                             <font>
-                                                <Font name="Cambria" size="15.0" />
-                                             </font>
-                                          </Label>
+                                          <HBox prefHeight="39.0" prefWidth="360.0">
+                                             <children>
+                                                <RadioButton fx:id="triId" mnemonicParsing="false" onMouseClicked="#triId" text="Identifiant" />
+                                                <RadioButton fx:id="TriNom" mnemonicParsing="false" onMouseClicked="#TriNom" text="Nom Hotel" />
+                                                <RadioButton fx:id="triNbrCh" mnemonicParsing="false" onMouseClicked="#triNbrCh" text="Nombre cambres" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="43.0" prefWidth="360.0">
+                                             <children>
+                                                <RadioButton fx:id="triCode" mnemonicParsing="false" onMouseClicked="#triCode" text="Code Hotel" />
+                                                <RadioButton fx:id="triNbrE" mnemonicParsing="false" onMouseClicked="#triNbrE" text="Nombre étoiles" />
+                                                <RadioButton fx:id="triEmail" mnemonicParsing="false" onMouseClicked="#triEmail" text="Email" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
-                                    <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/ic_delivery.png" />
-                                       </image>
-                                    </ImageView>
                                  </children>
                               </HBox>
                               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
@@ -307,7 +319,15 @@
                               <Insets left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <ImageView fx:id="im_qrcode" fitHeight="141.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="btnouvrir" mnemonicParsing="false" onAction="#ouvrir" prefHeight="31.0" prefWidth="175.0" styleClass="search-button" stylesheets="@../values/style.css" text="Ouvrir QR CODE" />
+                              <Button mnemonicParsing="false" onAction="#GérerQR" prefHeight="31.0" prefWidth="165.0" styleClass="search-button" stylesheets="@../values/style.css" text="Gérer QR CODE" />
+                              <Button mnemonicParsing="false" onAction="#pdf" prefHeight="31.0" prefWidth="210.0" styleClass="search-button" stylesheets="@../values/style.css" text="Générer un fichier PDF" />
+                              <VBox prefHeight="94.0" prefWidth="180.0" />
+                           </children>
+                        </HBox>
                         <TableView fx:id="tableHotels" prefHeight="622.0" prefWidth="854.0">
                            <columns>
                               <TableColumn fx:id="id" prefWidth="82.0" text="Identifiant" />

@@ -31,23 +31,25 @@ public class ResBilletService implements IResBillet<ResBillet> {
 
     @Override
     public void ajouterResBillet(ResBillet rb) throws SQLException {
-        String req = "INSERT INTO `res_billet`(`tarif`, `nbr_pas`, `classe`) "
-                + "VALUES (?, ?,?) ";
+        String req = "INSERT INTO `res_billet`(`tarif`, `nbr_pas`, `classe`,`billet_id`) "
+                + "VALUES (?, ?,?,?) ";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, rb.getTarif());
         ps.setInt(2, rb.getNbrPas());
         ps.setString(3, rb.getClasse());
+        ps.setInt(4, rb.getBillet_id());
         ps.executeUpdate();
     }
 
     @Override
     public void modifierResBillet(ResBillet rb) throws SQLException {
-        String req = "UPDATE `res_billet` SET `tarif`=" + "?" + ",`nbr_pas`=" + "?" + ",`classe`=" + "?" + "where id =" + "?";
+        String req = "UPDATE `res_billet` SET `tarif`=" + "?" + ",`nbr_pas`=" + "?" + ",`billet_id`=" + "?" + ",`classe`=" + "?" + "where id =" + "?";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, rb.getTarif());
         ps.setInt(2, rb.getNbrPas());
-        ps.setString(3, rb.getClasse());
-        ps.setInt(4, rb.getId());
+        ps.setInt(3, rb.getBillet_id());
+        ps.setString(4, rb.getClasse());
+        ps.setInt(5, rb.getId());
         ps.executeUpdate();
     }
 
@@ -74,6 +76,7 @@ public class ResBilletService implements IResBillet<ResBillet> {
             ResBillet rb = new ResBillet(rst.getInt("id"),
                     rst.getInt("tarif"),
                     rst.getInt("nbr_pas"),
+                    rst.getInt("billet_id"),
                     rst.getString("classe"));
 
             resbillets.add(rb);

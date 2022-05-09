@@ -8,6 +8,7 @@ package controller;
 import entities.Chambre;
 import entities.Hotel;
 import entities.Vol;
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -28,16 +29,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import services.ChambreService;
 import services.HotelService;
@@ -142,14 +149,29 @@ public class ChambreController implements Initializable {
     @FXML
     private TableColumn<?, ?> imgCh;
 
+    private FileChooser filechooser;
+    private javafx.scene.image.Image imag;
+    private File file;
     /**
      * Initializes the controller class.
      */
-   
     @FXML
     private TextField filterFieldCh;
+    @FXML
+    private Button insererImg;
+    @FXML
+    private RadioButton toutes;
+    @FXML
+    private RadioButton ChambreDispo;
+    @FXML
+    private RadioButton ChambreNonDispo;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        toutes.setSelected(true);
+        ChambreDispo.setSelected(false);
+        ChambreNonDispo.setSelected(false);
         // TODO
         ObservableList<Integer> etage = FXCollections.observableArrayList(1, 2, 3, 4, 5);
         Etage.setItems(etage);
@@ -172,6 +194,15 @@ public class ChambreController implements Initializable {
         }
         tableChambre.setOnMouseClicked(e -> {
             try {
+                alertNbrLits.setText("");
+                alertNbrChambre.setText("");
+                alertImageCh.setText("");
+                alertPrix.setText("");
+                alertEtage.setText("");
+                alertVue.setText("");
+                alertBlocl.setText("");
+                alertDispo.setText("");
+                alertHotelId.setText("");
                 String query = "select * from chambre where id = ?";
                 TablePosition tablePosition = (TablePosition) tableChambre.getSelectionModel().getSelectedCells().get(0);
 
@@ -194,6 +225,9 @@ public class ChambreController implements Initializable {
                     dispoo.setValue(rs.getString("dispo"));
                     imageCh.setText(rs.getString("image_ch"));
                     hotelId.setValue(rs.getInt("hotel_id"));
+                    File filImg = new File(rs.getString("image_ch"));
+                    Image img = new javafx.scene.image.Image(filImg.toURI().toString(), 179, 143, true, true);
+                    fruitImg.setImage(img);
 
                 }
                 pst.close();
@@ -285,7 +319,7 @@ public class ChambreController implements Initializable {
                     return true;
                 } else if (String.valueOf(chambre.getNumCh()).indexOf(lowerCaseFilter) != -1) {
                     return true;
-                }else if (String.valueOf(chambre.getPrix()).indexOf(lowerCaseFilter) != -1) {
+                } else if (String.valueOf(chambre.getPrix()).indexOf(lowerCaseFilter) != -1) {
                     return true;
                 } else {
                     return false; // Does not match.
@@ -498,4 +532,76 @@ public class ChambreController implements Initializable {
             }
         }
     }
+
+    @FXML
+    private void InsererImgChambre(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        primaryStage.onShowingProperty();
+        primaryStage.setTitle("Séléctionner une image !!!");
+        filechooser = new FileChooser();
+        filechooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files ", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+        insererImg.setOnAction(e -> {
+            file = filechooser.showOpenDialog(primaryStage);
+            System.out.println(file);
+            if (file != null) {
+                String s = file.getAbsolutePath();
+                String F = file.toURI().toString();
+                imageCh.setText(file.toString());
+                imag = new javafx.scene.image.Image(file.toURI().toString(), 179, 143, true, true);
+                fruitImg.setImage(imag);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Impossible d'ajouter image");
+            }
+        });
+    }
+
+    @FXML
+    private void TouteChambre(MouseEvent event) throws SQLException {
+        toutes.setSelected(true);
+        ChambreDispo.setSelected(false);
+        ChambreNonDispo.setSelected(false);
+
+        ChambreService cs = new ChambreService();
+        ObservableList<Chambre> items = FXCollections.observableArrayList();
+        List<Chambre> listChambre = cs.afficherChambre();
+        for (Chambre h : listChambre) {
+            items.add(h);
+        }
+
+        tableChambre.setItems(items);
+    }
+
+    @FXML
+    private void ChambreDispo(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        ChambreDispo.setSelected(true);
+        ChambreNonDispo.setSelected(false);
+        ChambreService cs = new ChambreService();
+        ObservableList<Chambre> items = FXCollections.observableArrayList();
+        List<Chambre> listChambre = cs.afficherChambreDispo();
+        for (Chambre h : listChambre) {
+            items.add(h);
+        }
+
+        tableChambre.setItems(items);
+    }
+
+    @FXML
+    private void ChambreNonDispo(MouseEvent event) throws SQLException {
+        toutes.setSelected(false);
+        ChambreDispo.setSelected(false);
+        ChambreNonDispo.setSelected(true);
+
+        ChambreService cs = new ChambreService();
+        ObservableList<Chambre> items = FXCollections.observableArrayList();
+        List<Chambre> listChambre = cs.afficherChambreNonDispo();
+        for (Chambre h : listChambre) {
+            items.add(h);
+        }
+
+        tableChambre.setItems(items);
+    }
+
 }

@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import utils.MyDB;
 
 /**
@@ -82,7 +85,7 @@ public class HotelService implements IHotel<Hotel> {
     @Override
     public void modifierHotel(Hotel h) throws SQLException {
 
-        String req = "UPDATE `hotel` SET `nom_hotel`=" + "?" + ",`adresse`=" + "?" + ",`num_tel`=" + "?" + ",`nbr_etoiles`=" + "?" + ",`nbr_chambre`=" + "?" + ",`code_h`=" + "?" + ",`email`=" + "?" + ",`image_hotel`=" + "?" + "where id ="+h.getId()+"";
+        String req = "UPDATE `hotel` SET `nom_hotel`=" + "?" + ",`adresse`=" + "?" + ",`num_tel`=" + "?" + ",`nbr_etoiles`=" + "?" + ",`nbr_chambre`=" + "?" + ",`code_h`=" + "?" + ",`email`=" + "?" + ",`image_hotel`=" + "?" + "where id =" + h.getId() + "";
 
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setString(1, h.getNomHotel());
@@ -96,7 +99,8 @@ public class HotelService implements IHotel<Hotel> {
 //        ps.setInt(9, h.getId());
         ps.executeUpdate();
     }
-  public List<Integer> getIdHotels() throws SQLException {
+
+    public List<Integer> getIdHotels() throws SQLException {
         List<Integer> hotels = new ArrayList<>();
         String req = "select * from hotel";
         stm = connexion.createStatement();
@@ -117,4 +121,121 @@ public class HotelService implements IHotel<Hotel> {
         return hotels;
 
     }
+    
+    public List<Hotel> TrierHotelParNom() throws SQLException {
+        List<Hotel> hotels = new ArrayList<>();
+        String req = "select * from hotel order by `nom_hotel` ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Hotel h = new Hotel(rst.getInt("id"),
+                    rst.getInt("num_tel"),
+                    rst.getInt("nbr_etoiles"),
+                    rst.getInt("nbr_chambre"),
+                    rst.getInt("code_h"),
+                    rst.getString("nom_hotel"),
+                    rst.getString("adresse"),
+                    rst.getString("email"),
+                    rst.getString("image_hotel"));
+
+            hotels.add(h);
+        }
+        return hotels;
+    }
+
+    public List<Hotel> TrierHotelParCode() throws SQLException {
+        List<Hotel> hotels = new ArrayList<>();
+        String req = "select * from hotel order by `code_h` ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Hotel h = new Hotel(rst.getInt("id"),
+                    rst.getInt("num_tel"),
+                    rst.getInt("nbr_etoiles"),
+                    rst.getInt("nbr_chambre"),
+                    rst.getInt("code_h"),
+                    rst.getString("nom_hotel"),
+                    rst.getString("adresse"),
+                    rst.getString("email"),
+                    rst.getString("image_hotel"));
+
+            hotels.add(h);
+        }
+        return hotels;
+    }
+    
+    public List<Hotel> TrierHotelParNbrE() throws SQLException {
+        List<Hotel> hotels = new ArrayList<>();
+        String req = "select * from hotel order by `nbr_etoiles` ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Hotel h = new Hotel(rst.getInt("id"),
+                    rst.getInt("num_tel"),
+                    rst.getInt("nbr_etoiles"),
+                    rst.getInt("nbr_chambre"),
+                    rst.getInt("code_h"),
+                    rst.getString("nom_hotel"),
+                    rst.getString("adresse"),
+                    rst.getString("email"),
+                    rst.getString("image_hotel"));
+
+            hotels.add(h);
+        }
+        return hotels;
+    }
+    
+    public List<Hotel> TrierHotelParEmail() throws SQLException {
+        List<Hotel> hotels = new ArrayList<>();
+        String req = "select * from hotel order by `email` ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Hotel h = new Hotel(rst.getInt("id"),
+                    rst.getInt("num_tel"),
+                    rst.getInt("nbr_etoiles"),
+                    rst.getInt("nbr_chambre"),
+                    rst.getInt("code_h"),
+                    rst.getString("nom_hotel"),
+                    rst.getString("adresse"),
+                    rst.getString("email"),
+                    rst.getString("image_hotel"));
+
+            hotels.add(h);
+        }
+        return hotels;
+    }
+    
+        public List<Hotel> TrierHotelParNbrChambre() throws SQLException {
+        List<Hotel> hotels = new ArrayList<>();
+        String req = "select * from hotel order by `nbr_chambre` ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Hotel h = new Hotel(rst.getInt("id"),
+                    rst.getInt("num_tel"),
+                    rst.getInt("nbr_etoiles"),
+                    rst.getInt("nbr_chambre"),
+                    rst.getInt("code_h"),
+                    rst.getString("nom_hotel"),
+                    rst.getString("adresse"),
+                    rst.getString("email"),
+                    rst.getString("image_hotel"));
+
+            hotels.add(h);
+        }
+        return hotels;
+    }
+
+
 }

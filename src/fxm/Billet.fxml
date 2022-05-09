@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -131,17 +132,6 @@
                                                 <ComboBox fx:id="nomCom" prefHeight="31.0" prefWidth="225.0" promptText="Nom de la compagnie" />
                                              </children>
                                           </HBox>
-                                          <Text fx:id="alertNomC" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
-                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="267.0" prefHeight="53.0" prefWidth="335.0">
-                                             <children>
-                                                <Label fx:id="imageBillet" prefHeight="23.0" prefWidth="196.0" text="Image " textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Cambria" size="19.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField fx:id="imageB" prefHeight="31.0" prefWidth="210.0" promptText="Image" />
-                                             </children>
-                                          </HBox>
                                           <Text fx:id="alertiMAGEbILET" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="352.0" prefHeight="53.0" prefWidth="335.0">
                                              <children>
@@ -165,6 +155,18 @@
                                              </children>
                                           </HBox>
                                           <Text fx:id="alertIdVols" fill="#f10a0a" layoutX="57.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="267.0" prefHeight="53.0" prefWidth="335.0">
+                                             <children>
+                                                <Label fx:id="imageBillet" prefHeight="23.0" prefWidth="196.0" text="Image " textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Cambria" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="imageB" prefHeight="31.0" prefWidth="210.0" promptText="Image" />
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="insererImgBillet" mnemonicParsing="false" onAction="#insererImgBillet" prefHeight="31.0" prefWidth="102.0" text="Insérer" />
+                                          <Text fx:id="alertNomC" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
                                           <Button mnemonicParsing="false" onAction="#ajouterBillet" prefHeight="52.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Ajouter " textFill="#828282">
                                              <VBox.margin>
                                                 <Insets bottom="20.0" top="30.0" />
@@ -236,23 +238,23 @@
                                              <children>
                                                 <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                                    <children>
-                                                      <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                                      <Label prefHeight="22.0" prefWidth="237.0" text="                         Filtrage" textFill="#878787">
                                                          <font>
                                                             <Font name="Cambria Bold" size="18.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
-                                                         <font>
-                                                            <Font name="Cambria" size="15.0" />
-                                                         </font>
-                                                      </Label>
+                                                      <RadioButton fx:id="Qatar" mnemonicParsing="false" onMouseClicked="#QatarCompagnies" prefHeight="41.0" prefWidth="156.0" text="Qatar Airways" />
+                                                      <RadioButton fx:id="turkish" mnemonicParsing="false" onMouseClicked="#turkishCompagnies" prefHeight="46.0" prefWidth="154.0" text="Turkish" />
+                                                      <RadioButton fx:id="emirates" mnemonicParsing="false" onMouseClicked="#emiratesCompagnies" prefHeight="41.0" prefWidth="147.0" text="Emirates" />
                                                    </children>
                                                 </VBox>
-                                                <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/ic_delivery.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                                   <children>
+                                                      <RadioButton fx:id="toutes" mnemonicParsing="false" onMouseClicked="#ToutesCompagnies" prefHeight="34.0" prefWidth="144.0" text="Toutes" />
+                                                      <RadioButton fx:id="france" mnemonicParsing="false" onMouseClicked="#FranceCompagnies" prefHeight="33.0" prefWidth="139.0" text="Air France" />
+                                                      <RadioButton fx:id="british" mnemonicParsing="false" onMouseClicked="#britishCompagnies" prefHeight="34.0" prefWidth="140.0" text="British" />
+                                                   </children>
+                                                </VBox>
                                              </children>
                                           </HBox>
                                           <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
