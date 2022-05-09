@@ -15,7 +15,7 @@ public class ControlHotel {
 
     public static boolean ControleNomHotel(String ss) {
         String str = ss.toLowerCase();
-      
+
         char[] charArray = str.toCharArray();
 
         for (int i = 0; i < charArray.length; i++) {
@@ -37,7 +37,7 @@ public class ControlHotel {
     }
 
     public static boolean ControleAdresse(String s) {
-        String str = s.toLowerCase();       
+        String str = s.toLowerCase();
         char[] charArray = str.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
             char ch = charArray[i];
@@ -51,7 +51,7 @@ public class ControlHotel {
     public boolean ControleEmail(String s) {
         // regex expression to verify if the mail inserted follow how emails should be
         // written
-        
+
         if (s.matches(
                 "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$")) {
             return true;
@@ -59,10 +59,10 @@ public class ControlHotel {
         return false;
     }
 
-  public boolean controlNbrEtoiles(int nb)
-  {
-      if((nb==2  ) ||( nb==3 )||(nb==4 )|| (nb==5))
-          return true;
-      return false;
-  }
+    public boolean controlNbrEtoiles(int nb) {
+        if ((nb == 2) || (nb == 3) || (nb == 4) || (nb == 5)) {
+            return true;
+        }
+        return false;
+    }
 }

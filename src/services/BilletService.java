@@ -6,6 +6,7 @@
 package services;
 
 import entities.Billet;
+import entities.Chambre;
 import entities.Hotel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -91,4 +92,165 @@ public class BilletService implements IBillet<Billet> {
         return billets;
     }
 
+    
+      public List<Billet> afficherBilletbyVol(int id) throws SQLException {
+        List<Billet> billets = new ArrayList<>();
+        String req = "select * from billet where vol_id="+id+" ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Billet b = new Billet(rst.getInt("id"),
+                    rst.getInt("num_b"),
+                    rst.getInt("prix"),
+                    rst.getString("nom_com"),
+                    rst.getString("image_billet"),
+                    rst.getDate("date_v"), 
+                    rst.getInt("vol_id") );
+
+            billets.add(b);
+        }
+        return billets;
+    }
+    
+     public List<Integer> getIdBillet() throws SQLException {
+        List<Integer> billets = new ArrayList<>();
+        String req = "select * from billet";
+        stm = connexion.createStatement();
+
+        try {
+
+            ResultSet rst = stm.executeQuery(req);
+
+            while (rst.next()) {
+
+                billets.add(rst.getInt(1));
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return billets;
+
+    }
+     
+      public int  getprixVol(int id) throws SQLException {
+       int prix=0;
+        String req = "select prix from billet where id="+id+" ";
+        stm = connexion.createStatement();
+
+        try {
+
+            ResultSet rst = stm.executeQuery(req);
+
+            while (rst.next()) {
+             prix+= rst.getInt(1);
+            
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return prix;
+
+    }
+      
+    
+       public List<Billet> afficherCompagnieQatar() throws SQLException {
+        List<Billet> billets = new ArrayList<>();
+        String req = "select * from billet WHERE nom_com like '%Qatar Airways%' ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+        while (rst.next()) {
+            Billet b = new Billet(rst.getInt("id"),
+                    rst.getInt("num_b"),
+                    rst.getInt("prix"),
+                    rst.getString("nom_com"),
+                    rst.getString("image_billet"),
+                    rst.getDate("date_v"), 
+                    rst.getInt("vol_id") );
+            billets.add(b);
+        }
+        return billets ;
+    }
+    
+       public List<Billet> afficherCompagnieEmirates() throws SQLException {
+        List<Billet> billets = new ArrayList<>();
+        String req = "select * from billet WHERE nom_com like '%Emirates%' ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+        while (rst.next()) {
+            Billet b = new Billet(rst.getInt("id"),
+                    rst.getInt("num_b"),
+                    rst.getInt("prix"),
+                    rst.getString("nom_com"),
+                    rst.getString("image_billet"),
+                    rst.getDate("date_v"), 
+                    rst.getInt("vol_id") );
+            billets.add(b);
+        }
+        return billets ;
+    }
+       
+       public List<Billet> afficherCompagnieTurkish() throws SQLException {
+        List<Billet> billets = new ArrayList<>();
+        String req = "select * from billet WHERE nom_com like '%Turkish%' ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+        while (rst.next()) {
+            Billet b = new Billet(rst.getInt("id"),
+                    rst.getInt("num_b"),
+                    rst.getInt("prix"),
+                    rst.getString("nom_com"),
+                    rst.getString("image_billet"),
+                    rst.getDate("date_v"), 
+                    rst.getInt("vol_id") );
+            billets.add(b);
+        }
+        return billets ;
+    }
+       public List<Billet> afficherCompagnieBritish() throws SQLException {
+        List<Billet> billets = new ArrayList<>();
+        String req = "select * from billet WHERE nom_com like '%British%' ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+        while (rst.next()) {
+            Billet b = new Billet(rst.getInt("id"),
+                    rst.getInt("num_b"),
+                    rst.getInt("prix"),
+                    rst.getString("nom_com"),
+                    rst.getString("image_billet"),
+                    rst.getDate("date_v"), 
+                    rst.getInt("vol_id") );
+            billets.add(b);
+        }
+        return billets ;
+    }
+       public List<Billet> afficherCompagnieFrance() throws SQLException {
+        List<Billet> billets = new ArrayList<>();
+        String req = "select * from billet WHERE nom_com like '%Air France%' ";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+        while (rst.next()) {
+            Billet b = new Billet(rst.getInt("id"),
+                    rst.getInt("num_b"),
+                    rst.getInt("prix"),
+                    rst.getString("nom_com"),
+                    rst.getString("image_billet"),
+                    rst.getDate("date_v"), 
+                    rst.getInt("vol_id") );
+            billets.add(b);
+        }
+        return billets ;
+    }
+       
+       
 }

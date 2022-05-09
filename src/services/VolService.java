@@ -61,6 +61,141 @@ public class VolService implements IVol<Vol> {
         ps.executeUpdate();
     }
 
+    public int getNbrVolTotal() throws SQLException {
+        int v = 0;
+        String req = "select * from vol";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolParis() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Paris%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolEspagne() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Espagne%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolDubai() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Dubai%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolTurquie() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Turquie%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolAllemagne() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Allemagne%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolItalie() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Italie%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolEgypte() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Egypte%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
+    public int getNbrVolChine() throws SQLException {
+        int v = 0;
+        String req = "select * from vol WHERE ville_arrive like '%Chine%'";
+        stm = connexion.createStatement();
+        try {
+            ResultSet rst = stm.executeQuery(req);
+            while (rst.next()) {
+                v = v + 1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return v;
+    }
+
     @Override
     public void supprimerVol(int id) throws SQLException {
         String Req = "DELETE FROM `vol` WHERE  id=" + id + " ";
@@ -95,8 +230,8 @@ public class VolService implements IVol<Vol> {
         }
         return vols;
     }
-    
-     public List<Integer> getIdVol() throws SQLException {
+
+    public List<Integer> getIdVol() throws SQLException {
         List<Integer> vols = new ArrayList<>();
         String req = "select * from vol";
         stm = connexion.createStatement();
@@ -116,6 +251,98 @@ public class VolService implements IVol<Vol> {
 
         return vols;
 
+    }
+        
+      public List<Vol> TrierVOLVilleDepart() throws SQLException {
+        List<Vol> vols = new ArrayList<>();
+        String req = "select * from vol order by `ville_depart`";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Vol v = new Vol(rst.getInt("id"),
+                    rst.getInt("num_vol"),
+                    rst.getInt("nbr_place"),
+                    rst.getDate("date_depart"),
+                    rst.getDate("date_arrive"),
+                    rst.getString("ville_depart"),
+                    rst.getString("ville_arrive"),
+                    rst.getString("image_vol"),
+                    rst.getString("type_v"));
+
+            vols.add(v);
+        }
+        return vols;
+    }
+      
+      public List<Vol> trierVolVilleArrivé() throws SQLException {
+        List<Vol> vols = new ArrayList<>();
+        String req = "select * from vol order by `ville_arrive`";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Vol v = new Vol(rst.getInt("id"),
+                    rst.getInt("num_vol"),
+                    rst.getInt("nbr_place"),
+                    rst.getDate("date_depart"),
+                    rst.getDate("date_arrive"),
+                    rst.getString("ville_depart"),
+                    rst.getString("ville_arrive"),
+                    rst.getString("image_vol"),
+                    rst.getString("type_v"));
+
+            vols.add(v);
+        }
+        return vols;
+    }
+      
+      public List<Vol> trierVolDateDepart() throws SQLException {
+        List<Vol> vols = new ArrayList<>();
+        String req = "select * from vol order by `date_depart`";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Vol v = new Vol(rst.getInt("id"),
+                    rst.getInt("num_vol"),
+                    rst.getInt("nbr_place"),
+                    rst.getDate("date_depart"),
+                    rst.getDate("date_arrive"),
+                    rst.getString("ville_depart"),
+                    rst.getString("ville_arrive"),
+                    rst.getString("image_vol"),
+                    rst.getString("type_v"));
+
+            vols.add(v);
+        }
+        return vols;
+    }
+      
+      public List<Vol> trierVolNbrPlace() throws SQLException {
+        List<Vol> vols = new ArrayList<>();
+        String req = "select * from vol order by `nbr_place`";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Vol v = new Vol(rst.getInt("id"),
+                    rst.getInt("num_vol"),
+                    rst.getInt("nbr_place"),
+                    rst.getDate("date_depart"),
+                    rst.getDate("date_arrive"),
+                    rst.getString("ville_depart"),
+                    rst.getString("ville_arrive"),
+                    rst.getString("image_vol"),
+                    rst.getString("type_v"));
+
+            vols.add(v);
+        }
+        return vols;
     }
 
 }

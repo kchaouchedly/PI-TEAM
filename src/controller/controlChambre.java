@@ -13,8 +13,7 @@ import entities.Vol;
  * @author msi
  */
 public class controlChambre {
-    
-   
+
     public boolean controlNbrLits(int nb) {
         if ((nb == 1) || (nb == 2) || (nb == 3) || (nb == 4)) {
             return true;
@@ -35,6 +34,5 @@ public class controlChambre {
         }
         return true;
     }
-    
-    
+
 }

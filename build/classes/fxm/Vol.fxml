@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -137,18 +138,7 @@
                                                 <Font name="Cambria" size="19.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="VilleArrive" prefHeight="31.0" prefWidth="210.0" promptText="Ville Arrivé" />
-                                       </children>
-                                    </HBox>
-                                    <Text fx:id="alertVilleArrivee" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="352.0" prefHeight="53.0" prefWidth="335.0">
-                                       <children>
-                                          <Label prefHeight="23.0" prefWidth="196.0" text="ImageVol" textFill="WHITE">
-                                             <font>
-                                                <Font name="Cambria" size="19.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="imageVol" prefHeight="31.0" prefWidth="211.0" promptText="Image Vol" />
+                                          <ComboBox fx:id="VilleArrv" prefHeight="31.0" prefWidth="215.0" promptText="Ville Arrive" />
                                        </children>
                                     </HBox>
                                     <Text fx:id="alertImageVol" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
@@ -186,6 +176,18 @@
                                        </children>
                                     </HBox>
                                     <Text fx:id="alerteDateArrivee" fill="#f10a0a" layoutX="57.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
+                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="352.0" prefHeight="53.0" prefWidth="335.0">
+                                       <children>
+                                          <Label prefHeight="23.0" prefWidth="196.0" text="ImageVol" textFill="WHITE">
+                                             <font>
+                                                <Font name="Cambria" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="imageVol" prefHeight="31.0" prefWidth="211.0" promptText="Image Vol" />
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="insererImgV" mnemonicParsing="false" onAction="#insererImgVol" prefHeight="31.0" prefWidth="125.0" text="Insérer" />
+                                    <Text fx:id="alertVilleArrivee" fill="#f10a0a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0000022041222" />
                                     <Button mnemonicParsing="false" onAction="#ajouterVol" prefHeight="52.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Ajouter " textFill="#828282">
                                        <VBox.margin>
                                           <Insets bottom="20.0" top="30.0" />
@@ -237,7 +239,12 @@
                                           <Font name="Cambria" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="statistiques" mnemonicParsing="false" onAction="#Stat" prefHeight="31.0" prefWidth="144.0" styleClass="search-button" stylesheets="@../values/style.css" text="Statistiques" />
+                                    <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Button layoutX="58.0" layoutY="17.0" mnemonicParsing="false" onAction="#AjoutFav" styleClass="search-button" stylesheets="@../values/style.css" text="Favoris" />
+                                          <Button fx:id="affchFav" layoutX="132.0" layoutY="17.0" mnemonicParsing="false" onAction="#affchFav" prefHeight="31.0" prefWidth="191.0" styleClass="search-button" stylesheets="@../values/style.css" text="Aficher Favoris" />
+                                       </children></Pane>
                                     <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
                                        <font>
                                           <Font name="Cambria" size="18.0" />
@@ -255,25 +262,28 @@
                                     <Pane prefHeight="84.0" prefWidth="96.0" />
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../values/style.css">
                                        <children>
-                                          <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                          <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" />
+                                          <VBox alignment="CENTER" prefHeight="100.0" prefWidth="579.0">
                                              <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                                <Label prefHeight="0.0" prefWidth="249.0" text="       Trier" textFill="#878787">
                                                    <font>
-                                                      <Font name="Cambria Bold" size="18.0" />
+                                                      <Font name="Cambria Bold" size="40.0" />
                                                    </font>
                                                 </Label>
-                                                <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
-                                                   <font>
-                                                      <Font name="Cambria" size="15.0" />
-                                                   </font>
-                                                </Label>
+                                                <HBox prefHeight="39.0" prefWidth="360.0">
+                                                   <children>
+                                                      <RadioButton fx:id="ville_depart" mnemonicParsing="false" onMouseClicked="#ville_depart" prefHeight="29.0" prefWidth="174.0" text="Par ville depart" />
+                                                      <RadioButton fx:id="date_depart" mnemonicParsing="false" onMouseClicked="#date_depart" prefHeight="21.0" prefWidth="172.0" text="Par date depart" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="43.0" prefWidth="360.0">
+                                                   <children>
+                                                      <RadioButton fx:id="ville_arrive" mnemonicParsing="false" onMouseClicked="#ville_arrive" prefHeight="36.0" prefWidth="178.0" text="Par ville arrivée" />
+                                                      <RadioButton fx:id="nbr_place" mnemonicParsing="false" onMouseClicked="#nbr_place" prefHeight="21.0" prefWidth="180.0" text="Par nombre de place" />
+                                                   </children>
+                                                </HBox>
                                              </children>
                                           </VBox>
-                                          <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../img/ic_delivery.png" />
-                                             </image>
-                                          </ImageView>
                                        </children>
                                     </HBox>
                                     <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
@@ -311,7 +321,10 @@
                                     <Insets left="20.0" right="20.0" top="10.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#pdfvol" styleClass="search-button" stylesheets="@../values/style.css" text="Générer un fichier pdf " />
+                                 </children></HBox>
                               <TableView fx:id="tableVols" prefHeight="622.0" prefWidth="287.0">
                                  <columns>
                                     <TableColumn fx:id="id" prefWidth="86.0" text="Identifiant" />

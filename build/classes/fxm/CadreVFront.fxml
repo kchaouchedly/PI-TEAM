@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxm.CadreVFrontController">
+   <children>
+      <ImageView fx:id="cadre" fitHeight="136.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/hotel.png" />
+         </image>
+      </ImageView>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="223.0" prefWidth="530.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="164.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text=" Num Vol :" />
+                        <Label fx:id="numVol" prefHeight="21.0" prefWidth="154.0" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="165.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text="Date départ :" />
+                        <Label fx:id="DateD" prefHeight="21.0" prefWidth="153.0" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="165.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text="Date arrivé :" />
+                        <Label fx:id="dateA" prefHeight="21.0" prefWidth="158.0" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="161.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text="Ville Départ :" />
+                        <Label fx:id="villeD" prefHeight="21.0" prefWidth="160.0" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="163.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text="Ville Arrivé :" />
+                        <Label fx:id="VilleA" prefHeight="21.0" prefWidth="164.0" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="163.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text="Type Vol :" />
+                        <Label fx:id="TypeV" prefHeight="21.0" prefWidth="162.0" text="Label" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label prefHeight="21.0" prefWidth="163.0" styleClass="free-delivery-card" stylesheets="@../values/style.css" text="Nombre Places :" />
+            <Label fx:id="NbrPlace" prefHeight="21.0" prefWidth="162.0" text="Label" />
+         </children>
+      </HBox>
+      <Button fx:id="billets" mnemonicParsing="false" onAction="#consulterBillet" prefHeight="31.0" prefWidth="363.0" styleClass="red" stylesheets="@../values/style.css" text="Consulter Billets" />
+   </children>
+</VBox>

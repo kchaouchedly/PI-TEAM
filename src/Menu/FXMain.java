@@ -5,7 +5,11 @@
  */
 package Menu;
 
+import entities.Billet;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import services.BilletService;
+import services.VolService;
 
 /**
  *
@@ -23,13 +29,19 @@ import javafx.stage.Stage;
 public class FXMain extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws SQLException {
         try {
-                    Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+           
+            
+  
+       
+               //  Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+                   Parent root = FXMLLoader.load(getClass().getResource("/fxm/MenuFront.fxml"));
                     Scene scene = new Scene(root, 1650, 980);
                     primaryStage.setTitle("LET'S TRAVEl");
                     primaryStage.setScene(scene);
                     primaryStage.show();
+         
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
